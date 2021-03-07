@@ -1,18 +1,24 @@
 .nav {
-  border-radius: 5px 5px 0px 0px;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  background-color: #ffffff;
-  font-size: 15px;
   display: flex;
-  flex-wrap: nowrap;
   justify-content: center;
-  border: solid black;
+  position: fixed;
+  bottom: 0;
+  justify-content: space-around;
+  height: 10vh;
+  width: 100%;
+  font-size: 1.5em;
+}
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
-  padding: 1.3em;
-  font-size: 1.2em;
-  color: black;
+span {
+  font-size: 0.5em;
+}
+
+.nav-item:hover {
+  font-size: 1.3em;
 }

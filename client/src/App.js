@@ -5,9 +5,14 @@ import { ChoreChart } from './components/ChoreChart';
 function App() {
   return (
     <div className='App'>
-      <TopNav></TopNav>
-      <h1>Family Matterz</h1>
-      <ChoreChart />
+      <TopNav />
+      <div className='grid-container'>
+        <div className='one'>SmallCalander</div>
+        <div className='two'> Todo</div>
+        <div className='three'>
+          <ChoreChart />
+        </div>
+      </div>
       <BottomNav />
     </div>
   );
