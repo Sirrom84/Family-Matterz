@@ -2,12 +2,14 @@
   display: flex;
   align-items: center;
   width: 100vw;
-  height: 5vh;
+  height: auto;
   justify-content: space-between;
-  margin-bottom: 15px;
-  margin-right: 10px;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-top: 0;
 }
-h1 {
+.top-nav h1 {
   margin-block-start: 0;
   font-size: 1.5em;
   margin: 0;
@@ -15,4 +17,10 @@ h1 {
 }
 .message {
   font-size: 1em;
+  margin-right: 20px;
+}
+
+.top-nav h2 {
+  font-size: 15px;
+  font-weight: 400;
 }
