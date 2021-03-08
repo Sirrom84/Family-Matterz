@@ -24,7 +24,7 @@ export const ChoreChart = () => {
 
   return (
     <div className='card'>
-      <h4>Weekly Progress</h4>
+      <h4 className='header'>Weekly Progress</h4>
       <Chart
         className='Chart'
         type='doughnut'

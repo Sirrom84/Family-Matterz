@@ -1,20 +1,7 @@
 .App {
-  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: linear-gradient(
-    to bottom,
-    #ffffff,
-    #ddd8f8,
-    #494883,
-    #494883,
-    #494883,
-    #494883,
-    #494883,
-    #ddd8f8,
-    #ffffff
-  );
   width: 100%;
   height: 100%;
 }
@@ -44,4 +31,14 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 10px;
   background-color: #fff;
+}
+
+.header {
+  color: white;
+  height: 5vh;
+  width: 100%;
+  text-align: center;
+  background-color: #303960;
+  font-size: 15px;
+  margin: 0;
 }
