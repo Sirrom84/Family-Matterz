@@ -1,0 +1,26 @@
+.list-item {
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+.list-item button {
+  justify-self: flex-start;
+  border-radius: 50%;
+  height: 15px;
+  width: auto;
+}
+
+.list-item p {
+  justify-self: center;
+  display: block;
+}
+
+.selected {
+  justify-self: flex-start;
+  border-radius: 50%;
+  height: 15px;
+  width: auto;
+  text-decoration: line-through;
+  font-size: 0.5em;
+}
