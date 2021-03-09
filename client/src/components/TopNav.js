@@ -1,23 +1,14 @@
 import React from 'react';
-import { TabMenu } from 'primereact/tabmenu';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
-
+import { ImBubbles2 } from 'react-icons/im';
 import './TopNav.css';
 
 export const TopNav = () => {
-  const items = [
-    { icon: 'pi pi-fw pi-home' },
-    { icon: 'pi pi-fw pi-calendar-plus' },
-    { icon: 'pi pi-fw pi-file' },
-    { icon: 'pi pi-fw pi-file' },
-    { icon: 'pi pi-shopping-cart' },
-  ];
-
   return (
     <div>
       <div className='top-nav'>
-        <TabMenu className='menu-items' model={items} />
+        <img src='./images/FM-Logo.png' width='auto' height='70px' alt='Logo' />
+        <h2>The Morris House</h2>
+        <ImBubbles2 className='message' />
       </div>
     </div>
   );

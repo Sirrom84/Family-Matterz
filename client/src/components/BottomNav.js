@@ -1,23 +1,27 @@
 import React from 'react';
-import { TabMenu } from 'primereact/tabmenu';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
-
 import './BottomNav.css';
-
+import { FcInspection } from 'react-icons/fc';
+import { FcPlanner } from 'react-icons/fc';
+import { FcHome } from 'react-icons/fc';
+import { FcShop } from 'react-icons/fc';
 export const BottomNav = () => {
-  const items = [
-    { icon: 'pi pi-fw pi-home' },
-    { icon: 'pi pi-fw pi-calendar-plus' },
-    { icon: 'pi pi-fw pi-file' },
-    { icon: 'pi pi-fw pi-file' },
-    { icon: 'pi pi-shopping-cart' },
-  ];
-
   return (
-    <div>
-      <div className='nav'>
-        <TabMenu className='menu-items' model={items} />
+    <div className='nav'>
+      <div className='nav-item'>
+        <FcHome />
+        <span>Home</span>
+      </div>
+      <div className='nav-item'>
+        <FcPlanner />
+        <span>Calander</span>
+      </div>
+      <div className='nav-item'>
+        <FcInspection />
+        <span>To-Do</span>
+      </div>
+      <div className='nav-item'>
+        <FcShop />
+        <span>Pantry</span>
       </div>
     </div>
   );

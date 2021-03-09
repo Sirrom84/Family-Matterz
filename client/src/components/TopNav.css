@@ -1,18 +1,26 @@
-.Top-nav {
-  border-radius: 5px 5px 0px 0px;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  background-color: #ffffff;
-  font-size: 15px;
+.top-nav {
   display: flex;
-  flex-wrap: nowrap;
-  justify-content: center;
-  border: solid black;
+  align-items: center;
+  width: 100vw;
+  height: auto;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-top: 0;
+}
+.top-nav h1 {
+  margin-block-start: 0;
+  font-size: 1.5em;
+  margin: 0;
+  color: #000;
+}
+.message {
+  font-size: 1em;
+  margin-right: 20px;
 }
 
-.p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
-  padding: 1.3em;
-  font-size: 1.2em;
-  color: black;
+.top-nav h2 {
+  font-size: 15px;
+  font-weight: 400;
 }
