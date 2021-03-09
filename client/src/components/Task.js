@@ -17,11 +17,11 @@ function Todo() {
 	const [tasks, setTasks] = useState([
 		//Testing data
 		{
-			title: "Grab some Pizza",
+			title: "Drive Ruby to piano",
 			completed: true,
 		},
 		{
-			title: "Do your workout",
+			title: "Grab Food",
 			completed: true,
 		},
 		{
