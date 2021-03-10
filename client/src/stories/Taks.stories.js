@@ -1,13 +1,13 @@
 import React from "react";
 
-import Task from "../components/Task";
+import {Todo} from "../components/Task";
 
 export default {
-	component: Task,
-	title: "Task",
+	component: Todo,
+	title: "TaskApp",
 };
 
-const Template = (args) => <Task {...args} />;
+const Template = (args) => <Todo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
