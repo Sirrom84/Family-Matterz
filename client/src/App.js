@@ -1,4 +1,3 @@
-
 import './App.css';
 import { BottomNav } from './components/BottomNav/BottomNav';
 import { TopNav } from './components/TopNav/TopNav';
