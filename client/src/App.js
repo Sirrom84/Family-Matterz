@@ -5,26 +5,22 @@ import {ChoreChart} from "./components/ChoreChart/ChoreChart";
 import {TimelineHome} from "./components/TimeLine/TimeLineHome";
 import {GroceryList} from "./components/GroceryList/GroceryList";
 import {Todo} from "./components/TaskApp/Todo";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+
 function App() {
 	return (
-		<div className="App">
-			<TopNav />
-			<div className="grid-container">
-				<div className="two">
-					<TimelineHome />
-				</div>
-				<div className="three">
-					<ChoreChart />
-				</div>
-				<div className="four">
-					<GroceryList />
-				</div>
-				<div className="five">
-					<Todo />
-				</div>
+		<Router>
+			<div className="App">
+				<TopNav />
+				<Switch>
+					<Route path="/" exact component={TimelineHome} />
+					<Route path="/stats" component={ChoreChart} />
+					<Route path="/grocerylist" component={GroceryList} />
+					<Route path="/todolist" component={Todo} />
+				</Switch>
+				<BottomNav />
 			</div>
-			<BottomNav />
-		</div>
+		</Router>
 	);
 }
 
