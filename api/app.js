@@ -8,14 +8,18 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 
 //Route Modules
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const indexRouter = require('./routes/index'),
+  usersRouter = require('./routes/users');
 
 //App Initializer
 const app = express();
 
 //Model Routes
-const Task = require('./models/Task');
+const Task = require('./models/Task'),
+  User = require('./models/User'),
+  Grocery = require('./models/Grocery'),
+  Family = require('./models/Family'),
+  Calander = require('./models/Calander');
 
 //Database Config
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@familymatterz.ixxbf.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;

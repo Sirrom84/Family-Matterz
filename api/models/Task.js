@@ -2,14 +2,20 @@ const mongoose = require('mongoose');
 
 const taskSchema = new mongoose.Schema({
   task: String,
-  owner: {
+  dueDate: Date,
+  completed: { type: Boolean, default: 'False' },
+  creator: {
     id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
     },
-    username: String,
   },
-  dueDate: Date,
+  family: {
+    id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Family',
+    },
+  },
   created: { type: Date, default: Date.now },
 });
 
