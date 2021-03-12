@@ -1,6 +1,8 @@
 import React from 'react';
 import { ImBubbles2 } from 'react-icons/im';
-import './TopNav.css';
+import { Link } from 'react-router-dom';
+
+import './TopNav.scss';
 
 export const TopNav = () => {
   return (
@@ -8,7 +10,9 @@ export const TopNav = () => {
       <div className='top-nav'>
         <img src='./images/FM-Logo.png' width='auto' height='70px' alt='Logo' />
         <h2>The Morris House</h2>
-        <ImBubbles2 className='message' />
+        <Link to='/chat'>
+          <ImBubbles2 className='message' />
+        </Link>
       </div>
     </div>
   );
