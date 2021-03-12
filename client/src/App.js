@@ -5,6 +5,7 @@ import { ChoreChart } from './components/ChoreChart/ChoreChart';
 import { TimelineHome } from './components/TimeLine/TimeLineHome';
 import { GroceryList } from './components/GroceryList/GroceryList';
 import { Todo } from './components/TaskApp/Todo';
+import { Survey } from './components/Survey/Survey';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path='/stats' component={ChoreChart} />
           <Route path='/grocerylist' component={GroceryList} />
           <Route path='/todo' component={Todo} />
+          <Route path='/survey' component={Survey} />
         </Switch>
         <BottomNav />
       </div>
