@@ -1,14 +1,24 @@
 import React, {useState, useEffect} from "react";
 import CreateTask from "./CreateTask";
+import "./Task.scss";
 
 function Task({task, index, completeTask, removeTask}) {
 	return (
-		<div
-			className="task"
-			style={{textDecoration: task.completed ? "line-through" : ""}}>
-			{task.title}
-			<button onClick={() => completeTask(index)}>✓</button>
-			<button onClick={() => removeTask(index)}>✗</button>
+		<div class="todo-task-items">
+			<div style={{textDecoration: task.completed ? "line-through" : ""}}>
+				{task.title}
+			</div>
+			<div />
+			<div class="task-buttons">
+				<button
+					class="todo-complete-button"
+					onClick={() => completeTask(index)}>
+					✓
+				</button>
+				<button class="todo-delete-button" onClick={() => removeTask(index)}>
+					✗
+				</button>
+			</div>
 		</div>
 	);
 }
@@ -36,13 +46,21 @@ export const Todo = () => {
 			title: "Cut the grass",
 			completed: false,
 		},
+		{
+			title: "fold the laundry",
+			completed: true,
+		},
+		{
+			title: "brush the dog",
+			completed: false,
+		},
 	]);
 
 	useEffect(() => {
 		setTasksRemaining(tasks.filter((task) => !task.completed).length);
 		//I'll use this tasksremaing useEffect for other features later maybe
 		//displayed on the home page?
-	});
+	}, [tasks]);
 
 	const addTask = (title) => {
 		const newTasks = [...tasks, {title, completed: false}];
@@ -62,10 +80,13 @@ export const Todo = () => {
 	};
 
 	return (
-		<div className="todo-container">
-			<div className="header">Things TODO:({tasksRemaining})</div>
-
-			<div className="tasks">
+		<div class="todo-container">
+			<div class="todo-header">
+				<div class="todo-count">
+					<span>{tasksRemaining} Tasks remaining</span>
+				</div>
+			</div>
+			<div class="todo-body">
 				{tasks.map((task, index) => (
 					<Task
 						task={task}
@@ -76,7 +97,8 @@ export const Todo = () => {
 					/>
 				))}
 			</div>
-			<div className="create-task">
+
+			<div class="create-task">
 				<CreateTask addTask={addTask} />
 			</div>
 		</div>
