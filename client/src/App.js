@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import { BottomNav } from './components/BottomNav/BottomNav';
 import { TopNav } from './components/TopNav/TopNav';
 import { ChoreChart } from './components/ChoreChart/ChoreChart';

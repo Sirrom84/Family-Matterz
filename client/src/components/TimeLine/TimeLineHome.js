@@ -5,7 +5,7 @@ import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
 import TimelineConnector from '@material-ui/lab/TimelineConnector';
 import TimelineContent from '@material-ui/lab/TimelineContent';
 import TimelineDot from '@material-ui/lab/TimelineDot';
-import './TimelineHome.css';
+import './TimelineHome.scss';
 
 export const TimelineHome = () => {
   return (
