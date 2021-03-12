@@ -1,27 +1,34 @@
 .nav {
-	display: flex;
-	justify-content: center;
-	position: fixed;
-	bottom: 0;
-	justify-content: space-around;
-	height: 10vh;
-	width: 100%;
-	font-size: 1.5em;
-	border-radius: 5px;
-	z-index: 1;
-	background-color: rgba(255, 255, 255, 0.548);
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  justify-content: space-around;
+  height: 10vh;
+  width: 100%;
+  font-size: 1.5em;
+  border-radius: 5px;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.548);
 }
 .nav-item {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 span {
-	font-size: 0.5em;
+  font-size: 0.5em;
 }
 
 .nav-item:hover {
-	font-size: 1.3em;
+  font-size: 1.3em;
+}
+
+.nav a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
 }

@@ -4,24 +4,33 @@ import { FcInspection } from 'react-icons/fc';
 import { FcPlanner } from 'react-icons/fc';
 import { FcHome } from 'react-icons/fc';
 import { FcShop } from 'react-icons/fc';
+import { Link } from 'react-router-dom';
 export const BottomNav = () => {
   return (
     <div className='nav'>
       <div className='nav-item'>
-        <FcHome />
-        <span>Home</span>
+        <Link to='/'>
+          <FcHome />
+          <span>Home</span>
+        </Link>
       </div>
       <div className='nav-item'>
-        <FcPlanner />
-        <span>Calander</span>
+        <Link to='/calander'>
+          <FcPlanner />
+          <span>Calander</span>
+        </Link>
       </div>
       <div className='nav-item'>
-        <FcInspection />
-        <span>To-Do</span>
+        <Link to='/todo'>
+          <FcInspection />
+          <span>To-Do</span>
+        </Link>
       </div>
       <div className='nav-item'>
-        <FcShop />
-        <span>Pantry</span>
+        <Link to='/grocerylist'>
+          <FcShop />
+          <span>Pantry</span>
+        </Link>
       </div>
     </div>
   );
