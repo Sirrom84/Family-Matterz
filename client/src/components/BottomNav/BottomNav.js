@@ -1,5 +1,5 @@
 import React from 'react';
-import './BottomNav.css';
+import './BottomNav.scss';
 import { FcInspection } from 'react-icons/fc';
 import { FcPlanner } from 'react-icons/fc';
 import { FcHome } from 'react-icons/fc';
