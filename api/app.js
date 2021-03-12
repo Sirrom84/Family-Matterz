@@ -6,7 +6,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
-
+// const seedDB = require('./DB/seeds');
 //Route Modules
 const indexRouter = require('./routes/index'),
   usersRouter = require('./routes/users');
@@ -15,11 +15,10 @@ const indexRouter = require('./routes/index'),
 const app = express();
 
 //Model Routes
-const Task = require('./models/Task'),
-  User = require('./models/User'),
-  Grocery = require('./models/Grocery'),
-  Family = require('./models/Family'),
-  Calander = require('./models/Calander');
+const Task = require('./DB/models/Task'),
+  Grocery = require('./DB/models/Grocery'),
+  Family = require('./DB/models/Family'),
+  Calander = require('./DB/models/Calander');
 
 //Database Config
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@familymatterz.ixxbf.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
