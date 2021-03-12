@@ -12,20 +12,28 @@ function Task({task, index, completeTask, removeTask}) {
 		</div>
 	);
 }
-function Todo() {
+export const Todo = () => {
 	const [tasksRemaining, setTasksRemaining] = useState(0);
 	const [tasks, setTasks] = useState([
 		//Testing data
 		{
-			title: "Drive Ruby to piano",
+			title: "do the laundry",
+			completed: false,
+		},
+		{
+			title: "Grab Food after work",
+			completed: false,
+		},
+		{
+			title: "Walk the dog",
 			completed: true,
 		},
 		{
-			title: "Grab Food",
-			completed: true,
+			title: "Call insurance",
+			completed: false,
 		},
 		{
-			title: "Hangout with friends",
+			title: "Cut the grass",
 			completed: false,
 		},
 	]);
@@ -73,6 +81,4 @@ function Todo() {
 			</div>
 		</div>
 	);
-}
-
-export default Todo;
+};
