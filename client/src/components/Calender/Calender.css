@@ -1,1 +1,6 @@
-@import "react-big-calendar/lib/sass/styles";
+@import "~react-agenda/build/styles.css";
+@import "~react-datetime/css/react-datetime.css";
+
+i {
+  font-size: 24px !important;
+}
