@@ -7,7 +7,8 @@ import { GroceryList } from "./components/GroceryList/GroceryList";
 import { Todo } from "./components/TaskApp/Todo";
 import Calender from "./components/Calender/Calender";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
+// import "@fortawesome/fontawesome-free/css/all.min.css";
+// import { dom } from "@fortawesome/fontawesome-svg-core";
 function App() {
   return (
     <Router>

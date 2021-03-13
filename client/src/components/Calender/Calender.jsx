@@ -11,8 +11,6 @@ import {
   Modal,
 } from "react-agenda";
 import "../Calender/Calender.css";
-import { FcMinus } from "react-icons/fc";
-// import { zoom-minus-icon } from "@fortawesome/free-solid-svg-icons";
 
 var now = new Date();
 
@@ -232,6 +230,7 @@ export default class Agenda extends Component {
     this.setState({ items: items });
   }
 
+  // Add a new event to state
   addNewEvent(items, newItems) {
     this.setState({ showModal: false, selected: [], items: items });
     this._closeModal();
