@@ -1,6 +1,6 @@
 import React from 'react';
 import { Chart } from 'primereact/chart';
-import './ChoreChart.css';
+import './ChoreChart.scss';
 
 export const ChoreChart = () => {
   const chartData = {
