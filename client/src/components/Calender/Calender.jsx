@@ -252,10 +252,15 @@ export default class Agenda extends Component {
       console.log(" item component props", props);
       return (
         <div
-          style={{ display: "block", position: "absolute", background: "#FFF" }}
+          style={{
+            display: "block",
+            position: "absolute",
+            background: "white",
+            padding: "1px",
+          }}
         >
           {/* {props.item.name}{" "} */}
-          <button onClick={() => props.edit(props.item)}>Edit </button>
+          <button onClick={() => props.edit(props.item)}>View </button>
         </div>
       );
     };
