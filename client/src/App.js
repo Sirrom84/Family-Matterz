@@ -19,6 +19,8 @@ function App() {
           <Route path='/grocerylist' component={GroceryList} />
           <Route path='/todo' component={Todo} />
           <Route path='/survey' component={Survey} />
+          <Route path='/todolist' component={Todo} />
+
         </Switch>
         <BottomNav />
       </div>
