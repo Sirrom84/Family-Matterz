@@ -1,0 +1,7 @@
+{
+  "emmet.extensionsPath": "",
+  "emmet.showAbbreviationSuggestions": false,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  }
+}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FcLikePlaceholder } from 'react-icons/fc';
 import { FcLike } from 'react-icons/fc';
+import { FaArrowAltCircleDown } from 'react-icons/fa';
 import { FcPlus } from 'react-icons/fc';
 import { Badge } from '@material-ui/core';
 import './Survey.scss';
@@ -16,8 +17,8 @@ export const Survey = () => {
   const onClickHandler = (index) => {
     const liked = [...list];
     Object.assign(liked[index], {
-      isLiked: !liked[index].isLiked,
-      likes: liked[index].likes + 1,
+      isLiked: true,
+      likes: liked[index].likes + 1
     });
     setList(liked);
   };
@@ -32,23 +33,28 @@ export const Survey = () => {
     setCurrentItem('');
   };
 
+
   const surveyItems = list.map((item, index) => {
+    if(item.likes == 3){ 
+      return item.title
+    }
     return (
       <li key={index}>
         <div className='item'>
           {item.title}
           <Badge badgeContent={item.likes}>
-            {list[index].isLiked ? (
-              <FcLike onClick={() => onClickHandler(index)} />
-            ) : (
-              <FcLikePlaceholder onClick={() => onClickHandler(index)} />
-            )}
+            {
+            list[index].isLiked 
+            ?<FcLike onClick={() => onClickHandler(index)} />
+            :<FcLikePlaceholder onClick={() => onClickHandler(index)} />
+            }
           </Badge>
         </div>
         <hr />
       </li>
     );
   });
+
 
   return (
     <div className='survey-container'>
@@ -61,9 +67,10 @@ export const Survey = () => {
             value={currentItem.value}
             onChange={onChangeHandler}
           />
-          <FcPlus onClick={onSubmitHandler} />
+          <FaArrowAltCircleDown className='submit-button' onClick={onSubmitHandler} />
         </div>
       </form>
+      {}
       <div className='survey-items'>{surveyItems}</div>
     </div>
   );

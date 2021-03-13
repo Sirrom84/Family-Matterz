@@ -43,7 +43,7 @@ export const Todo = () => {
     setTasksRemaining(tasks.filter((task) => !task.completed).length);
     //I'll use this tasksremaing useEffect for other features later maybe
     //displayed on the home page?
-  });
+  }, [tasks]);
 
   const addTask = (title) => {
     const newTasks = [...tasks, { title, completed: false }];
