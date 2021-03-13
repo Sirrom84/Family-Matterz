@@ -54,11 +54,6 @@ export const Todo = () => {
 			completed: false,
 			completedBy: "",
 		},
-		{
-			title: "fold the laundry",
-			completed: true,
-			completedBy: "Mom",
-		},
 	]);
 
 	//////for testing////
