@@ -17,8 +17,8 @@ export const Survey = () => {
   const onClickHandler = (index) => {
     const liked = [...list];
     Object.assign(liked[index], {
-      isLiked: true,
-      likes: liked[index].likes + 1
+      isLiked: !liked[index].isLiked,
+      likes: liked[index].likes + 1,
     });
     setList(liked);
   };
@@ -33,6 +33,13 @@ export const Survey = () => {
     setCurrentItem('');
   };
 
+  const winner = () => {
+    list.forEach((item) => {
+      if (item.likes > 2) {
+        return;
+      }
+    });
+  };
 
   const surveyItems = list.map((item, index) => {
     return (
@@ -40,27 +47,17 @@ export const Survey = () => {
         <div className='item'>
           {item.title}
           <Badge badgeContent={item.likes}>
-            {
-            list[index].isLiked 
-            ?<FcLike onClick={() => onClickHandler(index)} />
-            :<FcLikePlaceholder onClick={() => onClickHandler(index)} />
-            }
+            {list[index].isLiked ? (
+              <FcLike onClick={() => onClickHandler(index)} />
+            ) : (
+              <FcLikePlaceholder onClick={() => onClickHandler(index)} />
+            )}
           </Badge>
         </div>
         <hr />
       </li>
     );
   });
-
-  const winner = () => { 
-    list.forEach((item)=> { 
-      if(item.likes>2){ 
-        return 
-      }
-    })
-
-  }
-
 
   return (
     <div className='survey-container'>
@@ -73,7 +70,10 @@ export const Survey = () => {
             value={currentItem.value}
             onChange={onChangeHandler}
           />
-          <FaArrowAltCircleDown className='submit-button' onClick={onSubmitHandler} />
+          <FaArrowAltCircleDown
+            className='submit-button'
+            onClick={onSubmitHandler}
+          />
         </div>
       </form>
       {}
