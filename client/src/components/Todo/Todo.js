@@ -1,4 +1,3 @@
-<<<<<<< HEAD:client/src/components/Todo/Todo.js
 import React, {useState, useEffect} from "react";
 import CreateTask from "./CreateTask";
 import "./Task.scss";
@@ -86,73 +85,13 @@ export const Todo = () => {
 		console.log(newTasks); // log for testing
 		setTasks(newTasks);
 	};
-=======
-import React, { useState, useEffect } from 'react';
-import CreateTask from './CreateTask';
 
-function Task({ task, index, completeTask, removeTask }) {
-  return (
-    <div
-      className='task'
-      style={{ textDecoration: task.completed ? 'line-through' : '' }}
-    >
-      {task.title}
-      <button onClick={() => completeTask(index)}>✓</button>
-      <button onClick={() => removeTask(index)}>✗</button>
-    </div>
-  );
-}
-export const Todo = () => {
-  const [tasksRemaining, setTasksRemaining] = useState(0);
-  const [tasks, setTasks] = useState([
-    //Testing data
-    {
-      title: 'do the laundry',
-      completed: false,
-    },
-    {
-      title: 'Grab Food after work',
-      completed: false,
-    },
-    {
-      title: 'Walk the dog',
-      completed: true,
-    },
-    {
-      title: 'Call insurance',
-      completed: false,
-    },
-    {
-      title: 'Cut the grass',
-      completed: false,
-    },
-  ]);
+	const removeTask = (index) => {
+		const newTasks = [...tasks];
+		newTasks.splice(index, 1);
+		setTasks(newTasks);
+	};
 
-  useEffect(() => {
-    setTasksRemaining(tasks.filter((task) => !task.completed).length);
-    //I'll use this tasksremaing useEffect for other features later maybe
-    //displayed on the home page?
-  });
-
-  const addTask = (title) => {
-    const newTasks = [...tasks, { title, completed: false }];
-    setTasks(newTasks);
-  };
-
-  const completeTask = (index) => {
-    const newTasks = [...tasks];
-    newTasks[index].completed = true;
-    setTasks(newTasks);
-  };
->>>>>>> a9062f3475b867829ee1f24ede5f4bf57fb90b58:client/src/components/TaskApp/Todo.js
-
-  const removeTask = (index) => {
-    const newTasks = [...tasks];
-    newTasks.splice(index, 1);
-    setTasks(newTasks);
-  };
-
-<<<<<<< HEAD:client/src/components/Todo/Todo.js
 	return (
 		<div class="todo-container">
 			<div class="todo-header">
@@ -177,26 +116,4 @@ export const Todo = () => {
 			</div>
 		</div>
 	);
-=======
-  return (
-    <div className='todo-container'>
-      <div className='header'>Things TODO:({tasksRemaining})</div>
-
-      <div className='tasks'>
-        {tasks.map((task, index) => (
-          <Task
-            task={task}
-            index={index}
-            completeTask={completeTask}
-            removeTask={removeTask}
-            key={index}
-          />
-        ))}
-      </div>
-      <div className='create-task'>
-        <CreateTask addTask={addTask} />
-      </div>
-    </div>
-  );
->>>>>>> a9062f3475b867829ee1f24ede5f4bf57fb90b58:client/src/components/TaskApp/Todo.js
 };
