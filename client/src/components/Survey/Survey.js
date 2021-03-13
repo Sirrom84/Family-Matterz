@@ -3,7 +3,7 @@ import { FcLikePlaceholder } from 'react-icons/fc';
 import { FcLike } from 'react-icons/fc';
 import { FaArrowAltCircleDown } from 'react-icons/fa';
 import { FcPlus } from 'react-icons/fc';
-import { Badge } from '@material-ui/core';
+import { Badge, ListSubheader } from '@material-ui/core';
 import './Survey.scss';
 
 export const Survey = () => {
@@ -35,9 +35,6 @@ export const Survey = () => {
 
 
   const surveyItems = list.map((item, index) => {
-    if(item.likes == 3){ 
-      return item.title
-    }
     return (
       <li key={index}>
         <div className='item'>
@@ -54,6 +51,15 @@ export const Survey = () => {
       </li>
     );
   });
+
+  const winner = () => { 
+    list.forEach((item)=> { 
+      if(item.likes>2){ 
+        return 
+      }
+    })
+
+  }
 
 
   return (
