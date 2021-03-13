@@ -4,3 +4,10 @@
 i {
   font-size: 24px !important;
 }
+
+#root > div > div.content-expanded {
+}
+#agenda-wrapper {
+  background-color: rgba(0, 0, 0, 0.6);
+  max-height: 80vh;
+}
