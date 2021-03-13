@@ -1,16 +1,37 @@
 //Module Imports
+require('dotenv').config();
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-
+const mongoose = require('mongoose');
+// const seedDB = require('./DB/seeds');
 //Route Modules
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const indexRouter = require('./routes/index'),
+  usersRouter = require('./routes/users');
 
 //App Initializer
 const app = express();
+
+//Model Routes
+const Task = require('./DB/models/Task'),
+  Grocery = require('./DB/models/Grocery'),
+  Family = require('./DB/models/Family'),
+  Calander = require('./DB/models/Calander');
+
+//Database Config
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@familymatterz.ixxbf.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+mongoose
+  .connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+  })
+  .then(() => console.log('Your Database is Connected'))
+  .catch((err) => {
+    console.log('Error', err.message);
+  });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
