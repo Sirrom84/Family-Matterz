@@ -13,7 +13,7 @@ import {
 import "../Calender/Calender.css";
 import { FcMinus } from "react-icons/fc";
 // import { zoom-minus-icon } from "@fortawesome/free-solid-svg-icons";
-
+import { BsArrowsCollapse, BsArrowsExpand, BsPlusSquare } from "react-icons/bs";
 var now = new Date();
 
 require("moment");
@@ -268,45 +268,45 @@ export default class Agenda extends Component {
           </h2>
         </div>
         <div className="control-buttons">
-          <button className="button-control" onClick={this.zoomIn}>
+          <button className="button-control-new" onClick={this.zoomIn}>
             {" "}
-            <i className="zoom-plus-icon"></i>{" "}
+            <BsArrowsCollapse className="layoutIcons" />{" "}
           </button>
-          <button className="button-control" onClick={this.zoomOut}>
+          <button className="button-control-new" onClick={this.zoomOut}>
             {" "}
-            <i className="zoom-minus-icon"></i>{" "}
+            <BsArrowsExpand className="layoutIcons" />{" "}
           </button>
-          <button className="button-control" onClick={this._openModal}>
+          <button className="button-control-new" onClick={this._openModal}>
             {" "}
-            <i className="schedule-icon"></i>{" "}
+            <BsPlusSquare className="layoutIcons" />{" "}
           </button>
           <button
-            className="button-control"
+            className="button-control-new"
             onClick={this.changeView.bind(null, 7)}
           >
             {" "}
-            {moment.duration(7, "days").humanize()}{" "}
+            {moment.duration(7, "Days").humanize()}{" "}
           </button>
           <button
-            className="button-control"
-            onClick={this.changeView.bind(null, 4)}
+            className="button-control-new"
+            onClick={this.changeView.bind(null, 5)}
           >
             {" "}
-            {moment.duration(4, "days").humanize()}{" "}
+            {moment.duration(5, "Days").humanize()}{" "}
           </button>
-          <button
-            className="button-control"
+          {/* <button
+            className="button-control-new"
             onClick={this.changeView.bind(null, 3)}
           >
             {" "}
             {moment.duration(3, "days").humanize()}{" "}
-          </button>
+          </button> */}
           <button
-            className="button-control"
+            className="button-control-new"
             onClick={this.changeView.bind(null, 1)}
           >
             {" "}
-            {moment.duration(1, "day").humanize()}{" "}
+            {moment.duration(1, "Day").humanize()}{" "}
           </button>
         </div>
 

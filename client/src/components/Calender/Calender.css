@@ -5,10 +5,34 @@ i {
   font-size: 24px !important;
 }
 
-
-#root > div > div.content-expanded {
+.content-expanded {
 }
 #agenda-wrapper {
-  background-color: rgba(0, 0, 0, 0.6);
+  margin: 15px 5px;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
   max-height: 80vh;
+  overflow: hidden;
+}
+
+.control-buttons {
+  display: flex;
+  justify-content: space-around;
+  height: 10vh;
+  background-color: (255, 255, 255, 0.15);
+}
+
+.button-control-new {
+  padding: 15px;
+  margin: 0, 10px;
+  border-radius: 15px;
+  background-color: #ffb5a6;
+  box-shadow: 6px 6px 6px;
+  border: lightblue;
+}
+
+.layoutIcons {
+  color: black;
+  font-size: 25px;
+  background-color: (255, 255, 255, 0.15);
 }
