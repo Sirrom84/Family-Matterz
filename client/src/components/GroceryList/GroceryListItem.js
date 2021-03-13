@@ -1,5 +1,5 @@
 import React from 'react';
-import './GroceryListItem.css';
+import './GroceryListItem.scss';
 import classnames from 'classnames';
 
 export const GroceryListItem = (props) => {
