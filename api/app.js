@@ -1,25 +1,25 @@
 //Module Imports
-require('dotenv').config();
-const createError = require('http-errors');
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const mongoose = require('mongoose');
+require("dotenv").config();
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const mongoose = require("mongoose");
 // const seedDB = require('./DB/seeds');
 //Route Modules
-const indexRouter = require('./routes/index'),
-  usersRouter = require('./routes/users');
+const indexRouter = require("./routes/index"),
+  usersRouter = require("./routes/users");
 
 //App Initializer
 const app = express();
 // connect to atlas
 
 //Model Routes
-const Task = require('./DB/models/Task'),
-  Grocery = require('./DB/models/Grocery'),
-  Family = require('./DB/models/Family'),
-  Calander = require('./DB/models/Calander');
+const Task = require("./DB/models/Task"),
+  Grocery = require("./DB/models/Grocery"),
+  Family = require("./DB/models/Family"),
+  Calander = require("./DB/models/Calander");
 
 //Database Config
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@familymatterz.ixxbf.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
@@ -29,9 +29,9 @@ mongoose
     useUnifiedTopology: true,
     useFindAndModify: false,
   })
-  .then(() => console.log('Your Database is Connected'))
+  .then(() => console.log("Your Database is Connected"))
   .catch((err) => {
-    console.log('Error', err.message);
+    console.log("Error", err.message);
   });
 
 // view engine setup
@@ -47,7 +47,7 @@ app.use(express.static(path.join(__dirname, "public")));
 //Route Config
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/calender/items", calenderRouter);
+app.use("/calender", calenderRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
