@@ -1,0 +1,104 @@
+.todo-container {
+	width: 400px;
+	max-height: 570px;
+	top: 10px;
+	bottom: 10px;
+	background-color: rgba(255, 255, 255, 0.685);
+	box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
+	position: relative;
+	border-radius: 1em;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	overflow-y: auto;
+}
+.todo-header {
+	padding: 20px;
+	display: flex;
+	justify-content: space-around;
+}
+
+.todo-count {
+	align-self: center;
+}
+
+.todo-body {
+	flex-grow: 1;
+	max-height: 600px;
+	overflow-x: hidden;
+}
+
+.todo-task-items {
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding: 10px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+.task-buttons {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.todo-form {
+	margin-bottom: 10px;
+	display: flex;
+	justify-content: center;
+}
+.todo-input {
+	height: 40px;
+	font-size: 15px;
+	border: 1px solid #dce4ec;
+	width: 100%;
+	margin-right: 15px;
+	border-radius: 2em;
+	padding: 5px 10px;
+	transition: border 250ms ease-out;
+}
+.todo-complete-button {
+	cursor: pointer;
+	font-size: 15px;
+	color: green;
+	margin: 5px;
+	padding: 10px 20px;
+	border-radius: 2em;
+	background: none;
+	border: 1px solid;
+	transition: 250ms ease-out;
+}
+.todo-delete-button {
+	cursor: pointer;
+	color: red;
+	font-size: 15px;
+	padding: 10px 20px;
+	margin: 5px;
+	border-radius: 2em;
+	background: none;
+	border: 1px solid;
+	transition: 250ms ease-out;
+}
+.todo-add-button {
+	cursor: pointer;
+	font-size: 15px;
+	padding: 10px 20px;
+	border-radius: 2em;
+	background: none;
+	border: 1px solid;
+	transition: 250ms ease-out;
+}
+
+.create-task {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	padding: 0.7em;
+}
+
+.input {
+	border: none;
+}
