@@ -1,3 +1,4 @@
+
 import React, {useState} from "react";
 import {FcLikePlaceholder} from "react-icons/fc";
 import {FcLike} from "react-icons/fc";
@@ -12,7 +13,7 @@ export const Survey = () => {
 		{title: "fish", isLiked: false, likes: 0},
 		{title: "steak and Fries", isLiked: false, likes: 0},
 	]);
-
+  
 	const onClickHandler = (index) => {
 		const liked = [...list];
 		Object.assign(liked[index], {
