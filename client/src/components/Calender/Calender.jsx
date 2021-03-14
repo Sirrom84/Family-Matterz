@@ -1,5 +1,6 @@
 // @flow
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
+import axios from "axios";
 import moment from "moment";
 import {
   ReactAgenda,
@@ -11,9 +12,8 @@ import {
   Modal,
 } from "react-agenda";
 import "../Calender/Calender.css";
-import { FcMinus } from "react-icons/fc";
-// import { zoom-minus-icon } from "@fortawesome/free-solid-svg-icons";
 import { BsArrowsCollapse, BsArrowsExpand, BsPlusSquare } from "react-icons/bs";
+
 var now = new Date();
 
 require("moment");
@@ -26,7 +26,9 @@ var colors = {
   "color-5": "rgba(170, 59, 123, 1)",
 };
 
-var items = [
+// Build an axios call to get the appointments from the data base
+
+let items = [
   {
     _id: guid(),
     name: "Meeting , dev staff!",
@@ -65,25 +67,25 @@ var items = [
     ),
     classes: "color-2",
   },
-  {
-    _id: guid(),
-    name: "Conference , plaza",
-    startDateTime: new Date(
-      now.getFullYear(),
-      now.getMonth(),
-      now.getDate() + 1,
-      11,
-      0
-    ),
-    endDateTime: new Date(
-      now.getFullYear(),
-      now.getMonth(),
-      now.getDate() + 1,
-      14,
-      30
-    ),
-    classes: "color-4",
-  },
+  // {
+  //   _id: guid(),
+  //   name: "Conference , plaza",
+  //   startDateTime: new Date(
+  //     now.getFullYear(),
+  //     now.getMonth(),
+  //     now.getDate() + 1,
+  //     11,
+  //     0
+  //   ),
+  //   endDateTime: new Date(
+  //     now.getFullYear(),
+  //     now.getMonth(),
+  //     now.getDate() + 1,
+  //     14,
+  //     30
+  //   ),
+  //   classes: "color-4",
+  // },
   {
     _id: "event-4",
     name: "Customers issues review",
@@ -255,12 +257,13 @@ export default class Agenda extends Component {
           style={{
             display: "block",
             position: "absolute",
-            background: "white",
-            padding: "1px",
+            background: "rgba(255,255,255, 0.00)",
           }}
         >
           {/* {props.item.name}{" "} */}
-          <button onClick={() => props.edit(props.item)}>View </button>
+          <button className="myButton" onClick={() => props.edit(props.item)}>
+            View{" "}
+          </button>
         </div>
       );
     };
