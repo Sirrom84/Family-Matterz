@@ -1,21 +1,51 @@
 import React, {useState, useEffect} from "react";
 import CreateTask from "./CreateTask";
+import {Avatar} from "primereact/avatar";
+import uuid from "react-uuid";
 import "./Task.scss";
 
 function Task({task, index, completeTask, removeTask}) {
+	const taskIsCompleted = task.completed;
+	if (taskIsCompleted) {
+		return (
+			<div className="todo-task-items">
+				<div style={{textDecoration: taskIsCompleted ? "line-through" : ""}}>
+					{task.title}
+				</div>
+
+				<Avatar
+					image="/images/daughter.png"
+					className="todo-avatar"
+					size="small"
+					shape="circle"
+				/>
+				<div />
+				<div className="task-buttons">
+					<button
+						className="todo-delete-button"
+						onClick={() => removeTask(index)}>
+						✗
+					</button>
+				</div>
+			</div>
+		);
+	}
 	return (
-		<div class="todo-task-items">
+		<div className="todo-task-items">
 			<div style={{textDecoration: task.completed ? "line-through" : ""}}>
 				{task.title}
 			</div>
 			<div />
-			<div class="task-buttons">
+
+			<div className="task-buttons">
 				<button
-					class="todo-complete-button"
+					className="todo-complete-button"
 					onClick={() => completeTask(index)}>
 					✓
 				</button>
-				<button class="todo-delete-button" onClick={() => removeTask(index)}>
+				<button
+					className="todo-delete-button"
+					onClick={() => removeTask(index)}>
 					✗
 				</button>
 			</div>
@@ -25,46 +55,33 @@ function Task({task, index, completeTask, removeTask}) {
 export const Todo = () => {
 	const [tasksRemaining, setTasksRemaining] = useState(0);
 	const [tasks, setTasks] = useState([
-		//Testing data
-		// {
-		// 	user: "Dad",
-		// },
+		{id: uuid(), title: "Walk the dog", completed: false, completedBy: ""},
 		{
-			title: "laundry",
-			completed: false,
-			completedBy: "Dad",
-		},
-		{
-			title: "Grab Food after work",
+			id: uuid(),
+			title: "Return Library Books",
 			completed: false,
 			completedBy: "",
 		},
 		{
-			title: "Walk the dog",
+			id: uuid(),
+			title: "Take chicken out of freezer please",
 			completed: true,
-			completedBy: "Mom",
-		},
-		{
-			title: "Call insurance",
-			completed: false,
 			completedBy: "Dad",
 		},
-		{
-			title: "Cut the grass",
-			completed: false,
-			completedBy: "",
-		},
+		{id: uuid(), title: "Clean Room", completed: false, completedBy: ""},
 	]);
 
 	//////for testing////
 	class User {
-		constructor(name, age, email) {
+		constructor(name, age, email, image) {
 			this.name = name;
 			this.age = age;
 			this.email = email;
+			this.image = image;
 		}
 	}
-	const dad = new User("Dad", 37, "morrisrjc@gmail.com");
+	const dad = new User("Dad", 37, "morrisrjc@gmail.com", "image here");
+
 	////////////////////////
 
 	useEffect(() => {
@@ -74,44 +91,49 @@ export const Todo = () => {
 	}, [tasks]);
 
 	const addTask = (title) => {
-		const newTasks = [...tasks, {title, completed: false, completedBy: ""}];
+		const newTasks = [
+			...tasks,
+			{id: uuid(), title, completed: false, completedBy: ""},
+		];
 		setTasks(newTasks);
 	};
 
-	const completeTask = (index) => {
+	const completeTask = (indexOfTask) => {
+		console.log("Task completed");
 		const newTasks = [...tasks];
-		newTasks[index].completed = true;
-		newTasks[index].completedBy = dad.name; //for testing
-		console.log(newTasks); // log for testing
-		setTasks(newTasks);
+		newTasks[indexOfTask].completed = true;
+		newTasks[indexOfTask].completedBy = dad.name; //for testing
+		// console.log(newTasks); // log for testing
+		return setTasks(newTasks);
 	};
 
-	const removeTask = (index) => {
+	const removeTask = (indexOfTask) => {
+		console.log("Item removed from task");
 		const newTasks = [...tasks];
-		newTasks.splice(index, 1);
+		newTasks.splice(indexOfTask, 1);
 		setTasks(newTasks);
 	};
 
 	return (
-		<div class="todo-container">
-			<div class="todo-header">
-				<div class="todo-count">
+		<div className="todo-container">
+			<div className="todo-header">
+				<div className="todo-count">
 					<span>{tasksRemaining} Tasks remaining</span>
 				</div>
 			</div>
-			<div class="todo-body">
+			<div className="todo-body">
 				{tasks.map((task, index) => (
 					<Task
 						task={task}
 						index={index}
 						completeTask={completeTask}
 						removeTask={removeTask}
-						key={index}
+						key={task.id}
 					/>
 				))}
 			</div>
 
-			<div class="create-task">
+			<div className="create-task">
 				<CreateTask addTask={addTask} />
 			</div>
 		</div>
