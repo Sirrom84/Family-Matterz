@@ -2,23 +2,25 @@ import React, { useState } from 'react';
 import { FcLikePlaceholder } from 'react-icons/fc';
 import { FcLike } from 'react-icons/fc';
 import { FaArrowAltCircleDown } from 'react-icons/fa';
-import { FcPlus } from 'react-icons/fc';
 import { Badge, ListSubheader } from '@material-ui/core';
+import { ChosenRecipee } from './ChosenRecipee';
 import './Survey.scss';
+import { LocalConvenienceStoreOutlined } from '@material-ui/icons';
 
 export const Survey = () => {
   // const [showWinner, setShowWinner] = useState(false);
   let [currentItem, setCurrentItem] = useState('');
   const [list, setList] = useState([
-    { title: 'fish', isLiked: false, likes: 0 },
-    { title: 'steak and Fries', isLiked: false, likes: 0 },
+    { title: 'fish', isLiked: false, likes: 0, winner: false },
+    { title: 'steak and Fries', isLiked: false, likes: 0, winner: false },
   ]);
 
   const onClickHandler = (index) => {
     const liked = [...list];
     Object.assign(liked[index], {
-      isLiked: !liked[index].isLiked,
+      isLiked: true,
       likes: liked[index].likes + 1,
+      winner: liked[index].likes >= 2 ? true : false,
     });
     setList(liked);
   };
@@ -33,15 +35,10 @@ export const Survey = () => {
     setCurrentItem('');
   };
 
-  const winner = () => {
-    list.forEach((item) => {
-      if (item.likes > 2) {
-        return;
-      }
-    });
-  };
-
   const surveyItems = list.map((item, index) => {
+    if (item.winner) {
+      return <ChosenRecipee item={item} />;
+    }
     return (
       <li key={index}>
         <div className='item'>
@@ -76,7 +73,6 @@ export const Survey = () => {
           />
         </div>
       </form>
-      {}
       <div className='survey-items'>{surveyItems}</div>
     </div>
   );
