@@ -172,7 +172,15 @@ export default class Agenda extends Component {
   }
 
   componentDidMount() {
+    // console.log("component did mount");
+    // axios("http://localhost:9000/calender/items")
+    //   // this should be an array of data called items
+    //   .then((response) => {
+    //     console.log("response :>> ", response.data[0].listOfItems);
+    //     let items = response.data[0].listOfItems;
+    //     console.log("items :>> ", items);
     this.setState({ items: items });
+    // });
   }
 
   componentWillReceiveProps(next, last) {
