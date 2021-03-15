@@ -19,10 +19,16 @@ export const Survey = () => {
     setCurrentItem(e.target.value);
   };
 
-  const onSubmitHandler = () => {
-    const newItem = [...list, { title: currentItem, isLiked: false, likes: 0 }];
-    setList(newItem);
-    setCurrentItem('');
+  const onSubmitHandler = (e) => {
+    if (e.keyCode == 13 && e.shiftKey == false) {
+      e.preventDefault();
+      const newItem = [
+        ...list,
+        { title: currentItem, isLiked: false, likes: 0 },
+      ];
+      setList(newItem);
+      setCurrentItem('');
+    }
   };
 
   const handleOpen = () => {
@@ -65,6 +71,7 @@ export const Survey = () => {
             placeholder='Whats Cooking?'
             value={currentItem.value}
             onChange={onChangeHandler}
+            onKeyDown={onSubmitHandler}
           />
           <FaArrowAltCircleDown
             className='submit-button'
