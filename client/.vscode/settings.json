@@ -1,4 +1,12 @@
 {
+<<<<<<< HEAD
+  "emmet.extensionsPath": "",
+  "emmet.showAbbreviationSuggestions": false,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  }
+}
+=======
   "emmet.extensionsPath": ""
 
   {
@@ -9,3 +17,4 @@
 
 
 }
+>>>>>>> 5608495597f17d4bd40fdce0b459bc1abf89bba9
