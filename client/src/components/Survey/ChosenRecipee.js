@@ -55,7 +55,14 @@ export const ChosenRecipee = (props) => {
               </p>
               <p>Would you like us to find you a recipee?</p>
               <div className='buttons'>
-                <Link recipe={props.title} to='/recipes'>
+                <Link
+                  to={{
+                    pathname: '/recipes',
+                    state: {
+                      recipeTitle: props.item.title,
+                    },
+                  }}
+                >
                   <Button variant='contained'>Yes Please</Button>
                 </Link>
                 <Button variant='contained' onClick={props.handleClose}>

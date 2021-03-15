@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { FcLikePlaceholder, FcLike } from 'react-icons/fc';
+
 import { FaArrowAltCircleDown } from 'react-icons/fa';
-import { Badge, Button } from '@material-ui/core';
 import { ChosenRecipee } from './ChosenRecipee';
+import { SurveyItem } from './SurveyItem';
 import './Survey.scss';
 
 export const Survey = () => {
@@ -14,18 +14,6 @@ export const Survey = () => {
     { title: 'Lasagna', isLiked: false, likes: 0, winner: false },
   ]);
   const [open, setOpen] = useState(false);
-
-  const onClickHandler = (index) => {
-    const liked = [...list];
-    Object.assign(liked[index], {
-      isLiked: true,
-      likes: liked[index].likes + 1,
-      winner: liked[index].likes >= 2 ? true : false,
-    });
-    setList(liked);
-
-    handleOpen();
-  };
 
   const onChangeHandler = (e) => {
     setCurrentItem(e.target.value);
@@ -57,19 +45,13 @@ export const Survey = () => {
       );
     }
     return (
-      <li key={index}>
-        <div className='item'>
-          {item.title}
-          <Badge badgeContent={item.likes}>
-            {list[index].isLiked ? (
-              <FcLike onClick={() => onClickHandler(index)} />
-            ) : (
-              <FcLikePlaceholder onClick={() => onClickHandler(index)} />
-            )}
-          </Badge>
-        </div>
-        <hr />
-      </li>
+      <SurveyItem
+        item={item}
+        index={index}
+        list={list}
+        setList={setList}
+        handleOpen={handleOpen}
+      />
     );
   });
 
