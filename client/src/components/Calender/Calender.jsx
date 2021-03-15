@@ -1,5 +1,5 @@
 // @flow
-import React, { Component, useEffect } from "react";
+import React, { Component } from "react";
 import axios from "axios";
 import moment from "moment";
 import {
@@ -48,6 +48,7 @@ let items = [
     ),
     classes: "color-1 color-4",
   },
+
   {
     _id: guid(),
     name: "Working lunch , Holly",
@@ -158,6 +159,7 @@ export default class Agenda extends Component {
       numberOfDays: 4,
       startDate: new Date(),
     };
+
     this.handleRangeSelection = this.handleRangeSelection.bind(this);
     this.handleItemEdit = this.handleItemEdit.bind(this);
     this.zoomIn = this.zoomIn.bind(this);
@@ -172,16 +174,32 @@ export default class Agenda extends Component {
   }
 
   componentDidMount() {
-    // console.log("component did mount");
-    // axios("http://localhost:9000/calender/items")
-    //   // this should be an array of data called items
-    //   .then((response) => {
-    //     console.log("response :>> ", response.data[0].listOfItems);
-    //     let items = response.data[0].listOfItems;
-    //     console.log("items :>> ", items);
-    this.setState({ items: items });
-    // });
+    console.log("component did mount");
+    axios("http://localhost:9000/calender/items")
+      // this should be an array of data called items
+      // .then((res) => {
+      //   console.log("response :>> ", res.data[0].listOfItems);
+      //   // let data = JSON.parse(res.data[0].listOfItems);
+      //   // console.log("JSON.parse(res) :>> ", data);
+      // })
+      .then((res) =>
+        // const newState = { ...this.state, items: [...items, res.data[0].listOfItems] }
+
+        this.setState(
+          { ...this.state, items: [...items, res.data[0].listOfItems] },
+          console.log(
+            "this.State :>> ",
+            this.state,
+            "this is my data",
+            res.data[0].listOfItems
+          )
+        )
+      );
   }
+
+  // let items = response.data[0].listOfItems;
+  // console.log("items :>> ", items);
+  // this.setState({ items: items });
 
   componentWillReceiveProps(next, last) {
     if (next.items) {
@@ -340,7 +358,7 @@ export default class Agenda extends Component {
           rowsPerHour={this.state.rowsPerHour}
           itemColors={colors}
           helper={true}
-          itemComponent={AgendaItem} // <- Important AJ
+          // itemComponent={AgendaItem} // <- Important AJ
           view="calendar"
           autoScale={false}
           fixedHeader={true}
