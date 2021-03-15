@@ -19,19 +19,21 @@
     color: #817f7f;
   }
 
-  span {
-    font-size: 0.5em;
-  }
+
+	span {
+		font-size: 0.5em;
+	}
 
   .nav-item:hover {
     font-size: 1.3em;
     color: #000;
   }
 
-  a {
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    flex-direction: column;
-  }
+
+	a {
+		text-decoration: none;
+		color: inherit;
+		display: flex;
+		flex-direction: column;
+	}
 }
