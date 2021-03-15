@@ -1,0 +1,47 @@
+.survey-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 90vw;
+  background-color: #fff;
+
+  .feild-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    width: 100vw;
+  }
+  input {
+    background: linear-gradient(#000, #000) center bottom 5px /
+      calc(100% - 10px) 2px no-repeat;
+    background-color: #fff;
+    border: 0;
+    padding: 10px;
+  }
+  input:focus {
+    outline: none;
+  }
+  .submit-button {
+    color: rgba(121, 202, 118, 9.36);
+    font-size: 0.9em;
+  }
+  .survey-items {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    width: 100%;
+    margin: 20px;
+  }
+  li {
+    margin: 15px;
+    font-size: 20px;
+  }
+  .item {
+    display: flex;
+    justify-content: space-between;
+  }
+}
