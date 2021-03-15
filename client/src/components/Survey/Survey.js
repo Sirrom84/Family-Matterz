@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FcLikePlaceholder, FcLike } from 'react-icons/fc';
 import { FaArrowAltCircleDown } from 'react-icons/fa';
-import { Badge } from '@material-ui/core';
+import { Badge, Button } from '@material-ui/core';
 import { ChosenRecipee } from './ChosenRecipee';
 import './Survey.scss';
 
@@ -80,7 +80,7 @@ export const Survey = () => {
         <div className='feild-input'>
           <input
             type='text'
-            placeholder='Add a Dish'
+            placeholder='Whats Cooking?'
             value={currentItem.value}
             onChange={onChangeHandler}
           />

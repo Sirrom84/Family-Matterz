@@ -5,6 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -52,8 +54,10 @@ export const ChosenRecipee = (props) => {
               </p>
               <p>Would you like us to find you a recipee?</p>
               <div className='buttons'>
-                <button>Yes Please</button>
-                <button onClick={props.handleClose}>No Thanks</button>
+                <Button variant='contained'>Yes Please</Button>
+                <Button variant='contained' onClick={props.handleClose}>
+                  No Thanks
+                </Button>
               </div>
             </div>
           </div>
