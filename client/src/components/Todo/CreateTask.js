@@ -7,11 +7,9 @@ export default function CreateTask({addTask}) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (!value) return;
-
 		addTask(value);
 		setValue("");
 	};
-
 	return (
 		<form className="todo-form" onSubmit={handleSubmit}>
 			<input

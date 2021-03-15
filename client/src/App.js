@@ -22,12 +22,10 @@ function App() {
 					<Route path="/grocerylist" component={GroceryList} />
 					<Route path="/todo" component={Todo} />
 					<Route path="/survey" component={Survey} />
-
 					<Route path="/todolist" component={Todo} />
 					<Route path="/calender" component={Calender} />
 					<Route path="/chat" component={Chat} />
 				</Switch>
-				<BottomNav />
 			</div>
 		</Router>
 	);

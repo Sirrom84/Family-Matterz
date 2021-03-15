@@ -15,7 +15,7 @@ function Task({task, index, completeTask, removeTask}) {
 
 				<Avatar
 					image="/images/daughter.png"
-					className="todo-avatar"
+					className="task-avatar"
 					size="small"
 					shape="circle"
 				/>
@@ -91,15 +91,26 @@ export const Todo = () => {
 	}, [tasks]);
 
 	const addTask = (title) => {
+		console.log(title);
 		const newTasks = [
 			...tasks,
 			{id: uuid(), title, completed: false, completedBy: ""},
 		];
+
+		console.log(newTasks);
 		setTasks(newTasks);
+
+		// useEffect(()=> {
+		// 	const url = `/api/tasks/${id}`;
+		// 	return axios.put(url, appointment).then(() => {
+		// 		const days = updateSpots(state.day, state.days, appointments); //use in cancel interview too
+		// 		setState({...state, appointments, days});
+		// 	});
+		// })
 	};
 
 	const completeTask = (indexOfTask) => {
-		console.log("Task completed");
+		console.log(indexOfTask, "Task completed");
 		const newTasks = [...tasks];
 		newTasks[indexOfTask].completed = true;
 		newTasks[indexOfTask].completedBy = dad.name; //for testing
@@ -124,6 +135,7 @@ export const Todo = () => {
 			<div className="todo-body">
 				{tasks.map((task, index) => (
 					<Task
+						tasks={tasksRemaining}
 						task={task}
 						index={index}
 						completeTask={completeTask}
