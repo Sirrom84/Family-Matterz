@@ -1,31 +1,31 @@
 import React from 'react';
 import './BottomNav.scss';
-import { FcInspection } from 'react-icons/fc';
-import { FcPlanner } from 'react-icons/fc';
-import { FcHome } from 'react-icons/fc';
-import { FcShop } from 'react-icons/fc';
+import { GoTasklist } from 'react-icons/go';
+import { FaCalendarDay } from 'react-icons/fa';
+import { FaHome } from 'react-icons/fa';
+import { FaShoppingBasket } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 export const BottomNav = () => {
   return (
     <div className='nav'>
       <div className='nav-item'>
         <Link to='/'>
-          <FcHome />
+          <FaHome />
         </Link>
       </div>
       <div className='nav-item'>
         <Link to='/calander'>
-          <FcPlanner />
+          <FaCalendarDay />
         </Link>
       </div>
       <div className='nav-item'>
         <Link to='/todolist'>
-          <FcInspection />
+          <GoTasklist />
         </Link>
       </div>
       <div className='nav-item'>
         <Link to='/grocerylist'>
-          <FcShop />
+          <FaShoppingBasket />
         </Link>
       </div>
     </div>
