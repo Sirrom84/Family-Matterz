@@ -29,10 +29,15 @@
 
     Button {
       font-size: 10px;
+      margin: 1px;
+      padding: 2px 5px;
     }
+    a {
+      text-decoration: none;
+    }
+  }
 
-    p {
-      font-size: 0.8em;
-    }
+  p {
+    font-size: 0.8em;
   }
 }

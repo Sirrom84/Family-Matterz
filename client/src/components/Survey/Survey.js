@@ -13,7 +13,7 @@ export const Survey = () => {
     { title: 'steak and Fries', isLiked: false, likes: 0, winner: false },
     { title: 'Lasagna', isLiked: false, likes: 0, winner: false },
   ]);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const onClickHandler = (index) => {
     const liked = [...list];

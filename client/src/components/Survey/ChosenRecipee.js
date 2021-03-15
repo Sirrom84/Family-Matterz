@@ -50,11 +50,14 @@ export const ChosenRecipee = (props) => {
                 <FcOk />
               </div>
               <p>
-                {props.item.title} has {props.item.likes}/3 votes
+                {props.item.title} won {(props.item.likes / 3) * 100}% of the
+                votes
               </p>
               <p>Would you like us to find you a recipee?</p>
               <div className='buttons'>
-                <Button variant='contained'>Yes Please</Button>
+                <Link recipe={props.title} to='/recipes'>
+                  <Button variant='contained'>Yes Please</Button>
+                </Link>
                 <Button variant='contained' onClick={props.handleClose}>
                   No Thanks
                 </Button>

@@ -7,6 +7,7 @@ import { GroceryList } from './components/GroceryList/GroceryList';
 import { Todo } from './components/Todo/Todo';
 import { Survey } from './components/Survey/Survey';
 import Calender from './components/Calender/Calender';
+import { Recipes } from './components/Recipies/Recipes';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path='/survey' component={Survey} />
           <Route path='/todolist' component={Todo} />
           <Route path='/calender' component={Calender} />
+          <Route path='/recipes' component={Recipes} />
         </Switch>
         <BottomNav />
       </div>
