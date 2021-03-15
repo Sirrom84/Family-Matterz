@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import "./Task.scss";
+import "./Todo.scss";
 
 export default function CreateTask({addTask}) {
 	const [value, setValue] = useState("");

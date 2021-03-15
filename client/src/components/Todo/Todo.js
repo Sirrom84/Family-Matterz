@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import CreateTask from "./CreateTask";
 import {Avatar} from "primereact/avatar";
 import uuid from "react-uuid";
-import "./Task.scss";
+import "./Todo.scss";
 
 function Task({task, index, completeTask, removeTask}) {
 	const taskIsCompleted = task.completed;

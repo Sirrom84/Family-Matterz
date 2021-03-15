@@ -6,7 +6,9 @@ import {TimelineHome} from "./components/TimeLine/TimeLineHome";
 import {GroceryList} from "./components/GroceryList/GroceryList";
 import {Todo} from "./components/Todo/Todo";
 import {Survey} from "./components/Survey/Survey";
+import {Chat} from "./components/Chat/Chat";
 import Calender from "./components/Calender/Calender";
+
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 function App() {
@@ -23,6 +25,7 @@ function App() {
 
 					<Route path="/todolist" component={Todo} />
 					<Route path="/calender" component={Calender} />
+					<Route path="/chat" component={Chat} />
 				</Switch>
 				<BottomNav />
 			</div>
