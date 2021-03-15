@@ -68,7 +68,7 @@ export const Todo = () => {
 			completed: true,
 			completedBy: "Dad",
 		},
-		{id: uuid(), title: "Clean Room", completed: false, completedBy: ""},
+		{id: uuid(), title: "Tidy bedrooms", completed: false, completedBy: ""},
 	]);
 
 	//////for testing////
