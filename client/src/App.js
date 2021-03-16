@@ -6,8 +6,9 @@ import { TimelineHome } from "./components/TimeLine/TimeLineHome";
 import { GroceryList } from "./components/GroceryList/GroceryList";
 import { Todo } from "./components/Todo/Todo";
 import { Survey } from "./components/Survey/Survey";
-import Calender from "./components/Calender/Calender";
+// import Calender from "./components/Calender/Calender";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Calender2 from "./components/Calender/Calender2";
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
           <Route path="/survey" component={Survey} />
 
           <Route path="/todolist" component={Todo} />
-          <Route path="/calender" component={Calender} />
+          <Route path="/calender" component={Calender2} />
         </Switch>
         <BottomNav />
       </div>
