@@ -6,6 +6,7 @@ const taskSchema = new mongoose.Schema({
 	title: String,
 	completed: {type: Boolean, default: false},
 	completedby: String,
+	key: String,
 	points: Number,
 	created: {type: Date, default: Date.now},
 });
