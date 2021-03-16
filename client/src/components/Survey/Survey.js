@@ -10,8 +10,8 @@ export const Survey = () => {
   let [currentItem, setCurrentItem] = useState('');
   const [list, setList] = useState([
     { title: 'Pasta', isLiked: false, likes: 0, winner: false },
-    { title: 'steak and Fries', isLiked: false, likes: 0, winner: false },
-    { title: 'Lasagna', isLiked: false, likes: 0, winner: false },
+    { title: 'chicken', isLiked: false, likes: 0, winner: false },
+    { title: 'stir fry', isLiked: false, likes: 0, winner: false },
   ]);
   const [open, setOpen] = useState(false);
 
@@ -20,7 +20,7 @@ export const Survey = () => {
   };
 
   const onSubmitHandler = (e) => {
-    if (e.keyCode == 13 && e.shiftKey == false) {
+    if (e.keyCode === 13 && e.shiftKey === false) {
       e.preventDefault();
       const newItem = [
         ...list,

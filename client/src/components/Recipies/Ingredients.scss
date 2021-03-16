@@ -1,0 +1,14 @@
+.grid-container {
+  display: grid;
+  // grid-template-columns: repeat(2, 1fr);
+  // grid-template-rows: repeat(2, 1fr);
+}
+
+.header {
+  justify-content: center;
+  grid-column-start: span 2;
+}
+
+.instructions {
+  grid-column-start: span 1;
+}
