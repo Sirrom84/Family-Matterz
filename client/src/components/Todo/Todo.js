@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import CreateTask from "./CreateTask";
 import {Avatar} from "primereact/avatar";
 import uuid from "react-uuid";
+import axios from "axios";
 import "./Todo.scss";
 
 function Task({task, index, completeTask, removeTask}) {
@@ -84,11 +85,42 @@ export const Todo = () => {
 
 	////////////////////////
 
+	const getItem = (tasks, title) => {
+		for (const item of tasks) {
+			if (item.title === title) {
+				return item;
+			}
+		}
+	};
+
 	useEffect(() => {
 		setTasksRemaining(tasks.filter((task) => !task.completed).length);
 		//I'll use this tasksremaing useEffect for other features later maybe
 		//displayed on the home page?
 	}, [tasks]);
+
+	// ////Adds created interview to API////
+	// function bookInterview(id, interview) {
+	// 	const appointment = {
+	// 		...state.appointments[id],
+	// 		interview: {...interview},
+	// 	};
+
+	// 	const appointments = {
+	// 		...state.appointments,
+	// 		[id]: appointment,
+	// 	};
+
+	// 	// setState({
+	// 	// 	...state,
+	// 	// 	appointments,
+	// 	// });
+	// 	const url = `/api/appointments/${id}`;
+	// 	return axios.put(url, appointment).then(() => {
+	// 		const days = updateSpots(state.day, state.days, appointments); //use in cancel interview too
+	// 		setState({...state, appointments, days});
+	// 	});
+	// }
 
 	const addTask = (title) => {
 		console.log(title);
@@ -96,18 +128,51 @@ export const Todo = () => {
 			...tasks,
 			{id: uuid(), title, completed: false, completedBy: ""},
 		];
+		const addItem = getItem(newTasks, title);
 
-		console.log(newTasks);
+		const url = `http://localhost:9000/tasks/create`;
+		axios
+			.post(url, addItem)
+
+			.then((res) => {
+				console.log(res.data, "TODO");
+			})
+
+			.catch((err) => {
+				console.log(err);
+			});
 		setTasks(newTasks);
-
-		// useEffect(()=> {
-		// 	const url = `/api/tasks/${id}`;
-		// 	return axios.put(url, appointment).then(() => {
-		// 		const days = updateSpots(state.day, state.days, appointments); //use in cancel interview too
-		// 		setState({...state, appointments, days});
-		// 	});
-		// })
+		console.log(newTasks, "NEW TASKS");
 	};
+
+	// 	const userObject = {
+	// 		name: this.state.name,
+	// 		email: this.state.email
+	// };
+
+	// axios.post('http://localhost:4000/users/create', userObject)
+	// 		.then((res) => {
+	// 				console.log(res.data)
+	// 		}).catch((error) => {
+	// 				console.log(error)
+	// 		});
+
+	// this.setState({ name: '', email: '' })
+	// }
+
+	// const SendItem = (obj) => {
+	// 	const url = `https://localhost:9000/${obj.id}`;
+	// 	return axios
+	// 		.post(url, {
+	// 			data: obj,
+	// 		})
+	// 		.then((res) => {
+	// 			console.log(res);
+	// 		})
+	// 		.catch((err) => {
+	// 			console.log(err);
+	// 		});
+	// };
 
 	const completeTask = (indexOfTask) => {
 		console.log(indexOfTask, "Task completed");
