@@ -5,7 +5,7 @@ import uuid from "react-uuid";
 import axios from "axios";
 import "./Todo.scss";
 
-function Task({task, index, completeTask, removeTask}) {
+function Task({task, index, completeTask, removeTask, key}) {
 	const taskIsCompleted = task.completed;
 	if (taskIsCompleted) {
 		return (
@@ -24,7 +24,7 @@ function Task({task, index, completeTask, removeTask}) {
 				<div className="task-buttons">
 					<button
 						className="todo-delete-button"
-						onClick={() => removeTask(index)}>
+						onClick={() => removeTask(task.key)}>
 						✗
 					</button>
 				</div>
@@ -46,7 +46,7 @@ function Task({task, index, completeTask, removeTask}) {
 				</button>
 				<button
 					className="todo-delete-button"
-					onClick={() => removeTask(index)}>
+					onClick={() => removeTask(task.key)}>
 					✗
 				</button>
 			</div>
@@ -56,20 +56,25 @@ function Task({task, index, completeTask, removeTask}) {
 export const Todo = () => {
 	const [tasksRemaining, setTasksRemaining] = useState(0);
 	const [tasks, setTasks] = useState([
-		{id: uuid(), title: "Walk the dog", completed: false, completedBy: ""},
 		{
-			id: uuid(),
+			key: "3b552eb-85b5-188-53e-6254400d1ea",
+			title: "Walk the dog",
+			completed: false,
+			completedBy: "",
+		},
+		{
+			key: uuid(),
 			title: "Return Library Books",
 			completed: false,
 			completedBy: "",
 		},
 		{
-			id: uuid(),
+			key: uuid(),
 			title: "Take chicken out of freezer please",
 			completed: true,
 			completedBy: "Dad",
 		},
-		{id: uuid(), title: "Tidy bedrooms", completed: false, completedBy: ""},
+		{key: uuid(), title: "Tidy bedrooms", completed: false, completedBy: ""},
 	]);
 
 	//////for testing////
@@ -105,16 +110,16 @@ export const Todo = () => {
 			{key: uuid(), title: title, completed: false, completedby: ""},
 		];
 		const addItem = getItem(newTasks, title);
+		// const addItem = {
+		// 	title: "TESTING 123",
+		// 	completed: false,
+		// 	completedby: "Rob",
+		// };
 		console.log("item to add", addItem);
 		const url = `http://localhost:9000/tasks/create`;
-		axios
-			.post(url, addItem)
-			.then((res) => {
-				console.log(res.data, "TODO");
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+		axios.post(url, addItem).catch((err) => {
+			console.log(err);
+		});
 		setTasks(newTasks);
 		console.log(newTasks, "NEW TASKS");
 	};
@@ -124,13 +129,18 @@ export const Todo = () => {
 		const newTasks = [...tasks];
 		newTasks[indexOfTask].completed = true;
 		newTasks[indexOfTask].completedBy = dad.name; //for testing
+		// console.log(newTasks); // log for testing
 		return setTasks(newTasks);
 	};
 
-	const removeTask = (indexOfTask) => {
-		console.log("Item removed from task");
+	const removeTask = (key) => {
+		console.log(key, "Item removed from task");
+		const url = `http://localhost:9000/tasks/delete/${key}`;
+		axios.delete(url).catch((err) => {
+			console.log(err);
+		});
 		const newTasks = [...tasks];
-		newTasks.splice(indexOfTask, 1);
+		// newTasks.splice(indexOfTask, 1);
 		setTasks(newTasks);
 	};
 
