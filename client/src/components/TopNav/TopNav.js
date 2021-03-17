@@ -14,7 +14,7 @@ export const TopNav = () => {
 				<img src="./images/FM-Logo.png" width="auto" height="70px" alt="Logo" />
 				<h2>The Morris House</h2>
 				<Avatar
-					image="./images/dad.png"
+					image="./images/dad2.png"
 					className="avatar"
 					size="large"
 					shape="circle"

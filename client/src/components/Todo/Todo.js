@@ -5,7 +5,7 @@ import uuid from "react-uuid";
 import axios from "axios";
 import "./Todo.scss";
 
-function Task({task, index, completeTask, removeTask, key}) {
+function Task({task, index, completeTask, removeTask}) {
 	const taskIsCompleted = task.completed;
 	if (taskIsCompleted) {
 		return (
@@ -41,7 +41,7 @@ function Task({task, index, completeTask, removeTask, key}) {
 			<div className="task-buttons">
 				<button
 					className="todo-complete-button"
-					onClick={() => completeTask(index)}>
+					onClick={() => completeTask(task.key)}>
 					✓
 				</button>
 				<button
@@ -57,13 +57,13 @@ export const Todo = () => {
 	const [tasksRemaining, setTasksRemaining] = useState(0);
 	const [tasks, setTasks] = useState([
 		{
-			key: "3b552eb-85b5-188-53e-6254400d1ea",
+			key: "8e2617a-31ec-0818-18c0-30e4a3b40153",
 			title: "Walk the dog",
 			completed: false,
 			completedBy: "",
 		},
 		{
-			key: uuid(),
+			key: "fa04a0b-515-2688-8d1f-8526440caac5",
 			title: "Return Library Books",
 			completed: false,
 			completedBy: "",
@@ -124,17 +124,21 @@ export const Todo = () => {
 		console.log(newTasks, "NEW TASKS");
 	};
 
-	const completeTask = (indexOfTask) => {
-		console.log(indexOfTask, "Task completed");
+	const completeTask = (key) => {
+		console.log(key, "Task completed clicked");
+		const url = `http://localhost:9000/tasks/complete/${key}`;
+		axios.put(url).catch((err) => {
+			console.log(err);
+		});
 		const newTasks = [...tasks];
-		newTasks[indexOfTask].completed = true;
-		newTasks[indexOfTask].completedBy = dad.name; //for testing
+		// newTasks[indexOfTask].completed = true;
+		// newTasks[key].completedBy = dad.name; //for testing
 		// console.log(newTasks); // log for testing
 		return setTasks(newTasks);
 	};
-
+	//Task is deleting from db via key assigned at creation
 	const removeTask = (key) => {
-		console.log(key, "Item removed from task");
+		console.log(key, "Item removed from tasks");
 		const url = `http://localhost:9000/tasks/delete/${key}`;
 		axios.delete(url).catch((err) => {
 			console.log(err);
