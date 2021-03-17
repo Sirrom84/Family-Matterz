@@ -7,9 +7,10 @@ export function useData() {
     axios.get("http://localhost:9000/calender").then((response) => {
       setData(response.data);
 
-      console.log(response.data);
+      // console.log(response.data);
     });
   }, []);
+  // console.log("data :>> ", data);
   return data;
 }
 
