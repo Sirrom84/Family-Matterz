@@ -6,33 +6,37 @@ router.get("/", (req, res) => {
 	res.send("hello");
 });
 
+//CREATE A NEW TODO AND PUT INTO DB
 router.post("/create", (req, res) => {
 	const taskItem = new Task(req.body);
 	Task.create(taskItem)
 		.then(() => {
-			console.log("Item Inserted");
+			console.log("TODO INSERTED INTO DATABASE");
 		})
 		.catch((err) => {
-			console.log(err);
+			console.log("ERROR FROM CREATING TODO", err);
 		});
 });
 
-// router.get("/find", (req, res) => {
-// 	Task.findById(id)
-// 		.then(function (id) {
-// 			res.send(id);
-// 			console.log(`Here's id number: ${id} use as you please`);
-// 		})
-// 		.catch((err) => {
-// 			console.log(err);
-// 		});
-// });
-//working below
+//COMPLETE TODO VIA UUID KEY PROVIDED WHEN CREATED
+router.put("/complete/:key", (req, res) => {
+	const query = req.params;
+
+	Task.findOneAndUpdate(query, {completed: true})
+		.then(() => {
+			console.log("ITEM HAS BEEN COMPLETED");
+		})
+		.catch((err) => {
+			console.log("ERROR LOG FROM COMPLETED TODO", err);
+		});
+});
+
+//DELETE TODO VIA UUID KEY PROVIDED WHEN CREATED
 router.delete("/delete/:key", (req, res) => {
 	Task.findOneAndDelete(req.params)
 
 		.then(function (task) {
-			console.log(req.params, "HERE");
+			console.log(req.params, "KEY TO DELETE");
 			res.send(task);
 			console.log(`Task: ${task.title}. Was sucessfully removed from the DB`);
 		})
@@ -42,4 +46,3 @@ router.delete("/delete/:key", (req, res) => {
 });
 
 module.exports = router;
-// STOPPED AT NOT BEING ABLE TO POST TO LOCAL 9000 NEED TO LOOK INTO FURTHER ALSO, GETTING MORGAN INFO IN API TERM?
