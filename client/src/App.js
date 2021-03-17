@@ -9,7 +9,7 @@ import { Survey } from "./components/Survey/Survey";
 import Calender from "./components/Calender/Calender";
 import { Recipes } from "./components/Recipies/Recipes";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import ChatApp from "./components/Chatapp/ChatApp";
+// import ChatApp from "./components/Chatapp/ChatApp";
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
           <Route path="/todolist" component={Todo} />
           <Route path="/calender" component={Calender} />
           <Route path="/recipes" component={Recipes} />
-          <Route path="/chatapp" component={ChatApp} />
+          {/* <Route path="/chatapp" component={ChatApp} /> */}
         </Switch>
         <BottomNav />
       </div>
