@@ -14,7 +14,7 @@ export const BottomNav = () => {
         </Link>
       </div>
       <div className='nav-item'>
-        <Link to='/calander'>
+        <Link to='/calender'>
           <FaCalendarDay />
         </Link>
       </div>
