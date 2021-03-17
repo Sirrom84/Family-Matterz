@@ -1,35 +1,32 @@
-import React from "react";
-import "./BottomNav.scss";
-import { FcInspection } from "react-icons/fc";
-import { FcPlanner } from "react-icons/fc";
-import { FcHome } from "react-icons/fc";
-import { FcShop } from "react-icons/fc";
-import { Link } from "react-router-dom";
+
+import React from 'react';
+import './BottomNav.scss';
+import { GoTasklist } from 'react-icons/go';
+import { FaCalendarDay } from 'react-icons/fa';
+import { FaHome } from 'react-icons/fa';
+import { FaShoppingBasket } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 export const BottomNav = () => {
   return (
-    <div className="nav">
-      <div className="nav-item">
-        <Link to="/">
-          <FcHome />
-          <span>Home</span>
+    <div className='nav'>
+      <div className='nav-item'>
+        <Link to='/'>
+          <FaHome />
         </Link>
       </div>
-      <div className="nav-item">
-        <Link to="/calender">
-          <FcPlanner />
-          <span>Calander</span>
+      <div className='nav-item'>
+        <Link to='/calander'>
+          <FaCalendarDay />
         </Link>
       </div>
-      <div className="nav-item">
-        <Link to="/todolist">
-          <FcInspection />
-          <span>To-Do</span>
+      <div className='nav-item'>
+        <Link to='/todolist'>
+          <GoTasklist />
         </Link>
       </div>
-      <div className="nav-item">
-        <Link to="/grocerylist">
-          <FcShop />
-          <span>Pantry</span>
+      <div className='nav-item'>
+        <Link to='/grocerylist'>
+          <FaShoppingBasket />
         </Link>
       </div>
     </div>
