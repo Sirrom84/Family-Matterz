@@ -1,4 +1,3 @@
-
 import React from 'react';
 import './BottomNav.scss';
 import { GoTasklist } from 'react-icons/go';
@@ -15,7 +14,7 @@ export const BottomNav = () => {
         </Link>
       </div>
       <div className='nav-item'>
-        <Link to='/calander'>
+        <Link to='/calender'>
           <FaCalendarDay />
         </Link>
       </div>
