@@ -6,7 +6,13 @@ import axios from "axios";
 import "./Todo.scss";
 
 function Task({task, index, completeTask, removeTask}) {
+	const url = `http://localhost:9000/tasks`;
+	// const [tasks, setTasks] = useState();
+	// axios.get(url).then((response) => {
+	// 	conosle.log(response, "HERES THE RESPONSE");
+	// });
 	const taskIsCompleted = task.completed;
+	console.log(task, "THIS IS TASK FROM TASK FUNCTION");
 	if (taskIsCompleted) {
 		return (
 			<div className="todo-task-items">

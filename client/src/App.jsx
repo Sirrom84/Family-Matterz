@@ -8,6 +8,8 @@ import {Todo} from "./components/Todo/Todo";
 import {Survey} from "./components/Survey/Survey";
 import {Recipes} from "./components/Recipies/Recipes";
 import Calender2 from "./components/Calender/Calender2";
+import Numbers from "./components/Numbers/Numbers";
+import {Chat} from "./components/Chat/Chat";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
 					<Route path="/survey" component={Survey} />
 					<Route path="/todolist" component={Todo} />
 					<Route path="/recipes" component={Recipes} />
+					<Route path="/numbers" component={Numbers} />
+					<Route path="/chat" component={Chat} />
 				</Switch>
 				<BottomNav />
 			</div>

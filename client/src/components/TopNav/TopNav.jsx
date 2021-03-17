@@ -12,7 +12,7 @@ export const TopNav = () => {
 		<div>
 			<div className="top-nav">
 				<img src="./images/FM-Logo.png" width="auto" height="70px" alt="Logo" />
-				<h2>The Morris House</h2>
+				<h2>The Smiths</h2>
 				<Avatar
 					image="./images/dad2.png"
 					className="avatar"
