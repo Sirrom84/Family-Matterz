@@ -1,13 +1,3 @@
-// import "./App.scss";
-// import { BottomNav } from "./components/BottomNav/BottomNav";
-// import { TopNav } from "./components/TopNav/TopNav";
-// import { ChoreChart } from "./components/ChoreChart/ChoreChart";
-// import { TimelineHome } from "./components/TimeLine/TimeLineHome";
-// import { GroceryList } from "./components/GroceryList/GroceryList";
-// import { Todo } from "./components/Todo/Todo";
-// import { Survey } from "./components/Survey/Survey";
-// // import Calender from "./components/Calender/Calender";
-// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.scss';
 import { BottomNav } from './components/BottomNav/BottomNav';
 import { TopNav } from './components/TopNav/TopNav';
