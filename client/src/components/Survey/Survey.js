@@ -19,7 +19,7 @@ export const Survey = () => {
     setCurrentItem(e.target.value);
   };
 
-  const onSubmitHandler = () => {
+  const onSubmitHandler = (e) => {
     const newItem = [...list, { title: currentItem, isLiked: false, likes: 0 }];
     setList(newItem);
     setCurrentItem('');

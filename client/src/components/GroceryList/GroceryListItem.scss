@@ -1,32 +1,36 @@
-.list-item {
+.list-container {
   display: flex;
-  text-align: center;
+  justify-content: space-between;
   align-items: center;
+  height: 60px;
 
-  .button {
-    margin-right: 10px;
-  }
+  .list-item {
+    display: flex;
+    align-items: center;
+    width: 80%;
 
-  .buttonCheck {
-    color: #3dd338;
-  }
+    .button {
+      margin-right: 10px;
+    }
 
-  .item {
-    display: block;
-    justify-self: center;
-  }
-  .checked {
-    font-size: 0.9em;
-    color: rgb(124, 124, 114);
-    text-decoration: line-through;
-  }
+    .buttonCheck {
+      color: #3dd338;
+    }
 
-  .selected {
-    justify-self: flex-start;
-    border-radius: 50%;
-    height: 15px;
-    width: auto;
-    text-decoration: line-through;
-    font-size: 0.5em;
+    .item {
+      justify-self: center;
+      width: 80%;
+      margin: 0;
+    }
+    .checked {
+      font-size: 0.9em;
+      color: rgb(124, 124, 114);
+      text-decoration: line-through;
+    }
+  }
+  .delete {
+    color: red;
+    justify-self: end;
+    margin: 30px;
   }
 }
