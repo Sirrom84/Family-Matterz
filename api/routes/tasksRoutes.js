@@ -2,10 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Task = require("../DB/models/Task");
 
-router.get("/", (req, res) => {
-	res.send("hello");
-});
-
 //CREATE A NEW TODO AND PUT INTO DB
 router.post("/create", (req, res) => {
 	const taskItem = new Task(req.body);
@@ -31,7 +27,7 @@ router.put("/complete/:key", (req, res) => {
 		});
 });
 
-//DELETE TODO VIA UUID KEY PROVIDED WHEN CREATED
+//DELETE TODO VIA UUID KEY PROVIDED WHEN CREATED///
 router.delete("/delete/:key", (req, res) => {
 	Task.findOneAndDelete(req.params)
 
@@ -44,5 +40,7 @@ router.delete("/delete/:key", (req, res) => {
 			console.log(err);
 		});
 });
-
+router.get("/", (req, res) => {
+	res.send("hello");
+});
 module.exports = router;

@@ -57,7 +57,7 @@ export const Todo = () => {
 	const [tasksRemaining, setTasksRemaining] = useState(0);
 	const [tasks, setTasks] = useState([
 		{
-			key: "8e2617a-31ec-0818-18c0-30e4a3b40153",
+			key: "ae18aa7-2385-a0d8-038f-52137dc16802",
 			title: "Walk the dog",
 			completed: false,
 			completedBy: "",

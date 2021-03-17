@@ -1,7 +1,5 @@
 //Module Imports
-
 require("dotenv").config();
-const cors = require("cors");
 const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
@@ -17,6 +15,7 @@ const bodyParser = require("body-parser");
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const calenderRouter = require("./routes/calenderRoutes");
+const taskRouter = require("./routes/tasksRoutes");
 //App Initializer
 const app = express();
 // connect to atlas
@@ -57,8 +56,6 @@ app.use(bodyParser.json());
 
 app.use(cors());
 app.use(logger("dev"));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
@@ -67,13 +64,15 @@ app.use(express.static(path.join(__dirname, "public")));
 //Route Config
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/calender", calenderRouter);
 app.use("/tasks", taskRouter);
-// app.use("/calender", calenderRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
 	next(createError(404));
 });
+
+app.get("");
 
 // error handler
 app.use((err, req, res, next) => {
