@@ -6,15 +6,10 @@ import { TimelineHome } from './components/TimeLine/TimeLineHome';
 import { GroceryList } from './components/GroceryList/GroceryList';
 import { Todo } from './components/Todo/Todo';
 import { Survey } from './components/Survey/Survey';
-import Calender from './components/Calender/Calender';
 import { Recipes } from './components/Recipies/Recipes';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  RouteMatch,
-} from 'react-router-dom';
 import { Ingredients } from './components/Recipies/Ingredients';
+import Calender2 from './components/Calender/Calender2';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
   return (
@@ -26,13 +21,11 @@ function App() {
           <Route path='/stats' component={ChoreChart} />
           <Route path='/grocerylist' component={GroceryList} />
           <Route path='/todo' component={Todo} />
+          <Route path='/calender' component={Calender2} />
           <Route path='/survey' component={Survey} />
           <Route path='/todolist' component={Todo} />
-          <Route path='/calender' component={Calender} />
           <Route path='/recipes/:id/ingredients' component={Ingredients} />
-          <Route path='/recipes' component={Recipes}>
-            {/* <Route exact path='/ingredients' component={Ingredients} /> */}
-          </Route>
+          <Route path='/recipes' component={Recipes} />
         </Switch>
         <BottomNav />
       </div>
