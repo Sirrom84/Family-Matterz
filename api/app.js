@@ -7,22 +7,23 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 
 // const seedDB = require('./DB/seeds');
 
 //Route Modules
-const indexRouter = require("./routes/index"),
-  usersRouter = require("./routes/users");
+const indexRouter = require("./routes/index");
+const usersRouter = require("./routes/users");
 const calenderRouter = require("./routes/calenderRoutes");
 //App Initializer
 const app = express();
 // connect to atlas
 
 //Model Routes
-const Task = require("./DB/models/Task"),
-  Grocery = require("./DB/models/Grocery"),
-  Family = require("./DB/models/Family"),
-  Calender = require("./DB/models/Calender");
+const Task = require("./DB/models/Task");
+const Grocery = require("./DB/models/Grocery");
+const Family = require("./DB/models/Family");
+const Calender = require("./DB/models/Calender");
 
 //Database Config
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@familymatterz.ixxbf.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
@@ -37,27 +38,20 @@ mongoose
     console.log("Error", err.message);
   });
 
-const calenderItems = new Calender({
-  listOfItems: {
-    _id: "GameDay",
-    name: "Meeting , dev staff!",
-    startDateTime: "Sat Mar 13 2021 10:00:00 GMT-0700 (Mountain Standard Time)",
-    endDateTime: "Sat Mar 13 2021 12:00:00 GMT-0700 (Mountain Standard Time) ",
-    classes: "color-1color-4",
-  },
-});
-
-Calender.create(calenderItems)
-  .then(() => {
-    console.log("seeded");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+// Calender.insertMany(calenderItems)
+//   .then(() => {
+//     console.log(`new Date()`, new Date("2021-08-24T16:30:00.000Z")),
+//       console.log("seeded");
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use(cors());
 app.use(logger("dev"));

@@ -1,13 +1,11 @@
 const mongoose = require("mongoose");
 
 const calenderSchema = new mongoose.Schema({
-  listOfItems: {
-    _id: String,
-    name: String,
-    startDateTime: String,
-    endDateTime: String,
-    classes: String,
-  },
+  text: String,
+  employeeID: Number,
+  startDate: String,
+  endDate: String,
+  description: String,
 });
 
 module.exports = mongoose.model("Calender", calenderSchema);
