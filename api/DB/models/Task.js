@@ -1,22 +1,14 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const taskSchema = new mongoose.Schema({
-  task: String,
-  dueDate: Date,
-  completed: { type: Boolean, default: false },
-  creator: {
-    id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-    },
-  },
-  family: {
-    id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Family',
-    },
-  },
-  created: { type: Date, default: Date.now },
+	creator: String,
+	taskid: String,
+	title: String,
+	completed: {type: Boolean, default: false},
+	completedby: String,
+	key: String,
+	points: Number,
+	created: {type: Date, default: Date.now},
 });
 
-module.exports = mongoose.model('Task', taskSchema);
+module.exports = mongoose.model("Task", taskSchema);

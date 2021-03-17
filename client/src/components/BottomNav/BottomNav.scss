@@ -1,34 +1,24 @@
 .nav {
-  display: flex;
-  justify-content: center;
-  position: fixed;
-  bottom: 0;
-  justify-content: space-around;
-  height: 5vh;
-  width: 100%;
-  font-size: 1em;
-  border-radius: 5px;
-  z-index: 1;
-  background-color: rgba(255, 255, 255, 0.966);
-
-  .nav-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #817f7f;
-  }
-
+	display: flex;
+	justify-content: center;
+	position: fixed;
+	bottom: 0;
+	justify-content: space-around;
+	height: 74px;
+	width: 100%;
+	font-size: 1.5em;
+	border-radius: 5px;
+	z-index: 1;
+	background-color: rgba(255, 255, 255, 0.548);
 
 	span {
 		font-size: 0.5em;
 	}
 
-  .nav-item:hover {
-    font-size: 1.3em;
-    color: #000;
-  }
-
+	.nav-item:hover {
+		font-size: 1.3em;
+		color: #000;
+	}
 
 	a {
 		text-decoration: none;
