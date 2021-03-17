@@ -9,6 +9,50 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
+///////////////////////////////////////////
+//                                       //
+//          websocket chats              //
+//                                       //
+///////////////////////////////////////////
+const server = require("http").createServer();
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "*",
+  },
+});
+
+const PORT = 8000;
+const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
+
+io.on("connection", (socket) => {
+  // Join a conversation
+  console.log("this is the socket id", socket.id);
+  const { roomId } = socket.handshake.query;
+  socket.join(roomId);
+
+  // Listen for new messages
+  socket.on(NEW_CHAT_MESSAGE_EVENT, (data) => {
+    console.log(socket.connected); // should be true
+
+    io.in(roomId).emit(NEW_CHAT_MESSAGE_EVENT, data);
+    console.log(" this is the message data :", data);
+  });
+
+  // Leave the room if the user closes the socket
+  socket.on("disconnect", () => {
+    socket.leave(roomId);
+  });
+});
+
+server.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`);
+});
+///////////////////////////////////////////
+//                                       //
+//        End  websocket chats           //
+//                                       //
+///////////////////////////////////////////
+
 // const seedDB = require('./DB/seeds');
 
 //Route Modules
