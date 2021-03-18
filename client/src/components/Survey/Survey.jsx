@@ -4,6 +4,7 @@ import { FaArrowAltCircleDown } from 'react-icons/fa';
 import { ChosenRecipee } from './ChosenRecipee';
 import { SurveyItem } from './SurveyItem';
 import './Survey.scss';
+import axios from 'axios';
 
 export const Survey = () => {
   // const [showWinner, setShowWinner] = useState(false);
@@ -20,15 +21,25 @@ export const Survey = () => {
   };
 
   const onSubmitHandler = (e) => {
-    if (e.keyCode === 13 && e.shiftKey === false) {
-      e.preventDefault();
-      const newItem = [
-        ...list,
-        { title: currentItem, isLiked: false, likes: 0 },
-      ];
-      setList(newItem);
-      setCurrentItem('');
-    }
+    e.preventDefault();
+    const surveyItem = {
+      title: currentItem,
+      isLiked: false,
+      likes: 0,
+      winner: false,
+    };
+    setList([...list, surveyItem]);
+    setCurrentItem('');
+    console.log(surveyItem);
+    console.log(list);
+    axios
+      .post('http://localhost:9000/survey', surveyItem)
+      .then(() => {
+        console.log('New Item Added');
+      })
+      .catch((err) => {
+        console.log('Item Not Added', err);
+      });
   };
 
   const onClickHandler = (index) => {
@@ -79,20 +90,17 @@ export const Survey = () => {
   return (
     <div className='survey-container'>
       <h3>Whats On the Menu For Today?</h3>
-      <form>
-        <div className='feild-input'>
-          <input
-            type='text'
-            placeholder='Whats Cooking?'
-            value={currentItem.value}
-            onChange={onChangeHandler}
-            onKeyDown={onSubmitHandler}
-          />
-          <FaArrowAltCircleDown
-            className='submit-button'
-            onClick={onSubmitHandler}
-          />
-        </div>
+      <form className='feild-input' onSubmit={onSubmitHandler}>
+        <input
+          type='text'
+          placeholder='Whats Cooking?'
+          value={currentItem}
+          onChange={onChangeHandler}
+        />
+        <FaArrowAltCircleDown
+          className='submit-button'
+          onClick={onSubmitHandler}
+        />
       </form>
       <div className='survey-items'>{surveyItems}</div>
     </div>

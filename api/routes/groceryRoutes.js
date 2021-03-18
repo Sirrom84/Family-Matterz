@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
   const newItem = new Grocery(req.body);
   Grocery.create(newItem)
     .then((res) => {
-      'Item Added To DB';
+      console.log('Item Added To DB');
     })
     .catch((err) => {
       console.log('Error Adding Item to DB', err);

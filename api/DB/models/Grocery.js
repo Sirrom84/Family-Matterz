@@ -1,4 +1,3 @@
-const { formatters } = require('debug');
 const mongoose = require('mongoose');
 
 const grocerySchema = new mongoose.Schema({

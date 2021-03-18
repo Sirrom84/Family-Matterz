@@ -17,11 +17,12 @@ const usersRouter = require('./routes/users');
 const calenderRouter = require('./routes/calenderRoutes');
 const taskRouter = require('./routes/tasksRoutes');
 const groceryRouter = require('./routes/groceryRoutes');
+const surveyRouter = require('./routes/surveyRoutes');
 //App Initializer
 const app = express();
 // connect to atlas
 
-//Model Routes
+// Model Routes
 const Task = require('./DB/models/Task');
 const Grocery = require('./DB/models/Grocery');
 const Family = require('./DB/models/Family');
@@ -59,6 +60,7 @@ app.use('/users', usersRouter);
 app.use('/calender', calenderRouter);
 app.use('/tasks', taskRouter);
 app.use('/groceries', groceryRouter);
+app.use('/survey', surveyRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
