@@ -41,12 +41,9 @@ router.delete("/delete/:key", (req, res) => {
 		});
 });
 router.get("/", (req, res) => {
-	Task.find()
-		.then(() => {
-			console.log(req.params, "HERE ARE THE TASKS ROB");
-		})
-		.catch((err) => {
-			console.log("HERES THE ERROR", err);
-		});
+	Task.find({}, (err, task) => {
+		err ? conosle.log(err) : res.send(task),
+			console.log("HERE HARE THE TASKS", task);
+	});
 });
 module.exports = router;
