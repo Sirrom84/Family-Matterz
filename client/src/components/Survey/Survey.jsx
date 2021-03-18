@@ -55,6 +55,7 @@ export const Survey = () => {
     if (item.winner) {
       return (
         <ChosenRecipee
+          key={index}
           item={item}
           handleClose={handleClose}
           handleOpen={handleOpen}
@@ -64,6 +65,7 @@ export const Survey = () => {
     }
     return (
       <SurveyItem
+        key={index}
         item={item}
         index={index}
         list={list}

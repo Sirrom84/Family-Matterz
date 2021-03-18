@@ -35,6 +35,11 @@
       width: 85%;
       border: 1px solid gainsboro;
       border-radius: 40px;
+      padding: 5px;
+    }
+
+    input:focus {
+      outline: none;
     }
 
     .submit {

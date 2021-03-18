@@ -1,20 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { GroceryListItem } from './GroceryListItem';
 import { FaRegArrowAltCircleUp } from 'react-icons/fa';
-
 import './GroceryList.scss';
+import axios from 'axios';
 
-export const GroceryList = (props) => {
+export const GroceryList = () => {
   const [input, setInput] = useState('');
-  const [items, setItem] = useState([
-    { title: 'carrots', checked: false },
-    { title: 'onions', checked: false },
-    { title: 'cereal', checked: false },
-  ]);
+  const [items, setItem] = useState([]);
 
-  const onSubmitHandler = () => {
-    setItem([...items, { title: input, checked: false }]);
+  useEffect(() => {
+    axios.get('http://localhost:9000/groceries').then((res) => {
+      setItem(res.data);
+    });
+  }, []);
+
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    const newItem = { title: input, checked: false, category: '' };
+    setItem([...items, newItem]);
     setInput('');
+    axios
+      .post('http://localhost:9000/groceries', newItem)
+      .then(() => {
+        console.log('New Item Added');
+      })
+      .catch((err) => {
+        console.log('Item Not Added', err);
+      });
   };
 
   const onCheckHandler = (index) => {
@@ -23,6 +35,20 @@ export const GroceryList = (props) => {
       checked: !checked[index].checked,
     });
     setItem(checked);
+    const item = items[index];
+    axios
+      .put(`http://localhost:9000/groceries/${item._id}`, item)
+      .catch((err) => {
+        console.log('Error Updating Item', err);
+      });
+  };
+
+  const onDeleteHandler = (item) => {
+    const filteredItems = items.filter((element) => element._id !== item._id);
+    setItem(filteredItems);
+    axios.delete(`http://localhost:9000/groceries/${item._id}`).catch((err) => {
+      console.log('Error deleting Item', err);
+    });
   };
 
   const checkItemsLeft = (list) => {
@@ -40,7 +66,8 @@ export const GroceryList = (props) => {
       <GroceryListItem
         key={index}
         data={data}
-        onClick={() => onCheckHandler(index)}
+        onToggle={() => onCheckHandler(index)}
+        onDelete={() => onDeleteHandler(data)}
       />
     );
   });
@@ -50,14 +77,19 @@ export const GroceryList = (props) => {
       <h1>Grocery List</h1>
       <span>Items left: {checkItemsLeft(items)}</span>
       <div className='list'>{groceryItems}</div>
-      <div className='input'>
+      <form className='input' onSubmit={onSubmitHandler}>
         <input
           onChange={(e) => setInput(e.target.value)}
           type='text'
           placeholder='Add an Item'
+          value={input}
         />
-        <FaRegArrowAltCircleUp className='submit' onClick={onSubmitHandler} />
-      </div>
+        <FaRegArrowAltCircleUp
+          value={input}
+          className='submit'
+          onClick={onSubmitHandler}
+        />
+      </form>
     </div>
   );
 };
