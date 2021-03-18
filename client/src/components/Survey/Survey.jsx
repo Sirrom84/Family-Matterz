@@ -8,21 +8,39 @@ import './Survey.scss';
 export const Survey = () => {
   // const [showWinner, setShowWinner] = useState(false);
   let [currentItem, setCurrentItem] = useState('');
+  const [open, setOpen] = useState(false);
   const [list, setList] = useState([
     { title: 'Pasta', isLiked: false, likes: 0, winner: false },
-    { title: 'steak and Fries', isLiked: false, likes: 0, winner: false },
-    { title: 'Lasagna', isLiked: false, likes: 0, winner: false },
+    { title: 'chicken', isLiked: false, likes: 0, winner: false },
+    { title: 'stir fry', isLiked: false, likes: 0, winner: false },
   ]);
-  const [open, setOpen] = useState(false);
 
   const onChangeHandler = (e) => {
     setCurrentItem(e.target.value);
   };
 
-  const onSubmitHandler = () => {
-    const newItem = [...list, { title: currentItem, isLiked: false, likes: 0 }];
-    setList(newItem);
-    setCurrentItem('');
+  const onSubmitHandler = (e) => {
+    if (e.keyCode === 13 && e.shiftKey === false) {
+      e.preventDefault();
+      const newItem = [
+        ...list,
+        { title: currentItem, isLiked: false, likes: 0 },
+      ];
+      setList(newItem);
+      setCurrentItem('');
+    }
+  };
+
+  const onClickHandler = (index) => {
+    const liked = [...list];
+    Object.assign(liked[index], {
+      isLiked: true,
+      likes: liked[index].likes + 1,
+      winner: liked[index].likes >= 2 ? true : false,
+    });
+    setList(liked);
+
+    handleOpen();
   };
 
   const handleOpen = () => {
@@ -51,6 +69,7 @@ export const Survey = () => {
         list={list}
         setList={setList}
         handleOpen={handleOpen}
+        onClick={() => onClickHandler(index)}
       />
     );
   });
@@ -65,6 +84,7 @@ export const Survey = () => {
             placeholder='Whats Cooking?'
             value={currentItem.value}
             onChange={onChangeHandler}
+            onKeyDown={onSubmitHandler}
           />
           <FaArrowAltCircleDown
             className='submit-button'
