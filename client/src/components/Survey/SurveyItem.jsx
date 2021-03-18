@@ -5,7 +5,7 @@ import { Badge, Button } from '@material-ui/core';
 export const SurveyItem = (props) => {
   return (
     <div>
-      <li key={props.index}>
+      <li>
         <div className='item'>
           {props.item.title}
           <Badge badgeContent={props.item.likes}>

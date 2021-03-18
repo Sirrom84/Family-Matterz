@@ -3,9 +3,8 @@ import { GroceryListItem } from './GroceryListItem';
 import { FaRegArrowAltCircleUp } from 'react-icons/fa';
 import './GroceryList.scss';
 import axios from 'axios';
-import { CommonSeriesSettingsHoverStyle } from 'devextreme-react/range-selector';
 
-export const GroceryList = (props) => {
+export const GroceryList = () => {
   const [input, setInput] = useState('');
   const [items, setItem] = useState([]);
 
