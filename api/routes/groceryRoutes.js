@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Groceries = require('../DB/models/Grocery');
+const Grocery = require('../DB/models/Grocery');
 
 router.get('/', (req, res) => {
   Grocery.find({})
@@ -13,8 +13,32 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  console.log(req.body);
-  const item = req.body;
+  const newItem = new Grocery(req.body);
+  Grocery.create(newItem)
+    .then((res) => {
+      'Item Added To DB';
+    })
+    .catch((err) => {
+      console.log('Error Adding Item to DB', err);
+    });
+});
+
+router.put('/:id', (req, res) => {
+  Grocery.findByIdAndUpdate(req.params.id, { checked: req.body.checked })
+    .then(() => {
+      console.log('Item Updated server Side');
+    })
+    .catch((err) => {
+      console.log('Error Updating server Side'.err);
+    });
+});
+
+router.delete('/:id', (req, res) => {
+  Grocery.findByIdAndDelete(req.params.id)
+    .then(() => {
+      console.log('Item Deleted');
+    })
+    .catch('Error Deleting Server Side', err);
 });
 
 module.exports = router;
