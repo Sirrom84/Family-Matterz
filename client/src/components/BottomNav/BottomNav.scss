@@ -1,39 +1,29 @@
 .nav {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
   position: fixed;
   bottom: 0;
-  justify-content: space-around;
-  height: 5vh;
   width: 100%;
-  font-size: 1em;
+  height: 5vh;
+  font-size: 1.1em;
   border-radius: 5px;
   z-index: 1;
-  background-color: rgba(255, 255, 255, 0.966);
+  background-color: rgba(255, 255, 255, 0.822);
 
-  .nav-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #817f7f;
+  span {
+    font-size: 0.5em;
   }
-
-
-	span {
-		font-size: 0.5em;
-	}
 
   .nav-item:hover {
     font-size: 1.3em;
     color: #000;
   }
 
-
-	a {
-		text-decoration: none;
-		color: inherit;
-		display: flex;
-		flex-direction: column;
-	}
+  a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+  }
 }

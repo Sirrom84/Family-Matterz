@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import "./Task.scss";
+import "./Todo.scss";
 
 export default function CreateTask({addTask}) {
 	const [value, setValue] = useState("");
@@ -7,11 +7,9 @@ export default function CreateTask({addTask}) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (!value) return;
-
 		addTask(value);
 		setValue("");
 	};
-
 	return (
 		<form className="todo-form" onSubmit={handleSubmit}>
 			<input

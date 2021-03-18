@@ -1,16 +1,26 @@
 import React from 'react';
 import './GroceryListItem.scss';
-import classnames from 'classnames';
+import { BsCircle } from 'react-icons/bs';
+import { BsCheckCircle } from 'react-icons/bs';
+import { BsTrash } from 'react-icons/bs';
 
 export const GroceryListItem = (props) => {
-  const ButtonClass = classnames('button', {
-    selected: props.selected,
-  });
+  let CheckedClass = 'item';
+  if (props.data.checked) {
+    CheckedClass += ' checked';
+  }
 
   return (
-    <div className='list-item'>
-      <button type='checkbox' onClick={props.onClick} />
-      <p>{props.data}</p>
+    <div className='list-container'>
+      <div onClick={props.onClick} className='list-item'>
+        {props.data.checked ? (
+          <BsCheckCircle className='button buttonCheck' />
+        ) : (
+          <BsCircle className='button' />
+        )}
+        <p className={CheckedClass}>{props.data.title}</p>
+      </div>
+      <BsTrash className='delete' />
     </div>
   );
 };
