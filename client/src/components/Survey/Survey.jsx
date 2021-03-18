@@ -11,8 +11,8 @@ export const Survey = () => {
   const [open, setOpen] = useState(false);
   const [list, setList] = useState([
     { title: 'Pasta', isLiked: false, likes: 0, winner: false },
-    { title: 'steak and Fries', isLiked: false, likes: 0, winner: false },
-    { title: 'Lasagna', isLiked: false, likes: 0, winner: false },
+    { title: 'chicken', isLiked: false, likes: 0, winner: false },
+    { title: 'stir fry', isLiked: false, likes: 0, winner: false },
   ]);
 
   const onChangeHandler = (e) => {
@@ -20,9 +20,15 @@ export const Survey = () => {
   };
 
   const onSubmitHandler = (e) => {
-    const newItem = [...list, { title: currentItem, isLiked: false, likes: 0 }];
-    setList(newItem);
-    setCurrentItem('');
+    if (e.keyCode === 13 && e.shiftKey === false) {
+      e.preventDefault();
+      const newItem = [
+        ...list,
+        { title: currentItem, isLiked: false, likes: 0 },
+      ];
+      setList(newItem);
+      setCurrentItem('');
+    }
   };
 
   const onClickHandler = (index) => {
@@ -78,6 +84,7 @@ export const Survey = () => {
             placeholder='Whats Cooking?'
             value={currentItem.value}
             onChange={onChangeHandler}
+            onKeyDown={onSubmitHandler}
           />
           <FaArrowAltCircleDown
             className='submit-button'

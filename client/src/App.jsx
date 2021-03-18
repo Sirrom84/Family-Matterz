@@ -7,6 +7,7 @@ import {GroceryList} from "./components/GroceryList/GroceryList";
 import {Todo} from "./components/Todo/Todo";
 import {Survey} from "./components/Survey/Survey";
 import {Recipes} from "./components/Recipies/Recipes";
+import {Ingredients} from "./components/Recipies/Ingredients";
 import Calender2 from "./components/Calender/Calender2";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
@@ -23,6 +24,7 @@ function App() {
 					<Route path="/calender" component={Calender2} />
 					<Route path="/survey" component={Survey} />
 					<Route path="/todolist" component={Todo} />
+					<Route path="/recipes/:id/ingredients" component={Ingredients} />
 					<Route path="/recipes" component={Recipes} />
 				</Switch>
 				<BottomNav />

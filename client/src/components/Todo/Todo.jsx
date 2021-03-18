@@ -7,6 +7,7 @@ import "./Todo.scss";
 
 function Task({task, index, completeTask, removeTask}) {
 	const taskIsCompleted = task.completed;
+	// console.log(task, "THIS IS TASK FROM TASK FUNCTION");
 	if (taskIsCompleted) {
 		return (
 			<div className="todo-task-items">
@@ -56,27 +57,38 @@ function Task({task, index, completeTask, removeTask}) {
 export const Todo = () => {
 	const [tasksRemaining, setTasksRemaining] = useState(0);
 	const [tasks, setTasks] = useState([
-		{
-			key: "ae18aa7-2385-a0d8-038f-52137dc16802",
-			title: "Walk the dog",
-			completed: false,
-			completedBy: "",
-		},
-		{
-			key: "fa04a0b-515-2688-8d1f-8526440caac5",
-			title: "Return Library Books",
-			completed: false,
-			completedBy: "",
-		},
-		{
-			key: uuid(),
-			title: "Take chicken out of freezer please",
-			completed: true,
-			completedBy: "Dad",
-		},
-		{key: uuid(), title: "Tidy bedrooms", completed: false, completedBy: ""},
+		// {
+		// 	key: "ae18aa7-2385-a0d8-038f-52137dc16802",
+		// 	title: "Walk the dog",
+		// 	completed: false,
+		// 	completedBy: "",
+		// },
+		// {
+		// 	key: "fa04a0b-515-2688-8d1f-8526440caac5",
+		// 	title: "Return Library Books",
+		// 	completed: false,
+		// 	completedBy: "",
+		// },
+		// {
+		// 	key: uuid(),
+		// 	title: "Take chicken out of freezer please",
+		// 	completed: true,
+		// 	completedBy: "Dad",
+		// },
+		// {key: uuid(), title: "Tidy bedrooms", completed: false, completedBy: ""},
 	]);
+	useEffect(() => {
+		const url = `http://localhost:9000/tasks`;
 
+		axios
+			.get(url)
+			.then((response) => {
+				setTasks(response.data);
+			})
+			.catch((err) => {
+				console.log("HERES THE ERROR INSIDE TODO FETCH", err);
+			});
+	}, []);
 	//////for testing////
 	class User {
 		constructor(name, age, email, image) {
@@ -136,16 +148,27 @@ export const Todo = () => {
 		// console.log(newTasks); // log for testing
 		return setTasks(newTasks);
 	};
+
+	const CleanTasks = (key) => {
+		const arr = tasks.filter((item) => item.key !== key);
+		return arr;
+	};
+
 	//Task is deleting from db via key assigned at creation
 	const removeTask = (key) => {
 		console.log(key, "Item removed from tasks");
 		const url = `http://localhost:9000/tasks/delete/${key}`;
-		axios.delete(url).catch((err) => {
-			console.log(err);
-		});
-		const newTasks = [...tasks];
-		// newTasks.splice(indexOfTask, 1);
-		setTasks(newTasks);
+		axios
+			.delete(url)
+			.then(() => {
+				// newTasks.splice(indexOfTask, 1);
+				const newTasks = CleanTasks(key);
+				console.log(newTasks);
+				setTasks(newTasks);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	};
 
 	return (
