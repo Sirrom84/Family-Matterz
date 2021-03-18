@@ -57,9 +57,9 @@ export const ChosenRecipee = (props) => {
               <div className='buttons'>
                 <Link
                   to={{
-                    pathname: '/recipes',
+                    pathname: `/recipes/${props.item.title}`,
                     state: {
-                      recipeTitle: props.item.title,
+                      title: props.item.title,
                     },
                   }}
                 >
