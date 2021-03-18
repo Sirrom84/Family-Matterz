@@ -5,6 +5,7 @@ import TimelineSeparator from "@material-ui/lab/TimelineSeparator";
 import TimelineConnector from "@material-ui/lab/TimelineConnector";
 import TimelineContent from "@material-ui/lab/TimelineContent";
 import TimelineDot from "@material-ui/lab/TimelineDot";
+import Numbers from "../Numbers/Numbers";
 import {Todo} from "../Todo/Todo";
 import "./TimelineHome.scss";
 
