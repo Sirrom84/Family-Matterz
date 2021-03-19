@@ -1,18 +1,19 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import { v4 as uuidV4 } from "uuid";
 
-export default function Login({ onIdSubmit }) {
+// i cant seem to access the onIdSubmit props/set id function
+export default function Login(props) {
   const idRef = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("this is my input", idRef.current.value.trim());
-    onIdSubmit(idRef.current.value.trim());
+    const myId = idRef.current.value.trim();
+    props.onIdSubmit(myId);
   };
 
   const createNewId = () => {
-    onIdSubmit(uuidV4());
+    props.onIdSubmit(uuidV4());
   };
 
   return (

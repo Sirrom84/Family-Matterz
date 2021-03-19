@@ -7,8 +7,8 @@ import { useSocket } from "./SocketProvider";
 // create context is a way to pass data through the component tree with out having to pass props
 const ConversationsContext = React.createContext();
 
-export function useConversations() {
-  console.log("this is conversations context ", ConversationsContext);
+export function useConversations(id) {
+  // console.log("this is conversations context ", ConversationsContext);
   return useContext(ConversationsContext);
 }
 
@@ -76,31 +76,34 @@ export function ConversationsProvider({ id, children }) {
   }
 
   // to format the conversations to be attached to there names  for a single conversation
-  const formattedConversations = conversations.map((conversation, index) => {
-    const recipients = conversation.recipients.map((recipient) => {
-      const contact = contacts.find((contact) => {
-        return contact.id === recipient;
+  const formattedConversations =
+    conversations &&
+    conversations !== null &&
+    conversations.map((conversation, index) => {
+      const recipients = conversation.recipients.map((recipient) => {
+        const contact = contacts.find((contact) => {
+          return contact.id === recipient;
+        });
+        const name = (contact && contact.name) || recipient;
+        // our new contact objected
+        return { id: recipient, name };
       });
-      const name = (contact && contact.name) || recipient;
-      // our new contact objected
-      return { id: recipient, name };
-    });
 
-    //who sent the message
-    const messages = conversation.messages.map((message) => {
-      const contact = contacts.find((contact) => {
-        return contact.id === message.sender;
+      //who sent the message
+      const messages = conversation.messages.map((message) => {
+        const contact = contacts.find((contact) => {
+          return contact.id === message.sender;
+        });
+        // assign the contact id and contact name or the message sender
+        const name = (contact && contact.name) || message.sender;
+        // did i send the message
+        const fromMe = id === message.sender;
+        return { ...message, senderName: name, fromMe };
       });
-      // assign the contact id and contact name or the message sender
-      const name = (contact && contact.name) || message.sender;
-      // did i send the message
-      const fromMe = id === message.sender;
-      return { ...message, senderName: name, fromMe };
-    });
 
-    const selected = index === selectedConversationIndex;
-    return { ...conversation, messages, recipients, selected };
-  });
+      const selected = index === selectedConversationIndex;
+      return { ...conversation, messages, recipients, selected };
+    });
 
   const value = {
     conversations: formattedConversations,
