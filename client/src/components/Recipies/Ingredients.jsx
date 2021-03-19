@@ -8,7 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    backgroundColor: 'green',
+    backgroundColor: '#3dd338',
     color: '#fff',
     fontSize: '12px',
     width: '50%',
@@ -58,7 +58,7 @@ export const Ingredients = (props) => {
       (item) => item.isChecked === true
     );
     axios
-      .post('http://localhost:9000/groceries', checkedIngredients)
+      .post('http://localhost:9000/groceries/ingredients', checkedIngredients)
       .then(() => {
         console.log('Items added to Grocery List');
       })
@@ -70,8 +70,12 @@ export const Ingredients = (props) => {
 
   const ingredientList = ingredientData.map((item, index) => {
     return (
-      <li key={index} onClick={() => onCheckHandler(item, index)}>
-        <span>
+      <li
+        className='item'
+        key={index}
+        onClick={() => onCheckHandler(item, index)}
+      >
+        <span className='span'>
           {item.isChecked ? (
             <BsCheckCircle className='buttonCheck' />
           ) : (
@@ -84,29 +88,31 @@ export const Ingredients = (props) => {
   });
 
   const instructions = instructionData.map((item, index) => {
-    return <li key={index}>{item.step}</li>;
+    return (
+      <li className='item' key={index}>
+        {item.step}
+      </li>
+    );
   });
 
   return (
-    <div>
-      <div className='grid-container'>
-        <section className='title'>
-          <img src={item.image} alt={item.title} width='100px' height='auto' />
-          <h1>{item.title}</h1>
-          <hr />
-        </section>
-        <section className='ingredients'>
-          <h3>Ingredients</h3>
-          <ul>{ingredientList}</ul>
-          <Button className={classes.button} onClick={onAddHandler}>
-            Add To Grocery Cart
-          </Button>
-        </section>
-        <section className='instructions'>
-          <h3>Instructions</h3>
-          <ol>{instructions}</ol>
-        </section>
-      </div>
+    <div className='grid-container'>
+      <section className='title'>
+        <img src={item.image} alt={item.title} width='100px' height='auto' />
+        <h1>{item.title}</h1>
+        <hr />
+      </section>
+      <section className='ingredients'>
+        <h3>Ingredients</h3>
+        <ul>{ingredientList}</ul>
+        <Button className={classes.button} onClick={onAddHandler}>
+          Add To Grocery Cart
+        </Button>
+      </section>
+      <section className='instructions'>
+        <h3>Instructions</h3>
+        <ol>{instructions}</ol>
+      </section>
     </div>
   );
 };

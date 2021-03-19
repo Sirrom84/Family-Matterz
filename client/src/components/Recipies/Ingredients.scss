@@ -25,8 +25,6 @@
   }
 
   .instructions {
-    margin: 10px;
-
     ol {
       margin-bottom: 40px;
     }
@@ -35,7 +33,7 @@
   .ingredients {
     display: flex;
     flex-direction: column;
-    margin: 10px;
+
     ul {
       list-style-type: none;
     }
@@ -46,5 +44,11 @@
     .buttonCheck {
       color: #3dd338;
     }
+    .span {
+      margin-right: 10px;
+    }
+  }
+  .item {
+    margin: 5px;
   }
 }
