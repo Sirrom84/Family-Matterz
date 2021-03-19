@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { FaArrowAltCircleDown } from 'react-icons/fa';
 import { ChosenRecipee } from './ChosenRecipee';
@@ -10,11 +10,13 @@ export const Survey = () => {
   // const [showWinner, setShowWinner] = useState(false);
   let [currentItem, setCurrentItem] = useState('');
   const [open, setOpen] = useState(false);
-  const [list, setList] = useState([
-    { title: 'Pasta', isLiked: false, likes: 0, winner: false },
-    { title: 'chicken', isLiked: false, likes: 0, winner: false },
-    { title: 'stir fry', isLiked: false, likes: 0, winner: false },
-  ]);
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:9000/survey').then((res) => {
+      setList(res.data);
+    });
+  }, []);
 
   const onChangeHandler = (e) => {
     setCurrentItem(e.target.value);
@@ -24,9 +26,6 @@ export const Survey = () => {
     e.preventDefault();
     const surveyItem = {
       title: currentItem,
-      isLiked: false,
-      likes: 0,
-      winner: false,
     };
     setList([...list, surveyItem]);
     setCurrentItem('');
@@ -50,7 +49,10 @@ export const Survey = () => {
       winner: liked[index].likes >= 2 ? true : false,
     });
     setList(liked);
-
+    const item = liked[index];
+    axios.put(`http://localhost:9000/survey/${item._id}`, item).catch((err) => {
+      console.log('Error Updating Survey', err);
+    });
     handleOpen();
   };
 
