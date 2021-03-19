@@ -1,16 +1,18 @@
 .grid-container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  height: 100%;
 
   .title {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 
     img {
       z-index: -1;
       object-fit: cover;
-      width: 40vw;
       margin: 0;
     }
     h1 {

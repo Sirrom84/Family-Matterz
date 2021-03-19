@@ -3,13 +3,12 @@ import './Ingredients.scss';
 import axios from 'axios';
 
 export const Ingredients = (props) => {
-  const [ingredients, setIngredients] = useState([]);
+  const [isloading, setLoading] = useState(true);
+  const [ingredients, setIngredients] = useState({});
 
-  const item = props.location.state,
-    API = process.env.REACT_APP_API_KEY,
+  const API = process.env.REACT_APP_API_KEY,
     id = props.location.state.item.id,
-    ingredientList = [],
-    instructions = [],
+    item = props.location.state.item,
     url = `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false${API}`;
 
   useEffect(() => {
@@ -17,6 +16,7 @@ export const Ingredients = (props) => {
       .get(url)
       .then((res) => {
         setIngredients(res.data);
+        setLoading(false);
         console.log('data retreived');
       })
       .catch((err) => {
@@ -24,19 +24,25 @@ export const Ingredients = (props) => {
       });
   }, []);
 
-  ingredientList = ingredients.extendedIngredients.map((item) => {
+  if (isloading) {
+    return <div>Loading...</div>;
+  }
+
+  const ingredientList = ingredients.extendedIngredients.map((item, index) => {
     return <li>{item.originalString}</li>;
   });
 
-  instructions = ingredients.analyzedInstructions[0].steps.map((item) => {
-    return <li>{item.step}</li>;
-  });
+  const instructions = ingredients.analyzedInstructions[0].steps.map(
+    (item, index) => {
+      return <li>{item.step}</li>;
+    }
+  );
 
   return (
     <div>
       <div className='grid-container'>
         <div className='title'>
-          <img roundedCircle src={item.image} alt={item.title} />
+          <img src={item.image} alt={item.title} width='100px' height='auto' />
           <h1>{item.title}</h1>
           <hr />
         </div>

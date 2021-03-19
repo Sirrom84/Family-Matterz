@@ -10,7 +10,6 @@ export const Recipes = (props) => {
     dish = props.location.state.title,
     apiUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${dish}${API}`;
 
-  console.log(API);
   useEffect(() => {
     axios
       .get(apiUrl)

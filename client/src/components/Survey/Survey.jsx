@@ -13,9 +13,14 @@ export const Survey = () => {
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:9000/survey').then((res) => {
-      setList(res.data);
-    });
+    axios
+      .get('http://localhost:9000/survey')
+      .then((res) => {
+        setList(res.data);
+      })
+      .catch((err) => {
+        console.log('Error fetching data', err);
+      });
   }, []);
 
   const onChangeHandler = (e) => {
@@ -29,8 +34,6 @@ export const Survey = () => {
     };
     setList([...list, surveyItem]);
     setCurrentItem('');
-    console.log(surveyItem);
-    console.log(list);
     axios
       .post('http://localhost:9000/survey', surveyItem)
       .then(() => {
@@ -43,10 +46,11 @@ export const Survey = () => {
 
   const onClickHandler = (index) => {
     const liked = [...list];
-    Object.assign(liked[index], {
+    const updateItem = liked[index];
+    Object.assign(updateItem, {
       isLiked: true,
-      likes: liked[index].likes + 1,
-      winner: liked[index].likes >= 2 ? true : false,
+      likes: updateItem.winner ? updateItem.likes : updateItem.likes + 1,
+      winner: updateItem.likes >= 2 ? true : false,
     });
     setList(liked);
     const item = liked[index];
@@ -64,18 +68,25 @@ export const Survey = () => {
     setOpen(false);
   };
 
-  const surveyItems = list.map((item, index) => {
-    if (item.winner) {
-      return (
-        <ChosenRecipee
-          key={index}
-          item={item}
-          handleClose={handleClose}
-          handleOpen={handleOpen}
-          open={open}
-        />
-      );
+  const winChecker = () => {
+    for (const item of list) {
+      if (item.winner) return true;
     }
+  };
+
+  const winningItem = list.map((item, index) => {
+    return (
+      <ChosenRecipee
+        key={index}
+        item={item}
+        handleClose={handleClose}
+        handleOpen={handleOpen}
+        open={open}
+      />
+    );
+  });
+
+  const surveyItems = list.map((item, index) => {
     return (
       <SurveyItem
         key={index}
@@ -104,6 +115,7 @@ export const Survey = () => {
           onClick={onSubmitHandler}
         />
       </form>
+      {winChecker() ? <div className='survey-items'>{winningItem}</div> : null}
       <div className='survey-items'>{surveyItems}</div>
     </div>
   );
