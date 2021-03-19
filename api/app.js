@@ -8,45 +8,54 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-
+const morgan = require("morgan");
 ///////////////////////////////////////////
 //                                       //
 //          websocket chats              //
 //                                       //
 ///////////////////////////////////////////
-const server = require("http").createServer();
-const io = require("socket.io")(server, {
-  cors: {
-    origin: "*",
-  },
+const http = require("http").createServer();
+http.listen(
+  8000,
+  () => console.log(" **************************************** "),
+  console.log(" LUKE I AM YOUR FATHER SPEAK TO ME ON PORT 8000 "),
+  console.log(" **************************************** ")
+);
+
+const io = require("socket.io")(http, {
+  cors: { origin: "*" },
 });
 
-const PORT = 8000;
-const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
+// const io = require("socket.io")(8000);
 
 io.on("connection", (socket) => {
-  // Join a conversation
-  console.log("this is the socket id", socket.id);
-  const { roomId } = socket.handshake.query;
-  socket.join(roomId);
-
-  // Listen for new messages
-  socket.on(NEW_CHAT_MESSAGE_EVENT, (data) => {
-    console.log(socket.connected); // should be true
-
-    io.in(roomId).emit(NEW_CHAT_MESSAGE_EVENT, data);
-    console.log(" this is the message data :", data);
-  });
-
-  // Leave the room if the user closes the socket
-  socket.on("disconnect", () => {
-    socket.leave(roomId);
+  console.log(" **************************************** "),
+    console.log(" A DEEP MEANINGFUL CONNECTION HAS BEEN MADE "),
+    console.log(" **************************************** ");
+  // makes a stable id for each client every time that doesn't change
+  const id = socket.handshake.query.id;
+  console.log(" WHO ARE YOU ******* YOUR ID IS UNDEFINED*****", id);
+  socket.join(id);
+  socket.emit(
+    "Hey you",
+    console.log("THERE IS SOMETHINGS I HAVE TO TELL YOU LUKE ")
+  );
+  socket.on("send-message", ({ recipients, text }) => {
+    // each persons gets the message
+    recipients.forEach((recipient) => {
+      // remove the current sender from the list of recipients
+      const newRecipients = recipients.filter((r) => r !== recipient);
+      newRecipients.push(id);
+      // sends the message back to the room/recipent
+      socket.broadcast.to(recipient).emit("receive-message", {
+        recipients: newRecipients,
+        sender: id,
+        text,
+      });
+    });
   });
 });
 
-server.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
-});
 ///////////////////////////////////////////
 //                                       //
 //        End  websocket chats           //
