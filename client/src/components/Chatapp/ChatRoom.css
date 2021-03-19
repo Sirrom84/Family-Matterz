@@ -2,14 +2,14 @@
   position: fixed;
   left: 0;
   right: 0;
-  top: 80px;
+  top: 120px;
   bottom: 0;
   display: flex;
   flex-direction: column;
   justify-content: fl;
   margin: 16px;
   max-width: 90%;
-  max-height: 600px;
+  max-height: 550px;
 }
 
 .room-name {
@@ -27,11 +27,12 @@
 .messages-list {
   list-style-type: none;
   padding: 0;
+  border-radius: 15px;
 }
 
 .new-message-input-field {
   height: 200px;
-  max-height: 50%;
+  max-height: 20%;
   font-size: 20px;
   padding: 8px 12px;
   resize: none;
@@ -44,6 +45,7 @@
   word-break: break-word;
   border-radius: 4px;
   color: white;
+  border-radius: 35px;
 }
 
 .my-message {
@@ -63,6 +65,7 @@
   background: #31a24c;
   padding: 24px 12px;
   border: none;
+  max-height: 65px;
 }
 
 .messages-container,

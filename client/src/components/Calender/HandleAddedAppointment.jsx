@@ -1,4 +1,3 @@
-import react, { useEffect } from "react";
 import axios from "axios";
 
 //helper function to add appointment to database

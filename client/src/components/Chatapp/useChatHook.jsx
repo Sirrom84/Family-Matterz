@@ -9,7 +9,7 @@ const useChat = (roomId) => {
   const socketRef = useRef();
 
   useEffect(() => {
-    // Creates a WebSocket connection
+    // Creates a WebSocket connection connects via the express server
     socketRef.current = socketIOClient(SOCKET_SERVER_URL, {
       query: { roomId },
     });
@@ -32,6 +32,7 @@ const useChat = (roomId) => {
   }, [roomId]);
 
   // Sends a message to the server that
+
   // forwards it to all users in the same room
   const sendMessage = (messageBody) => {
     socketRef.current.emit(NEW_CHAT_MESSAGE_EVENT, {
