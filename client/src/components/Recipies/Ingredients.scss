@@ -2,8 +2,7 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(3, 1fr);
-  height: 100%;
-
+  overflow: auto;
   .title {
     display: flex;
     flex-direction: column;
@@ -19,16 +18,33 @@
       margin: 0;
       font-size: 20px;
     }
+
     hr {
       width: 80%;
     }
   }
 
-  // .instructions {
+  .instructions {
+    margin: 10px;
 
-  // }
-  // .ingredients {
-  //   grid-column: 4/4;
-  //   grid-row: 1 /4;
-  // }
+    ol {
+      margin-bottom: 40px;
+    }
+  }
+
+  .ingredients {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    ul {
+      list-style-type: none;
+    }
+    button {
+      align-self: center;
+    }
+
+    .buttonCheck {
+      color: #3dd338;
+    }
+  }
 }

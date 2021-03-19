@@ -1,10 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import './Ingredients.scss';
 import axios from 'axios';
+import Button from '@material-ui/core/Button';
+import { BsCircle } from 'react-icons/bs';
+import { BsCheckCircle } from 'react-icons/bs';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  button: {
+    backgroundColor: 'green',
+    color: '#fff',
+    fontSize: '12px',
+    width: '50%',
+  },
+}));
 
 export const Ingredients = (props) => {
+  const classes = useStyles();
   const [isloading, setLoading] = useState(true);
-  const [ingredients, setIngredients] = useState({});
+  const [ingredientData, setIngredients] = useState([]);
+  const [instructionData, setInstructions] = useState([]);
 
   const API = process.env.REACT_APP_API_KEY,
     id = props.location.state.item.id,
@@ -15,7 +30,8 @@ export const Ingredients = (props) => {
     axios
       .get(url)
       .then((res) => {
-        setIngredients(res.data);
+        setIngredients(res.data.extendedIngredients);
+        setInstructions(res.data.analyzedInstructions[0].steps);
         setLoading(false);
         console.log('data retreived');
       })
@@ -28,32 +44,68 @@ export const Ingredients = (props) => {
     return <div>Loading...</div>;
   }
 
-  const ingredientList = ingredients.extendedIngredients.map((item, index) => {
-    return <li>{item.originalString}</li>;
+  const onCheckHandler = (item, index) => {
+    const updateIngredients = [...ingredientData];
+    const SelectedItem = updateIngredients[index];
+    Object.assign(SelectedItem, {
+      isChecked: SelectedItem.isChecked === true ? false : true,
+    });
+    setIngredients(updateIngredients);
+  };
+
+  const onAddHandler = () => {
+    const checkedIngredients = ingredientData.filter(
+      (item) => item.isChecked === true
+    );
+    axios
+      .post('http://localhost:9000/groceries', checkedIngredients)
+      .then(() => {
+        console.log('Items added to Grocery List');
+      })
+      .catch((err) => {
+        console.log('Error Adding ingredients to List', err);
+      });
+    console.log(checkedIngredients);
+  };
+
+  const ingredientList = ingredientData.map((item, index) => {
+    return (
+      <li key={index} onClick={() => onCheckHandler(item, index)}>
+        <span>
+          {item.isChecked ? (
+            <BsCheckCircle className='buttonCheck' />
+          ) : (
+            <BsCircle />
+          )}
+        </span>
+        {item.originalString}
+      </li>
+    );
   });
 
-  const instructions = ingredients.analyzedInstructions[0].steps.map(
-    (item, index) => {
-      return <li>{item.step}</li>;
-    }
-  );
+  const instructions = instructionData.map((item, index) => {
+    return <li key={index}>{item.step}</li>;
+  });
 
   return (
     <div>
       <div className='grid-container'>
-        <div className='title'>
+        <section className='title'>
           <img src={item.image} alt={item.title} width='100px' height='auto' />
           <h1>{item.title}</h1>
           <hr />
-        </div>
-        <div className='instructions'>
-          <h2>Instructions</h2>
-          <ol>{instructions}</ol>
-        </div>
-        <div className='ingredients'>
-          <h2>Ingredients</h2>
+        </section>
+        <section className='ingredients'>
+          <h3>Ingredients</h3>
           <ul>{ingredientList}</ul>
-        </div>
+          <Button className={classes.button} onClick={onAddHandler}>
+            Add To Grocery Cart
+          </Button>
+        </section>
+        <section className='instructions'>
+          <h3>Instructions</h3>
+          <ol>{instructions}</ol>
+        </section>
       </div>
     </div>
   );
