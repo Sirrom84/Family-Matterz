@@ -17,7 +17,6 @@ function App() {
 	return (
 		<Router>
 			<div className="App">
-				<TopNav />
 				<Switch>
 					<Route path="/" exact component={TimelineHome} />
 					<Route path="/welcome" component={Login} />
@@ -31,7 +30,7 @@ function App() {
 					<Route path="/recipes" component={Recipes} />
 					<Route path="/numbers" component={Numbers} />
 				</Switch>
-				<BottomNav />
+				{/* <BottomNav /> */}
 			</div>
 		</Router>
 	);
