@@ -24,7 +24,7 @@ export const TimelineHome = (props) => {
 				</Link>
 
 				<p className="user-home-text">
-					The Smith Family <br></br> <br></br>Friday March 19, 2021
+					The Smith Family <br></br>Friday March 19, 2021
 				</p>
 				<img className="dash-log" src="/images/newGirl.png" />
 				{/* <Avatar

@@ -7,7 +7,7 @@ import {Badge} from "primereact/badge";
 
 import "./TopNav.scss";
 
-export const TopNav = () => {
+export default function TopNav() {
 	return (
 		<div>
 			<div className="top-nav">
@@ -17,4 +17,4 @@ export const TopNav = () => {
 			</div>
 		</div>
 	);
-};
+}

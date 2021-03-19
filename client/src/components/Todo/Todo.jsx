@@ -3,6 +3,8 @@ import CreateTask from "./CreateTask";
 import {Avatar} from "primereact/avatar";
 import uuid from "react-uuid";
 import axios from "axios";
+import TopNav from "../TopNav/TopNav";
+import BottomNav from "../BottomNav/BottomNav";
 import "./Todo.scss";
 
 function Task({task, index, completeTask, removeTask}) {
@@ -134,28 +136,32 @@ export const Todo = () => {
 	};
 
 	return (
-		<div className="todo-container">
-			<div className="todo-header">
-				<div className="todo-count">
-					<span>{tasksRemaining} Tasks remaining</span>
+		<div>
+			<TopNav />
+			<div className="todo-container">
+				<div className="todo-header">
+					<div className="todo-count">
+						<span>{tasksRemaining} Tasks remaining</span>
+					</div>
+				</div>
+				<div className="todo-body">
+					{tasks.map((task, index) => (
+						<Task
+							tasks={tasksRemaining}
+							task={task}
+							index={index}
+							completeTask={completeTask}
+							removeTask={removeTask}
+							key={task.key}
+						/>
+					))}
+				</div>
+
+				<div className="create-task">
+					<CreateTask addTask={addTask} />
 				</div>
 			</div>
-			<div className="todo-body">
-				{tasks.map((task, index) => (
-					<Task
-						tasks={tasksRemaining}
-						task={task}
-						index={index}
-						completeTask={completeTask}
-						removeTask={removeTask}
-						key={task.key}
-					/>
-				))}
-			</div>
-
-			<div className="create-task">
-				<CreateTask addTask={addTask} />
-			</div>
+			<BottomNav />
 		</div>
 	);
 };

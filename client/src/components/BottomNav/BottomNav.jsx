@@ -5,7 +5,8 @@ import {FaCalendarDay} from "react-icons/fa";
 import {FaHome} from "react-icons/fa";
 import {FaShoppingBasket} from "react-icons/fa";
 import {Link} from "react-router-dom";
-export const BottomNav = () => {
+
+export default function BottomNav() {
 	return (
 		<div className="nav">
 			<div className="nav-item">
@@ -30,4 +31,4 @@ export const BottomNav = () => {
 			</div>
 		</div>
 	);
-};
+}
