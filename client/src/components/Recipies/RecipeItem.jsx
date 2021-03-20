@@ -15,19 +15,15 @@ const useStyles = makeStyles((theme) => ({
 export const RecipeItem = (props) => {
   const classes = useStyles();
 
-  const showInfoHandler = () => {
-    console.log(props.location);
-  };
-
   return (
-    <div onClick={props.onClick} className='recipe-item'>
+    <div className='recipe-item'>
       <img
         src={props.item.image}
         thumbnail='true'
         width='165px'
         height='auto'
       />
-      <h4>{props.item.title}</h4>
+      <p>{props.item.title}</p>
       <Link
         to={{
           pathname: `${props.location.pathname}/ingredients`,
@@ -36,11 +32,7 @@ export const RecipeItem = (props) => {
           },
         }}
       >
-        <Button
-          className={classes.button}
-          variant='contained'
-          onClick={showInfoHandler}
-        >
+        <Button className={classes.button} variant='contained'>
           Show info
         </Button>
       </Link>

@@ -14,13 +14,28 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   const newItem = new Grocery(req.body);
+  console.log(newItem);
   Grocery.create(newItem)
     .then((res) => {
-      'Item Added To DB';
+      console.log('Item Added To DB');
     })
     .catch((err) => {
       console.log('Error Adding Item to DB', err);
     });
+});
+
+router.post('/ingredients', (req, res) => {
+  console.log(req.body);
+  req.body.map((item) => {
+    let newItem = new Grocery({ title: item.name, category: item.aisle });
+    Grocery.create(newItem)
+      .then(() => {
+        console.log('Ingredients Added to DB');
+      })
+      .catch((err) => {
+        console.log('Error adding ingredients to DB', err);
+      });
+  });
 });
 
 router.put('/:id', (req, res) => {

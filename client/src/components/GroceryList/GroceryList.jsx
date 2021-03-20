@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { GroceryListItem } from './GroceryListItem';
-import { FaRegArrowAltCircleUp } from 'react-icons/fa';
+import { FaRegArrowAltCircleDown } from 'react-icons/fa';
 import './GroceryList.scss';
 import axios from 'axios';
 
@@ -76,7 +76,6 @@ export const GroceryList = () => {
     <div className='groceryList'>
       <h1>Grocery List</h1>
       <span>Items left: {checkItemsLeft(items)}</span>
-      <div className='list'>{groceryItems}</div>
       <form className='input' onSubmit={onSubmitHandler}>
         <input
           onChange={(e) => setInput(e.target.value)}
@@ -84,12 +83,13 @@ export const GroceryList = () => {
           placeholder='Add an Item'
           value={input}
         />
-        <FaRegArrowAltCircleUp
+        <FaRegArrowAltCircleDown
           value={input}
           className='submit'
           onClick={onSubmitHandler}
         />
       </form>
+      <div className='list'>{groceryItems}</div>
     </div>
   );
 };

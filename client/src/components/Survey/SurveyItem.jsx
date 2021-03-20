@@ -1,6 +1,6 @@
 import React from 'react';
 import { FcLikePlaceholder, FcLike } from 'react-icons/fc';
-import { Badge, Button } from '@material-ui/core';
+import { Badge } from '@material-ui/core';
 
 export const SurveyItem = (props) => {
   return (

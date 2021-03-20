@@ -1,32 +1,59 @@
 .grid-container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  overflow: auto;
 
   .title {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 
     img {
-      z-index: -1;
       object-fit: cover;
-      width: 40vw;
       margin: 0;
+      width: 100%;
+      height: auto;
+      margin-bottom: 15px;
     }
     h1 {
       margin: 0;
       font-size: 20px;
     }
+
     hr {
       width: 80%;
     }
   }
 
-  // .instructions {
+  .instructions {
+    ol {
+      margin-bottom: 40px;
+    }
+  }
 
-  // }
-  // .ingredients {
-  //   grid-column: 4/4;
-  //   grid-row: 1 /4;
-  // }
+  .ingredients {
+    display: flex;
+    flex-direction: column;
+
+    ul {
+      list-style-type: none;
+      margin-top: 0;
+    }
+    button {
+      align-self: center;
+    }
+
+    .buttonCheck {
+      color: #3dd338;
+    }
+    .span {
+      margin-right: 10px;
+    }
+  }
+  .item {
+    margin: 10px;
+  }
 }

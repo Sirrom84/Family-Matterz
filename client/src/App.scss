@@ -1,4 +1,5 @@
 .App {
+
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -10,56 +11,62 @@
 
 	background-repeat: no-repeat;
 	background-size: 415px 736px;
+  
+  font-family: 'Raleway', sans-serif;
 
-	.grid-container {
-		height: 87vh;
-		width: 95vw;
-		display: grid;
-		grid-template-columns: 1fr, repeat(4);
-		gap: 10px;
-	}
+  Button {
+    font-family: 'Raleway', sans-serif;
+  }
 
-	// .one {
-	// 	border-radius: 10px;
-	// 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-	// 	background-color: #fff;
-	// }
+  .grid-container {
+    height: 87vh;
+    width: 95vw;
+    display: grid;
+    grid-template-columns: 1fr, repeat(4);
+    gap: 10px;
+  }
 
-	// .two {
-	// 	border-radius: 10px;
-	// 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-	// 	background-color: #fff;
-	// }
+  // .one {
+  // 	border-radius: 10px;
+  // 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  // 	background-color: #fff;
+  // }
 
-	// .three {
-	// 	height: 30vh;
-	// 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-	// 	border-radius: 10px;
-	// 	background-color: #fff;
-	// }
+  // .two {
+  // 	border-radius: 10px;
+  // 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  // 	background-color: #fff;
+  // }
 
-	// .four {
-	// 	height: 30vh;
-	// 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-	// 	border-radius: 10px;
-	// 	background-color: #fff;
-	// }
+  // .three {
+  // 	height: 30vh;
+  // 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  // 	border-radius: 10px;
+  // 	background-color: #fff;
+  // }
 
-	// .five {
-	// 	height: 30vh;
-	// 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-	// 	border-radius: 10px;
-	// 	background-color: #fff;
-	// }
+  // .four {
+  // 	height: 30vh;
+  // 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  // 	border-radius: 10px;
+  // 	background-color: #fff;
+  // }
 
-	.header {
-		color: white;
-		height: 5vh;
-		width: 100%;
-		text-align: center;
-		background-color: #303960;
-		font-size: 15px;
-		margin: 0;
-		border-radius: 5px 5px 0px 0px;
-	}
+  // .five {
+  // 	height: 30vh;
+  // 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  // 	border-radius: 10px;
+  // 	background-color: #fff;
+  // }
+
+  .header {
+    color: white;
+    height: 5vh;
+    width: 100%;
+    text-align: center;
+    background-color: #303960;
+    font-size: 15px;
+    margin: 0;
+    border-radius: 5px 5px 0px 0px;
+  }
 }

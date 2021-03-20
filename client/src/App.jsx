@@ -1,3 +1,4 @@
+
 import "./App.scss";
 import {BottomNav} from "./components/BottomNav/BottomNav";
 import {TopNav} from "./components/TopNav/TopNav";
@@ -22,7 +23,6 @@ function App() {
 					<Route path="/welcome" component={Login} />
 					<Route path="/stats" component={ChoreChart} />
 					<Route path="/grocerylist" component={GroceryList} />
-					<Route path="/todo" component={Todo} />
 					<Route path="/calender" component={Calender2} />
 					<Route path="/survey" component={Survey} />
 					<Route path="/todolist" component={Todo} />
