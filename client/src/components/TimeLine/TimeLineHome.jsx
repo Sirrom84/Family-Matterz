@@ -11,7 +11,7 @@ import Welcome from "./Welcome";
 import {Link} from "react-router-dom";
 import {Avatar} from "primereact/avatar";
 import TopNav from "../TopNav/TopNav";
-import Scheduler from "../Calender/Calender2";
+import Scheduler from "../Calendar/Calendar";
 
 import "./TimelineHome.scss";
 
