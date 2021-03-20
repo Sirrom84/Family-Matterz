@@ -2,7 +2,7 @@ import React, { createRef, useState, useEffect } from "react";
 import Scheduler, { Resource } from "devextreme-react/scheduler";
 import DataCell from "./DataCell";
 import ResourceCell from "./ResourceCell";
-import "./styles.css";
+import "./styles.scss";
 
 // custom hooks for helper functions form
 import { useData, employees } from "./useData";
