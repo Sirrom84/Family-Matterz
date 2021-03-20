@@ -1,16 +1,19 @@
 .todo-container {
 	width: 400px;
-	max-height: 570px;
+	height: 600px;
 	top: 10px;
 	bottom: 10px;
-	background-color: rgba(255, 255, 255, 0.685);
-	box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
+	background-color: rgba(255, 255, 255, 0.534);
+	box-shadow: rgba(0, 0, 0, 0.438) 0px 3px 8px;
 	position: relative;
 	border-radius: 1em;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
 	overflow-y: auto;
+
+	font-family: "Oswald", sans-serif;
+	margin: auto;
 }
 .todo-header {
 	padding: 20px;

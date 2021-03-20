@@ -7,14 +7,14 @@ import {Badge} from "primereact/badge";
 
 import "./TopNav.scss";
 
-export const TopNav = () => {
+export default function TopNav() {
 	return (
 		<div>
 			<div className="top-nav">
 				<img src="./images/FM-Logo.png" width="auto" height="70px" alt="Logo" />
 				<h2>The Morris House</h2>
-				<Avatar image="./images/dad.png" size="large" shape="circle" />
+				<Avatar image="./images/daughter.png" size="large" shape="circle" />
 			</div>
 		</div>
 	);
-};
+}
