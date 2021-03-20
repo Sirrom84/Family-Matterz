@@ -11,7 +11,7 @@ export default function useLocalStorage(key, initialValue) {
   const [value, setValue] = useState(() => {
     //look in local storage for my prefixed key and parse it
     const jsonValue = localStorage.getItem(prefixedKey);
-    if (jsonValue != null && jsonValue !== "undefined")
+    if (jsonValue === "null" && jsonValue !== "undefined")
       return JSON.parse(jsonValue);
     if (typeof initialValue === "function") {
       return initialValue();

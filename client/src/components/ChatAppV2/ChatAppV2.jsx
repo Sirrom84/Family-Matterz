@@ -10,15 +10,21 @@ import { SocketProvider } from "./Contexts/SocketProvider";
 export default function ChatAppV2() {
   const [id, setId] = useLocalStorage("3433");
 
-  const dashboard = (
-    <SocketProvider id={id}>
-      <ContactsProvider>
-        <ConversationsProvider id={id}>
-          <Dashboard id={id} />
-        </ConversationsProvider>
-      </ContactsProvider>
-    </SocketProvider>
-  );
+  console.log("local storage type :", typeof id);
 
-  return id ? dashboard : <LoginPage onIdSubmit={setId} />;
+  return (
+    <>
+      {id !== "null" && id !== undefined ? (
+        <SocketProvider id={id}>
+          <ContactsProvider>
+            <ConversationsProvider id={id}>
+              <Dashboard id={id} />
+            </ConversationsProvider>
+          </ContactsProvider>
+        </SocketProvider>
+      ) : (
+        <LoginPage onIdSubmit={setId} />
+      )}
+    </>
+  );
 }

@@ -2,17 +2,26 @@ import React, { useRef } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import { v4 as uuidV4 } from "uuid";
 
-export default function Login({ onIdSubmit }) {
+export default function Login(props) {
+  console.log("this is props: ", props.onIdSubmit);
+
   const idRef = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("this is my input", idRef.current.value.trim());
-    onIdSubmit(idRef.current.value.trim());
+    // console.log("this is my input", idRef.current.value.trim());
+
+    // window.localStorage.setItem(
+    //   "aaron-chat-app3433",
+    //   idRef.current.value.trim()
+    // );
+
+    props.onIdSubmit(idRef.current.value.trim());
+    // props.onIdSubmit(idRef.current.value.trim());
   };
 
   const createNewId = () => {
-    onIdSubmit(uuidV4());
+    window.localStorage.setItem("aaron-chat-app3433", uuidV4());
   };
 
   return (

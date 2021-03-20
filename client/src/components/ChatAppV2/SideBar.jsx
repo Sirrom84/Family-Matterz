@@ -18,7 +18,7 @@ export default function Sidebar({ id }) {
   };
 
   return (
-    <div style={{ width: "150px" }} className="d-flex flex-column">
+    <div style={{ width: "100px" }} className="d-flex flex-column">
       <Tab.Container activeKey={activeKey} onSelect={setActiveKey}>
         <Nav
           variant="tabs"

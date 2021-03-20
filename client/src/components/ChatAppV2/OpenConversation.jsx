@@ -14,8 +14,8 @@ export default function OpenConversation() {
   }, []);
   const { sendMessage, selectedConversation } = useConversations();
   //this is sending the message to the websocket
-  console.log("this is send Message", sendMessage);
-  console.log("this is selectedConversation", selectedConversation); // undefined  ???
+  // ?console.log("this is send Message", sendMessage);
+  // console.log("this is selectedConversation", selectedConversation); // undefined  ???
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,38 +33,39 @@ export default function OpenConversation() {
         <div className="d-flex flex-column align-items-start justify-content-end px-3">
           {/* map the selected messages to the container  */}
 
-          {selectedConversation.messages.map((message, index) => {
-            console.log(selectedConversation);
-            const lastMessage =
-              selectedConversation.messages.length - 1 === index;
+          {selectedConversation &&
+            selectedConversation.messages.map((message, index) => {
+              console.log(selectedConversation);
+              const lastMessage =
+                selectedConversation.messages.length - 1 === index;
 
-            return (
-              <div
-                ref={lastMessage ? setRef : null}
-                key={index}
-                className={`my-1 d-flex flex-column ${
-                  message.fromMe
-                    ? "align-self-end align-items-end"
-                    : "align-items-start"
-                }`}
-              >
+              return (
                 <div
-                  className={`rounded px-2 py-1 ${
-                    message.fromMe ? "bg-primary text-white" : "border"
+                  ref={lastMessage ? setRef : null}
+                  key={index}
+                  className={`my-1 d-flex flex-column ${
+                    message.fromMe
+                      ? "align-self-end align-items-end"
+                      : "align-items-start"
                   }`}
                 >
-                  {message.text}
+                  <div
+                    className={`rounded px-2 py-1 ${
+                      message.fromMe ? "bg-primary text-white" : "border"
+                    }`}
+                  >
+                    {message.text}
+                  </div>
+                  <div
+                    className={`text-muted small ${
+                      message.fromMe ? "text-right" : ""
+                    }`}
+                  >
+                    {message.fromMe ? "You" : message.senderName}
+                  </div>
                 </div>
-                <div
-                  className={`text-muted small ${
-                    message.fromMe ? "text-right" : ""
-                  }`}
-                >
-                  {message.fromMe ? "You" : message.senderName}
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
       </div>
       <Form onSubmit={handleSubmit}>
