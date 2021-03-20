@@ -25,20 +25,19 @@ http.listen(
 const io = require("socket.io")(http, {
   cors: { origin: "*" },
 });
-
-// const io = require("socket.io")(8000);
-
 io.on("connection", (socket) => {
-  console.log(" **************************************** "),
-    console.log(" A DEEP MEANINGFUL CONNECTION HAS BEEN MADE "),
+  console.log(" A DEEP MEANINGFUL CONNECTION HAS BEEN MADE "),
     console.log(" **************************************** ");
   // makes a stable id for each client every time that doesn't change
   const id = socket.handshake.query.id;
-  console.log(" WHO ARE YOU ******* YOUR ID IS UNDEFINED*****", id);
+  console.log(" WHO ARE YOU ******* ", socket.handshake.query.id);
   socket.join(id);
   socket.emit(
     "Hey you",
-    console.log("THERE IS SOMETHINGS I HAVE TO TELL YOU LUKE ")
+    console.log(
+      "THERE IS SOMETHINGS I HAVE TO TELL YOU ",
+      socket.handshake.query.id
+    )
   );
   socket.on("send-message", ({ recipients, text }) => {
     // each persons gets the message
@@ -77,6 +76,7 @@ const Task = require("./DB/models/Task");
 const Grocery = require("./DB/models/Grocery");
 const Family = require("./DB/models/Family");
 const Calender = require("./DB/models/Calender");
+const { query } = require("express");
 
 //Database Config
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@familymatterz.ixxbf.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
