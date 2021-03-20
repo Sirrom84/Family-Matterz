@@ -13,10 +13,8 @@ export default function OpenConversation() {
     }
   }, []);
   const { sendMessage, selectedConversation } = useConversations();
-  //this is sending the message to the websocket
-  // ?console.log("this is send Message", sendMessage);
-  // console.log("this is selectedConversation", selectedConversation); // undefined  ???
 
+  //this is sending the message to the websocket
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -76,7 +74,7 @@ export default function OpenConversation() {
               required
               value={text}
               onChange={(e) => setText(e.target.value)}
-              style={{ height: "75px", resize: "none" }}
+              style={{ height: "75px", resize: "none", "margin-bottom": "0px" }}
             />
             <InputGroup.Append>
               <Button type="submit">Send</Button>

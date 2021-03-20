@@ -23,7 +23,12 @@ export default function Sidebar({ id }) {
         <Nav
           variant="tabs"
           className="justify-content-start"
-          style={{ position: "fixed", top: "16vh" }}
+          style={{
+            position: "fixed",
+            top: "16vh",
+            "font-size": "10px",
+            "font-weight": "900",
+          }}
         >
           <Nav.Item>
             <Nav.Link eventKey={CONVERSATIONS_KEY}>Conversations</Nav.Link>
@@ -32,7 +37,7 @@ export default function Sidebar({ id }) {
             <Nav.Link eventKey={CONTACTS_KEY}>Contacts</Nav.Link>
           </Nav.Item>
         </Nav>
-        <Tab.Content className="border-right overflow-auto flex-grow-1">
+        <Tab.Content className="overflow-auto flex-grow-1">
           <Tab.Pane eventKey={CONVERSATIONS_KEY}>
             <Conversations />
           </Tab.Pane>
@@ -43,7 +48,15 @@ export default function Sidebar({ id }) {
         <div className="p-2 border-top border-right small">
           Your Id: <span className="text-muted">{id}</span>
         </div>
-        <Button onClick={() => setModalOpen(true)} className="rounded-0">
+        <Button
+          onClick={() => setModalOpen(true)}
+          className="btn btn-primary rounded-0"
+          style={{
+            "font-size": "12px",
+            "font-weight": "900",
+            padding: "5px",
+          }}
+        >
           New {conversationsOpen ? "Conversation" : "Contact"}
         </Button>
       </Tab.Container>
