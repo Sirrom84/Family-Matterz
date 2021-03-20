@@ -7,6 +7,7 @@ import { BsCheckCircle } from 'react-icons/bs';
 import { makeStyles } from '@material-ui/core/styles';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import { Loading } from '../Loading/Loading';
 const useStyles = makeStyles((theme) => ({
   button: {
     backgroundColor: '#3dd338',
@@ -49,7 +50,7 @@ export const Ingredients = (props) => {
   }, []);
 
   if (isloading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   const onCheckHandler = (item, index) => {

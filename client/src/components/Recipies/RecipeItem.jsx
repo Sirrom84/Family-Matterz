@@ -23,7 +23,7 @@ export const RecipeItem = (props) => {
         width='165px'
         height='auto'
       />
-      <h4>{props.item.title}</h4>
+      <p>{props.item.title}</p>
       <Link
         to={{
           pathname: `${props.location.pathname}/ingredients`,
