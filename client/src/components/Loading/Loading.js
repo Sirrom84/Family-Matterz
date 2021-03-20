@@ -3,7 +3,7 @@ import './Loading.scss';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 export const Loading = () => {
   return (
-    <div>
+    <div className='Loading'>
       <div class='no-freeze-spinner'>
         <div id='no-freeze-spinner'>
           <div>

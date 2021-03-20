@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   // background-image: url(./images/background.png);
   // background-size: 500px;
@@ -10,6 +10,10 @@
   background-size: 415px 736px;
   background-color: white;
   font-family: 'Raleway', sans-serif;
+
+  Button {
+    font-family: 'Raleway', sans-serif;
+  }
 
   .grid-container {
     height: 87vh;
