@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import { v4 as uuidV4 } from "uuid";
 import backgroundVideo from "./video/family.mp4";
-import "./Loginpage.css";
+import "./Loginpage.scss";
 
 export default function Login(props) {
   console.log("this is props: ", props.onIdSubmit);
