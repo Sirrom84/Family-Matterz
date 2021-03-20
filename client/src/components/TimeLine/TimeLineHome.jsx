@@ -11,6 +11,7 @@ import Welcome from "./Welcome";
 import {Link} from "react-router-dom";
 import {Avatar} from "primereact/avatar";
 import TopNav from "../TopNav/TopNav";
+import Scheduler from "../Calender/Calender2";
 
 import "./TimelineHome.scss";
 
@@ -20,16 +21,17 @@ export const TimelineHome = (props) => {
 			<TopNav />
 			<div className="grid-container">
 				<div className="one">
+					<Scheduler defaultCurrentView="month" />
 					<Link to="/calender" style={{textDecoration: "none"}}>
-						<div className="current">
+						{/* <div className="current">
 							<Welcome />
-						</div>
+						</div> */}
 					</Link>
 
-					<p className="user-home-text">
+					{/* <p className="user-home-text">
 						The Smith Family <br></br>Friday March 19, 2021
-					</p>
-					<img className="dash-log" src="/images/newGirl.png" />
+					</p> */}
+					{/* <img className="dash-log" src="/images/newGirl.png" /> */}
 					{/* <Avatar
 					image="/images/daughter.png"
 					className="task-avatar"
