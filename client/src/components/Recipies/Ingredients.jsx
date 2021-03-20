@@ -5,7 +5,8 @@ import Button from '@material-ui/core/Button';
 import { BsCircle } from 'react-icons/bs';
 import { BsCheckCircle } from 'react-icons/bs';
 import { makeStyles } from '@material-ui/core/styles';
-
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 const useStyles = makeStyles((theme) => ({
   button: {
     backgroundColor: '#3dd338',
@@ -13,13 +14,20 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '12px',
     width: '50%',
   },
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
 }));
 
 export const Ingredients = (props) => {
-  const classes = useStyles();
   const [isloading, setLoading] = useState(true);
   const [ingredientData, setIngredients] = useState([]);
   const [instructionData, setInstructions] = useState([]);
+  const [open, setOpen] = useState(false);
+  const classes = useStyles();
 
   const API = process.env.REACT_APP_API_KEY,
     id = props.location.state.item.id,
@@ -66,6 +74,7 @@ export const Ingredients = (props) => {
         .catch((err) => {
           console.log('Error Adding ingredients to List', err);
         });
+      handleClick();
     }
   };
 
@@ -96,8 +105,29 @@ export const Ingredients = (props) => {
     );
   });
 
+  function Alert(props) {
+    return <MuiAlert elevation={6} variant='filled' {...props} />;
+  }
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
   return (
     <div className='grid-container'>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity='success'>
+          The ingredients have sucessfully been added to you list!
+        </Alert>
+      </Snackbar>
       <section className='title'>
         <img src={item.image} alt={item.title} />
         <h1>{item.title}</h1>
