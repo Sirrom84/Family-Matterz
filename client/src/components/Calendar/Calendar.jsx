@@ -17,7 +17,7 @@ console.log("The current date and time is ", currentDate);
 const groups = ["employeeID"];
 const views = ["month", "day", "workWeek", "agenda"];
 
-const Calendar2 = (props) => {
+const Calendar = (props) => {
 	// set up a local state object
 	const [appointments, setAppointments] = useState(null);
 	// brings data in from Mongo
@@ -70,4 +70,4 @@ const Calendar2 = (props) => {
 	);
 };
 
-export default Calendar2;
+export default Calendar;

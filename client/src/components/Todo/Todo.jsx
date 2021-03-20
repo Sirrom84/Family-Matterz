@@ -137,7 +137,6 @@ export const Todo = () => {
 
 	return (
 		<div>
-			<TopNav />
 			<div className="todo-container">
 				<div className="todo-header">
 					<div className="todo-count">

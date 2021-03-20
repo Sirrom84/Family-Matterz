@@ -53,7 +53,6 @@
 	justify-content: center;
 	background-color: #183aa9;
 	color: white;
-
 	background-repeat: no-repeat;
 	background-image: url("./images/Todo.png");
 	box-shadow: rgba(0, 0, 0, 0.438) 0px 3px 8px;
@@ -62,6 +61,7 @@
 .three {
 	border-radius: 15px;
 	height: 200px;
+	width: 200px;
 	display: flex;
 	justify-content: center;
 	background-repeat: no-repeat;
@@ -71,19 +71,16 @@
 
 .four {
 	border-radius: 15px;
-
 	display: flex;
 	justify-content: center;
 	background-color: #5b39b0;
 	height: 200px;
-
 	background-repeat: no-repeat;
 	background-image: url("./images/GroceryList.png");
 	box-shadow: rgba(0, 0, 0, 0.438) 0px 3px 8px;
 }
 .five {
 	border-radius: 15px;
-
 	display: flex;
 	justify-content: center;
 	background-color: yellow;
