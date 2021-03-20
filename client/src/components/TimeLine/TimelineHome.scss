@@ -5,6 +5,7 @@
 	grid-template-rows: repeat(3, 1fr);
 	width: 100%;
 	max-height: 750px;
+	margin: auto;
 }
 // .family-name {
 // 	display: flex;
@@ -22,7 +23,7 @@
 	grid-column-end: 3;
 	margin-top: 5px;
 	flex-direction: row;
-
+	background-color: rgba(238, 177, 155, 0.308);
 	// background-image: url("./images/userDash.png");
 	box-shadow: rgba(0, 0, 0, 0.438) 0px 3px 8px;
 
