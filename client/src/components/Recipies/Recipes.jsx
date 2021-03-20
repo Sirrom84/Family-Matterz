@@ -34,7 +34,7 @@ export const Recipes = (props) => {
   });
 
   return (
-    <div>
+    <div className='recipes'>
       <h3>Recipe Book</h3>
       <div className='recipe-container'>{recipes}</div>
     </div>

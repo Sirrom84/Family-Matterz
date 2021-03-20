@@ -1,5 +1,12 @@
-h3 {
-  text-align: center;
-  margin-top: 10px;
-  margin-bottom: 20px;
+.recipes {
+  h3 {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .recipe-container {
+    overflow: auto;
+    height: 90%;
+    margin-bottom: 15px;
+  }
 }

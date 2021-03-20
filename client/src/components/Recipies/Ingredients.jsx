@@ -57,15 +57,16 @@ export const Ingredients = (props) => {
     const checkedIngredients = ingredientData.filter(
       (item) => item.isChecked === true
     );
-    axios
-      .post('http://localhost:9000/groceries/ingredients', checkedIngredients)
-      .then(() => {
-        console.log('Items added to Grocery List');
-      })
-      .catch((err) => {
-        console.log('Error Adding ingredients to List', err);
-      });
-    console.log(checkedIngredients);
+    if (checkedIngredients) {
+      axios
+        .post('http://localhost:9000/groceries/ingredients', checkedIngredients)
+        .then(() => {
+          console.log('Items added to Grocery List');
+        })
+        .catch((err) => {
+          console.log('Error Adding ingredients to List', err);
+        });
+    }
   };
 
   const ingredientList = ingredientData.map((item, index) => {
@@ -98,14 +99,18 @@ export const Ingredients = (props) => {
   return (
     <div className='grid-container'>
       <section className='title'>
-        <img src={item.image} alt={item.title} width='100px' height='auto' />
+        <img src={item.image} alt={item.title} />
         <h1>{item.title}</h1>
         <hr />
       </section>
       <section className='ingredients'>
         <h3>Ingredients</h3>
         <ul>{ingredientList}</ul>
-        <Button className={classes.button} onClick={onAddHandler}>
+        <Button
+          variant='contained'
+          className={classes.button}
+          onClick={onAddHandler}
+        >
           Add To Grocery Cart
         </Button>
       </section>
