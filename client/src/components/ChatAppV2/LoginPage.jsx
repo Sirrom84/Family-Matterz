@@ -9,15 +9,7 @@ export default function Login(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log("this is my input", idRef.current.value.trim());
-
-    // window.localStorage.setItem(
-    //   "aaron-chat-app3433",
-    //   idRef.current.value.trim()
-    // );
-
     props.onIdSubmit(idRef.current.value.trim());
-    // props.onIdSubmit(idRef.current.value.trim());
   };
 
   const createNewId = () => {

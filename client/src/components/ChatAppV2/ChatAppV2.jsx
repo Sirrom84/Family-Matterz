@@ -10,7 +10,7 @@ import { SocketProvider } from "./Contexts/SocketProvider";
 export default function ChatAppV2() {
   const [id, setId] = useLocalStorage("3433");
 
-  console.log("local storage type :", typeof id);
+  // console.log("local storage type :", typeof id);
 
   return (
     <>
