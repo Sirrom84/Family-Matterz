@@ -4,12 +4,14 @@
 	align-items: center;
 	position: fixed;
 	bottom: 0;
+	left: 0;
 	width: 100%;
 	height: 8vh;
 	font-size: 1.1em;
 	border-radius: 5px;
-	z-index: 1;
-	background-color: rgba(255, 255, 255, 0.719);
+
+	background-color: rgba(255, 255, 255, 0.651);
+
 	opacity: 0.9;
 
 	span {

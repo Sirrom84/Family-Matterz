@@ -1,49 +1,53 @@
 .survey-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 20px;
-  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
-  background-color: #fff;
-  margin: 20px;
+	width: 400px;
+	height: 600px;
+	top: 10px;
+	bottom: 10px;
+	background-color: rgba(255, 255, 255, 0.534);
+	box-shadow: rgba(0, 0, 0, 0.438) 0px 3px 8px;
+	position: relative;
+	border-radius: 1em;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	overflow-y: auto;
 
-  .feild-input {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    width: 100vw;
-  }
+	.feild-input {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 30px;
+		width: 100vw;
+	}
 
-  input {
-    background: linear-gradient(#000, #000) center bottom 5px /
-      calc(100% - 10px) 2px no-repeat;
-    background-color: #fff;
-    border: 0;
-    padding: 10px;
-  }
+	input {
+		background: linear-gradient(#000, #000) center bottom 5px /
+			calc(100% - 10px) 2px no-repeat;
+		background-color: #fff;
+		border: 0;
+		padding: 10px;
+	}
 
-  input:focus {
-    outline: none;
-  }
-  .submit-button {
-    color: rgba(121, 202, 118, 9.36);
-    font-size: 0.9em;
-  }
-  .survey-items {
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    width: 100%;
-    margin: 20px;
-  }
-  li {
-    margin: 15px;
-    font-size: 20px;
-  }
-  .item {
-    display: flex;
-    justify-content: space-between;
-  }
+	input:focus {
+		outline: none;
+	}
+	.submit-button {
+		color: rgba(121, 202, 118, 9.36);
+		font-size: 0.9em;
+	}
+	.survey-items {
+		display: flex;
+		flex-direction: column;
+		list-style: none;
+		width: 100%;
+		margin: 20px;
+	}
+	li {
+		margin: 15px;
+		font-size: 20px;
+	}
+	.item {
+		display: flex;
+		justify-content: space-between;
+	}
 }

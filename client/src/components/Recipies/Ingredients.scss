@@ -1,59 +1,61 @@
 .grid-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(3, 1fr);
-  overflow: auto;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(3, 1fr);
+	overflow: auto;
 
-  .title {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+	.title {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
 
-    img {
-      object-fit: cover;
-      margin: 0;
-      width: 100%;
-      height: auto;
-      margin-bottom: 15px;
-    }
-    h1 {
-      margin: 0;
-      font-size: 20px;
-    }
+		img {
+			object-fit: cover;
+			margin: 0;
+			width: 100%;
+			height: auto;
+			margin-bottom: 15px;
+		}
+		h1 {
+			margin: 0;
+			font-size: 20px;
+			padding: 10px;
+			text-align: center;
+		}
 
-    hr {
-      width: 80%;
-    }
-  }
+		hr {
+			width: 80%;
+		}
+	}
 
-  .instructions {
-    ol {
-      margin-bottom: 40px;
-    }
-  }
+	.instructions {
+		ol {
+			margin-bottom: 40px;
+		}
+	}
 
-  .ingredients {
-    display: flex;
-    flex-direction: column;
+	.ingredients {
+		display: flex;
+		flex-direction: column;
 
-    ul {
-      list-style-type: none;
-      margin-top: 0;
-    }
-    button {
-      align-self: center;
-    }
+		ul {
+			list-style-type: none;
+			margin-top: 0;
+		}
+		button {
+			align-self: center;
+		}
 
-    .buttonCheck {
-      color: #3dd338;
-    }
-    .span {
-      margin-right: 10px;
-    }
-  }
-  .item {
-    margin: 10px;
-  }
+		.buttonCheck {
+			color: #3dd338;
+		}
+		.span {
+			margin-right: 10px;
+		}
+	}
+	.item {
+		margin: 10px;
+	}
 }
