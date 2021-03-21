@@ -3,10 +3,11 @@ import './RecipesItem.scss';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
+import BottomNav from '../BottomNav/BottomNav';
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    backgroundColor: 'green',
+    backgroundColor: '#65aa65',
     color: '#fff',
     fontSize: '12px',
   },
@@ -36,6 +37,7 @@ export const RecipeItem = (props) => {
           Show info
         </Button>
       </Link>
+      <BottomNav />
     </div>
   );
 };

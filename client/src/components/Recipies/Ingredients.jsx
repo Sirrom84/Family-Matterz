@@ -8,9 +8,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import { Loading } from '../Loading/Loading';
+import BottomNav from '../BottomNav/BottomNav';
+
 const useStyles = makeStyles((theme) => ({
   button: {
-    backgroundColor: '#3dd338',
+    backgroundColor: '#65aa65',
     color: '#fff',
     fontSize: '12px',
     width: '50%',
@@ -149,6 +151,7 @@ export const Ingredients = (props) => {
         <h3>Instructions</h3>
         <ol>{instructions}</ol>
       </section>
+      <BottomNav />
     </div>
   );
 };

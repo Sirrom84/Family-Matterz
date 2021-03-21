@@ -17,12 +17,13 @@ const useStyles = makeStyles((theme) => ({
     margin: 'auto auto',
   },
   paper: {
-    backgroundColor: ' rgba(121, 202, 118, 9.36)',
+    backgroundColor: '#65aa65',
     border: '2px solid #000',
     borderRadius: '10px',
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 10, 1),
+    padding: theme.spacing(2, 5, 1),
     outline: 'none',
+    textAlign: 'center',
   },
 }));
 
@@ -50,10 +51,7 @@ export const ChosenRecipee = (props) => {
                 <h2>{props.item.title}</h2>
                 <FcOk />
               </div>
-              <p>
-                {props.item.title} won {(props.item.likes / 3) * 100}% of the
-                votes
-              </p>
+              <p>{props.item.title} Won the Most Votes</p>
               <p>Would you like us to find you a recipee?</p>
               <div className='buttons'>
                 <Link
