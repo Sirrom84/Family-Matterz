@@ -9,6 +9,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import { Loading } from '../Loading/Loading';
 import BottomNav from '../BottomNav/BottomNav';
+
 const useStyles = makeStyles((theme) => ({
   button: {
     backgroundColor: '#65aa65',
