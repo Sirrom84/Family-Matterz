@@ -24,6 +24,5 @@ yarn-error.log*
 
 #eslint
 .eslintcache
-
 #api keys
 .env
