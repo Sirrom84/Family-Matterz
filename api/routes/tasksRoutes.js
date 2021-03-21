@@ -49,7 +49,7 @@ router.delete("/delete/:key", (req, res) => {
 //INTITAL GET///
 router.get("/", (req, res) => {
   Task.find({}, (err, task) => {
-    err ? console.log(err) : res.send(task),
+    err ? console.log(err, "HERES AND ERROR") : res.send(task),
       console.log("HERE HARE THE TASKS", task);
   });
 });
