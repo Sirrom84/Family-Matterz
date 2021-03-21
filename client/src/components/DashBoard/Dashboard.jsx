@@ -21,7 +21,6 @@ export const DashBoard = (props) => {
 			<Link to="/survey">
 				<div className="three"></div>
 			</Link>
-
 			<Link to="/grocerylist">
 				<div className="four"></div>
 			</Link>

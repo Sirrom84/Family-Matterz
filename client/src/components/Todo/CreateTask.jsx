@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {FaRegArrowAltCircleUp} from "react-icons/fa";
 import "./Todo.scss";
 
 export default function CreateTask({addTask}) {
@@ -19,9 +20,10 @@ export default function CreateTask({addTask}) {
 				placeholder="Add a task"
 				onChange={(e) => setValue(e.target.value)}
 			/>
-			<button className="todo-add-button" onClick={handleSubmit}>
-				ADD
-			</button>
+			<FaRegArrowAltCircleUp
+				className="todo-add-button"
+				onClick={handleSubmit}
+			/>
 		</form>
 	);
 }

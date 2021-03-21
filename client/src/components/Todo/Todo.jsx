@@ -5,52 +5,40 @@ import uuid from "react-uuid";
 import axios from "axios";
 import TopNav from "../TopNav/TopNav";
 import BottomNav from "../BottomNav/BottomNav";
+import {BsTrash} from "react-icons/bs";
+
 import "./Todo.scss";
 
 function Task({task, index, completeTask, removeTask}) {
 	const taskIsCompleted = task.completed;
-	if (taskIsCompleted) {
-		return (
-			<div className="todo-task-items">
-				<div style={{textDecoration: taskIsCompleted ? "line-through" : ""}}>
-					{task.title}
-				</div>
 
-				<Avatar
-					image="/images/daughter.png"
-					className="task-avatar"
-					size="small"
-					shape="circle"
-				/>
-				<div />
-				<div className="task-buttons">
-					<button
-						className="todo-delete-button"
-						onClick={() => removeTask(task.key)}>
-						✗
-					</button>
-				</div>
-			</div>
-		);
+	let CheckedClass = "";
+	if (taskIsCompleted) {
+		CheckedClass += "checked";
 	}
 	return (
 		<div className="todo-task-items">
-			<div style={{textDecoration: task.completed ? "line-through" : ""}}>
-				{task.title}
-			</div>
-			<div />
+			<p className={CheckedClass}>{task.title}</p>
 
 			<div className="task-buttons">
-				<button
-					className="todo-complete-button"
-					onClick={() => completeTask(task.key)}>
-					✓
-				</button>
-				<button
+				{taskIsCompleted ? (
+					<Avatar
+						image="/images/daughter.png"
+						className="task-avatar"
+						size="small"
+						shape="circle"
+					/>
+				) : (
+					<button
+						className="todo-complete-button"
+						onClick={() => completeTask(task.key)}>
+						✓
+					</button>
+				)}
+				<BsTrash
 					className="todo-delete-button"
-					onClick={() => removeTask(task.key)}>
-					✗
-				</button>
+					onClick={() => removeTask(task.key)}
+				/>
 			</div>
 		</div>
 	);
