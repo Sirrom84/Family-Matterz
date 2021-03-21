@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
 import { Form, InputGroup, Button } from "react-bootstrap";
 import { useConversations } from "./Contexts/ConversationsProvider";
-
+import BottomNav from "../BottomNav/BottomNav";
 export default function OpenConversation() {
   // the message state
   const [text, setText] = useState("");
@@ -82,6 +82,7 @@ export default function OpenConversation() {
           </InputGroup>
         </Form.Group>
       </Form>
+      <BottomNav />
     </div>
   );
 }
