@@ -1,4 +1,3 @@
-import react from "react";
 import axios from "axios";
 
 // helper function to update appointment

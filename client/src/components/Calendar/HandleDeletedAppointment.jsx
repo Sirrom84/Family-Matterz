@@ -1,4 +1,3 @@
-import react from "react";
 import axios from "axios";
 
 // delete a appointment from the database and state
