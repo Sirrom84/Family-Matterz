@@ -68,6 +68,58 @@ app.use((req, res, next) => {
   next(createError(404));
 });
 
+///////////////////////////////////////////
+//                                       //
+//          websocket chats              //
+//                                       //
+///////////////////////////////////////////
+const http = require('http').createServer();
+http.listen(
+  8000,
+  () => console.log(' **************************************** '),
+  console.log(' LUKE I AM YOUR FATHER SPEAK TO ME ON PORT 8000 '),
+  console.log(' **************************************** ')
+);
+
+const io = require('socket.io')(http, {
+  cors: { origin: '*' },
+});
+io.on('connection', (socket) => {
+  console.log(' A DEEP MEANINGFUL CONNECTION HAS BEEN MADE '),
+    console.log(' **************************************** ');
+  // makes a stable id for each client every time that doesn't change
+  const id = socket.handshake.query.id;
+  console.log(' WHO ARE YOU ******* ', socket.handshake.query.id);
+  socket.join(id);
+  socket.emit(
+    'Hey you',
+    console.log(
+      'THERE IS SOMETHINGS I HAVE TO TELL YOU ',
+      socket.handshake.query.id
+    )
+  );
+  socket.on('send-message', ({ recipients, text }) => {
+    // each persons gets the message
+    recipients.forEach((recipient) => {
+      // remove the current sender from the list of recipients
+      const newRecipients = recipients.filter((r) => r !== recipient);
+      newRecipients.push(id);
+      // sends the message back to the room/recipent
+      socket.broadcast.to(recipient).emit('receive-message', {
+        recipients: newRecipients,
+        sender: id,
+        text,
+      });
+    });
+  });
+});
+
+///////////////////////////////////////////
+//                                       //
+//        End  websocket chats           //
+//                                       //
+///////////////////////////////////////////
+
 // error handler
 app.use((err, req, res, next) => {
   // set locals, only providing error in development

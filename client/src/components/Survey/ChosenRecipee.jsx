@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     margin: 'auto auto',
   },
   paper: {
-    backgroundColor: ' rgba(121, 202, 118, 9.36)',
+    backgroundColor: '#65aa65',
     border: '2px solid #000',
     borderRadius: '10px',
     boxShadow: theme.shadows[5],
