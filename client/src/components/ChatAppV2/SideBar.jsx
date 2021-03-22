@@ -58,7 +58,7 @@ export default function Sidebar({ id }) {
           className="btn btn-success rounded-0"
           style={{
             "font-size": "12px",
-            "font-weight": "900",
+            "font-weight": "700",
             padding: "5px",
             "background-color": "#56ca85",
           }}

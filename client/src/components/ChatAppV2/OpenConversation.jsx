@@ -57,9 +57,7 @@ export default function OpenConversation() {
                 >
                   <div
                     className={`rounded px-2 py-1 ${
-                      message.fromMe
-                        ? " bg-warning text-white"
-                        : "bg-secondary text-white"
+                      message.fromMe ? " bg-warning text-white " : "bg-light "
                     }`}
                   >
                     {message.text}
