@@ -130,7 +130,7 @@ export const Todo = () => {
 					<h1>Todo List</h1>
 				</div>
 				<div className="todo-count">
-					<span>{tasksRemaining} Tasks emaining</span>
+					<span>{tasksRemaining} Tasks Remaining</span>
 				</div>
 
 				<div className="todo-body">

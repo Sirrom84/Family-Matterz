@@ -3,11 +3,13 @@
 	height: 600px;
 	top: 10px;
 	bottom: 10px;
+	position: relative;
 	background-color: rgba(255, 255, 255, 0.534);
 	box-shadow: rgba(0, 0, 0, 0.438) 0px 3px 8px;
 	position: relative;
 	margin: auto auto;
-	border-radius: 1em;
+	// border-radius: 1em;
+	border-top-left-radius: 40px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;

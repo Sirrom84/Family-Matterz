@@ -16,8 +16,8 @@
 	color: black;
 	font-family: "Oswald", sans-serif;
 	position: sticky;
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
 	h2 {
 		font-size: 15px;
 		font-weight: 400;
@@ -29,7 +29,12 @@
 	}
 
 	.Logo {
-		padding-left: 105px;
-		size: 24px;
+		padding-left: 10px;
+		height: 90px;
+		width: 200px;
+	}
+	.icon-container {
+		display: flex;
+		flex-direction: row-reverse;
 	}
 }
