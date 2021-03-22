@@ -46,7 +46,9 @@ export default function NewConversationModal({ closeModal }) {
               />
             </Form.Group>
           ))}
-          <Button type="submit">Create</Button>
+          <Button type="submit" style={{ "background-color": "#28a745" }}>
+            Create
+          </Button>
         </Form>
       </Modal.Body>
     </>

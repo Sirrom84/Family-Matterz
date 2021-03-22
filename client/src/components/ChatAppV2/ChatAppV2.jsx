@@ -3,6 +3,7 @@ import useLocalStorage from "./Hooks/useLocalStorage";
 import LoginPage from "./LoginPage";
 import Dashboard from "./Dashboard";
 import "bootstrap/dist/css/bootstrap.min.css";
+// import "./Chat";
 import { ContactsProvider } from "./Contexts/ContactsProvider";
 import { ConversationsProvider } from "./Contexts/ConversationsProvider";
 import { SocketProvider } from "./Contexts/SocketProvider";

@@ -29,7 +29,13 @@ export default function NewContactModal({ closeModal }) {
             <Form.Label>Name</Form.Label>
             <Form.Control type="text" ref={nameRef} required />
           </Form.Group>
-          <Button type="submit">Create</Button>
+          <Button
+            type="submit"
+            class="btn btn-success"
+            style={{ "background-color": "#28a745" }}
+          >
+            Create
+          </Button>
         </Form>
       </Modal.Body>
     </>
