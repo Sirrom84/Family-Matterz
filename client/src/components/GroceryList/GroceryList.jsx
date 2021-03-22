@@ -1,32 +1,69 @@
-import React, { useState, useEffect } from "react";
-import { GroceryListItem } from "./GroceryListItem";
-import { FaRegArrowAltCircleUp } from "react-icons/fa";
-import "./GroceryList.scss";
-import axios from "axios";
-import BottomNav from "../BottomNav/BottomNav";
+import React, { useState, useEffect } from 'react';
+import { Category } from './Category';
+import { FaRegArrowAltCircleUp } from 'react-icons/fa';
+import './GroceryList.scss';
+import axios from 'axios';
+import BottomNav from '../BottomNav/BottomNav';
 
 export const GroceryList = () => {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('');
   const [items, setItem] = useState([]);
 
+  const formatCategories = (items) => {
+    const aisleArr = [];
+    for (const item of items) {
+      aisleArr.push({ name: item.category, items: [] });
+    }
+
+    for (const category of aisleArr) {
+      const filtered = items.filter((item) => {
+        return item.category === category.name;
+      });
+      category.items.push(filtered);
+    }
+    setItem(aisleArr);
+    console.log('Loaded');
+  };
+
   useEffect(() => {
-    axios.get("http://localhost:9000/groceries").then((res) => {
-      setItem(res.data);
-    });
+    axios
+      .get('http://localhost:9000/groceries')
+      .then((res) => {
+        formatCategories(res.data);
+      })
+      .catch((err) => {
+        console.log('Error in Data fetch', err);
+      });
   }, []);
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    const newItem = { title: input, checked: false, category: "" };
-    setItem([...items, newItem]);
-    setInput("");
+    const API = process.env.REACT_APP_API_KEY;
     axios
-      .post("http://localhost:9000/groceries", newItem)
-      .then(() => {
-        console.log("New Item Added");
+      .get(
+        `https://api.spoonacular.com/food/ingredients/search?query=${input}${API}s`
+      )
+      .then((res) => {
+        const ID = res.data.results[0].id;
+        return axios.get(
+          `https://api.spoonacular.com/food/ingredients/${ID}/information?${API}`
+        );
+      })
+      .then((res) => {
+        const newItem = {
+          title: res.data.name,
+          checked: false,
+          category: res.data.aisle,
+        };
+        setItem([...items, newItem]);
+        setInput('');
+        return axios.post('http://localhost:9000/groceries', newItem);
+      })
+      .then((res) => {
+        console.log('Item Added', res);
       })
       .catch((err) => {
-        console.log("Item Not Added", err);
+        console.log(err, 'Error in chain');
       });
   };
 
@@ -40,7 +77,7 @@ export const GroceryList = () => {
     axios
       .put(`http://localhost:9000/groceries/${item._id}`, item)
       .catch((err) => {
-        console.log("Error Updating Item", err);
+        console.log('Error Updating Item', err);
       });
   };
 
@@ -48,7 +85,7 @@ export const GroceryList = () => {
     const filteredItems = items.filter((element) => element._id !== item._id);
     setItem(filteredItems);
     axios.delete(`http://localhost:9000/groceries/${item._id}`).catch((err) => {
-      console.log("Error deleting Item", err);
+      console.log('Error deleting Item', err);
     });
   };
 
@@ -64,30 +101,30 @@ export const GroceryList = () => {
 
   const groceryItems = items.map((data, index) => {
     return (
-      <GroceryListItem
-        key={index}
+      <Category
         data={data}
-        onToggle={() => onCheckHandler(index)}
-        onDelete={() => onDeleteHandler(data)}
+        index={index}
+        onToggle={onCheckHandler}
+        onDelete={onDeleteHandler}
       />
     );
   });
 
   return (
-    <div className="groceryList">
+    <div className='groceryList'>
       <h1>Grocery List</h1>
       <span>Items left: {checkItemsLeft(items)}</span>
-      <div className="list">{groceryItems}</div>
-      <form className="input" onSubmit={onSubmitHandler}>
+      <div className='list'>{groceryItems}</div>
+      <form className='input' onSubmit={onSubmitHandler}>
         <input
           onChange={(e) => setInput(e.target.value)}
-          type="text"
-          placeholder="Add an Item"
+          type='text'
+          placeholder='Add an Item'
           value={input}
         />
         <FaRegArrowAltCircleUp
           value={input}
-          className="submit"
+          className='submit'
           onClick={onSubmitHandler}
         />
       </form>
