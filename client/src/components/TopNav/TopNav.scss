@@ -1,34 +1,35 @@
 .top-nav {
-  display: flex;
-  align-items: center;
-  width: 100vw;
-  height: 10vh;
-  justify-content: space-between;
-  width: 100vw;
-  height: 8vh;
-  margin-top: 20px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  margin-top: 0;
-  // background-color: rgba(255, 255, 255, 0.719);
-  opacity: 0.9;
-  // margin-bottom: 20px;
-  background-color: #f2a154;
-  color: black;
-  font-family: 'Oswald', sans-serif;
-  position: sticky;
+	display: flex;
+	align-items: center;
+	width: 100vw;
+	height: 10vh;
+	justify-content: space-between;
+	width: 100vw;
+	height: 8vh;
+	margin-top: 20px;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	margin-top: 0;
+	// background-color: rgba(255, 255, 255, 0.719);
+	opacity: 0.9;
+	// margin-bottom: 20px;
+	background-color: #56ca85;
+	color: black;
+	font-family: "Oswald", sans-serif;
+	position: sticky;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	h2 {
+		font-size: 15px;
+		font-weight: 400;
+	}
 
-  // .message {
-  //   font-size: 1em;
-  //   margin-right: 20px;
-  // }
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
 
-  h2 {
-    font-size: 15px;
-    font-weight: 400;
-  }
-
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
+	.Logo {
+		padding-left: 105px;
+		size: 24px;
+	}
 }
