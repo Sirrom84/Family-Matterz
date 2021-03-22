@@ -60,6 +60,7 @@ export default function Sidebar({ id }) {
             "font-size": "12px",
             "font-weight": "900",
             padding: "5px",
+            "background-color": "#56ca85",
           }}
         >
           New {conversationsOpen ? "Conversation" : "Contact"}

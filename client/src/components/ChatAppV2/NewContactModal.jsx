@@ -32,7 +32,7 @@ export default function NewContactModal({ closeModal }) {
           <Button
             type="submit"
             class="btn btn-success"
-            style={{ "background-color": "#28a745" }}
+            style={{ "background-color": "#56ca85" }}
           >
             Create
           </Button>

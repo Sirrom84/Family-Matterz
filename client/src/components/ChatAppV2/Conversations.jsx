@@ -1,3 +1,4 @@
+import { Width } from "devextreme-react/chart";
 import React from "react";
 import { ListGroup } from "react-bootstrap";
 import { useConversations } from "./Contexts/ConversationsProvider";
@@ -10,9 +11,13 @@ export default function Conversations() {
     <ListGroup variant="flush">
       {conversations.map((conversation, index) => (
         <ListGroup.Item
+          id="active"
           style={{
-            "background-color": "#4cae4c",
+            "background-color": "#56ca85",
             "margin-top": "8px",
+            // position: "fixed",
+            top: "20px",
+            padding: "5px 15px 0px",
           }}
           key={index}
           action

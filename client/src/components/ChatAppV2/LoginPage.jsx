@@ -31,7 +31,11 @@ export default function Login(props) {
                 <Form.Label id="title">Family MatterZ</Form.Label>
                 <Form.Control type="text" ref={idRef} id="Z" required />
               </Form.Group>
-              <Button type="submit" id="z" className="mr-2">
+              <Button
+                type="submit"
+                className="mr-2 btn btn-success"
+                style={{ "background-color": "#56ca85" }}
+              >
                 Login
               </Button>
               <Button id="z" onClick={createNewId} variant="secondary">
