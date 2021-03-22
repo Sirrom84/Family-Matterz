@@ -1,9 +1,5 @@
 import React from "react";
-import {ImBubbles2} from "react-icons/im";
 import {Link} from "react-router-dom";
-import {Avatar} from "primereact/avatar";
-
-import {Badge} from "primereact/badge";
 
 import "./TopNav.scss";
 
@@ -11,9 +7,11 @@ export default function TopNav() {
 	return (
 		<div>
 			<div className="top-nav">
-				<img src="./images/FM-Logo.png" width="auto" height="70px" alt="Logo" />
-				<h2>The Morris House</h2>
-				<Avatar image="./images/daughter.png" size="large" shape="circle" />
+				<img className="Logo" src="./images/FamilyMatterz.svg" alt="Logo" />
+				{/* <h2>Family Matterz</h2> */}
+				<div className="icon-container">
+					<img className="top-avatar" src="./images/daughter.png"></img>
+				</div>
 			</div>
 		</div>
 	);
