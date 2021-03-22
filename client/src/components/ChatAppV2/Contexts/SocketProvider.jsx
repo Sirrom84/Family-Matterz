@@ -23,7 +23,7 @@ export function SocketProvider({ id, children }) {
     setSocket(newSocket);
 
     //close the socket to prevent duplicates
-    // return () => newSocket.close();
+    return () => newSocket.close();
   }, [id]);
 
   return (
