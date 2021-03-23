@@ -5,22 +5,23 @@ import { BsCheckCircle } from 'react-icons/bs';
 import { BsTrash } from 'react-icons/bs';
 
 export const GroceryListItem = (props) => {
+  const item = props.item;
   let CheckedClass = 'item';
-  if (props.data.checked) {
+  if (item.checked) {
     CheckedClass += ' checked';
   }
 
   return (
     <div className='list-container'>
-      <div onClick={props.onToggle} className='list-item'>
-        {props.data.checked ? (
+      <div onClick={() => props.onToggle(item)} className='list-item'>
+        {item.checked ? (
           <BsCheckCircle className='button buttonCheck' />
         ) : (
           <BsCircle className='button' />
         )}
-        <p className={CheckedClass}>{props.data.title}</p>
+        <p className={CheckedClass}>{item.title}</p>
       </div>
-      <BsTrash className='delete' onClick={props.onDelete} />
+      <BsTrash className='delete' onClick={() => props.onDelete(item)} />
     </div>
   );
 };

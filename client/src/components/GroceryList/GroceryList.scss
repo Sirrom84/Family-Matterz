@@ -25,10 +25,13 @@
 		margin-bottom: 20px;
 	}
 
-	.list {
-		margin-left: 15px;
-		overflow: auto;
-	}
+  .list {
+    overflow: auto;
+  }
+  .list-item {
+    margin-left: 15px;
+  }
+
 
 	.input {
 		display: flex;

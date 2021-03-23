@@ -49,11 +49,15 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
+  console.log(req.params.id);
+
   Grocery.findByIdAndDelete(req.params.id)
     .then(() => {
       console.log('Item Deleted');
     })
-    .catch('Error Deleting Server Side', err);
+    .catch((err) => {
+      console.log('Error Deleting Server Side', err);
+    });
 });
 
 module.exports = router;
