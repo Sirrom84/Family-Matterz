@@ -44,7 +44,7 @@ function Task({task, index, completeTask, removeTask}) {
 	);
 }
 
-export const Todo = () => {
+export default function Todo() {
 	const [tasksRemaining, setTasksRemaining] = useState(0);
 	const [tasks, setTasks] = useState([]);
 	useEffect(() => {
@@ -153,4 +153,4 @@ export const Todo = () => {
 			<BottomNav />
 		</div>
 	);
-};
+}

@@ -14,7 +14,8 @@ export default function Login(props) {
 		props.onIdSubmit(idRef.current.value.trim());
 	};
 
-	const createNewId = () => {
+	const createNewId = (e) => {
+		e.preventDefault();
 		window.localStorage.setItem("aaron-chat-app3433", uuidV4());
 	};
 
@@ -26,14 +27,20 @@ export default function Login(props) {
 						className="align-items-center d-flex"
 						style={{height: "60vh", "z-index": "5500"}}>
 						<Form onSubmit={handleSubmit} id="z" className="w-80">
+							<img
+								className="Logo"
+								src="./images/FamilyMatterz.svg"
+								alt="Logo"
+							/>
 							<Form.Group>
-								<img
-									className="login-logo"
-									src="./images/FamilyMatterz.svg"
-									alt="Logo"
+								{/* <Form.Label id="title">Please login </Form.Label> */}
+								<Form.Control
+									placeholder="please login"
+									type="text"
+									ref={idRef}
+									id="Z"
+									required
 								/>
-								<Form.Label id="title"></Form.Label>
-								<Form.Control type="text" ref={idRef} id="Z" required />
 							</Form.Group>
 							<Button
 								type="submit"
@@ -42,7 +49,7 @@ export default function Login(props) {
 								Login
 							</Button>
 							<Button id="z" onClick={createNewId} variant="secondary">
-								Sign-Up
+								Register
 							</Button>
 						</Form>
 					</Container>

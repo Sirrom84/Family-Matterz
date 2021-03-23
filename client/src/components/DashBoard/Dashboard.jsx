@@ -1,12 +1,6 @@
 import React from "react";
-
-import {Todo} from "../Todo/Todo";
-
 import {Link} from "react-router-dom";
-import {Avatar} from "primereact/avatar";
-
 import Scheduler from "../Calendar/Calendar";
-
 import "./DashBoard.scss";
 
 export const DashBoard = (props) => {
@@ -25,7 +19,7 @@ export const DashBoard = (props) => {
 			<Link to="/grocerylist">
 				<div className="four"></div>
 			</Link>
-			<Link to="/recipes">
+			<Link to="/ChatApp">
 				<div className="five"></div>
 			</Link>
 		</div>

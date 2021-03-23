@@ -8,7 +8,7 @@ export default function TopNav() {
 		<div>
 			<div className="top-nav">
 				<img className="Logo" src="./images/FamilyMatterz.svg" alt="Logo" />
-				{/* <h2>Family Matterz</h2> */}
+
 				<div className="icon-container">
 					<img className="top-avatar" src="./images/daughter.png"></img>
 				</div>
