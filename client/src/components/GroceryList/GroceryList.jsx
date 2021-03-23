@@ -45,19 +45,21 @@ export const GroceryList = () => {
       })
       .then((res) => {
         console.log(res.data.aisle);
+        const split = res.data.aisle.split(';');
+        console.log(split[0]);
         const newItem = {
           title: input,
           checked: false,
-          category: res.data.aisle,
+          category: split[0],
         };
 
-        const aisle = res.data.aisle;
+        const aisle = split[0];
 
         if (items[aisle]) {
           items[aisle] = [...items[aisle], newItem];
           setItem({ ...items });
         } else {
-          items[res.data.aisle] = [newItem];
+          items[aisle] = [newItem];
           setItem({ ...items });
         }
 
@@ -87,8 +89,6 @@ export const GroceryList = () => {
     const filteredItems = items[item.category].filter(
       (element) => element._id !== item._id
     );
-    // console.log(filteredItems);
-    // console.log(items[item.category].length);
 
     if (items[item.category].length > 1) {
       items[item.category] = filteredItems;
@@ -97,18 +97,21 @@ export const GroceryList = () => {
     }
 
     setItem({ ...items });
-    // console.log(item._id);
-    // axios.delete(`http://localhost:9000/groceries/${item._id}`).catch((err) => {
-    //   console.log('Error deleting Item', err);
-    // });
+    console.log(item._id);
+    axios.delete(`http://localhost:9000/groceries/${item._id}`).catch((err) => {
+      console.log('Error deleting Item', err);
+    });
   };
 
   const checkItemsLeft = (list) => {
     let count = 0;
     const itemLeft = Object.values(items);
+
     for (const item of itemLeft) {
-      if (!item.checked) {
-        count++;
+      for (const element of item) {
+        if (!element.checked) {
+          count++;
+        }
       }
     }
     return count;
