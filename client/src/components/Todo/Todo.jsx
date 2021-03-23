@@ -127,10 +127,12 @@ export const Todo = () => {
 		<div>
 			<div className="todo-container">
 				<div className="todo-header">
-					<div className="todo-count">
-						<span>{tasksRemaining} Tasks remaining</span>
-					</div>
+					<h1>Todo List</h1>
 				</div>
+				<div className="todo-count">
+					<span>{tasksRemaining} Tasks Remaining</span>
+				</div>
+
 				<div className="todo-body">
 					{tasks.map((task, index) => (
 						<Task

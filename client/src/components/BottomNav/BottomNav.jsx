@@ -1,24 +1,15 @@
 import React from "react";
 import "./BottomNav.scss";
 import {GoTasklist} from "react-icons/go";
-import {FaCalendarDay} from "react-icons/fa";
+import {AiOutlineWechat} from "react-icons/ai";
 import {FaHome} from "react-icons/fa";
 import {FaShoppingBasket} from "react-icons/fa";
+import {BiFoodMenu} from "react-icons/bi";
 import {Link} from "react-router-dom";
 
 export default function BottomNav() {
 	return (
 		<div className="nav">
-			<div className="nav-item">
-				<Link to="/">
-					<FaHome />
-				</Link>
-			</div>
-			<div className="nav-item">
-				<Link to="/calender">
-					<FaCalendarDay />
-				</Link>
-			</div>
 			<div className="nav-item">
 				<Link to="/todolist">
 					<GoTasklist />
@@ -27,6 +18,21 @@ export default function BottomNav() {
 			<div className="nav-item">
 				<Link to="/grocerylist">
 					<FaShoppingBasket />
+				</Link>
+			</div>
+			<div className="nav-item">
+				<Link to="/">
+					<FaHome />
+				</Link>
+			</div>
+			<div className="nav-item">
+				<Link to="/survey">
+					<BiFoodMenu />
+				</Link>
+			</div>
+			<div className="nav-item">
+				<Link to="/ChatApp">
+					<AiOutlineWechat />
 				</Link>
 			</div>
 		</div>

@@ -15,6 +15,7 @@ export const DashBoard = (props) => {
 			<div className="one">
 				<Scheduler defaultCurrentView="month" />
 			</div>
+
 			<Link to="/todolist">
 				<div className="two"></div>
 			</Link>

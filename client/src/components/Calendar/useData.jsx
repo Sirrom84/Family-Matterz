@@ -19,8 +19,8 @@ export const employees = [
 		text: "The Smiths",
 		id: 1,
 		color: "#56ca85",
-		avatar: "/images/daughter.png ",
+		avatar: "/images/clusterFamonline.svg ",
 		age: 4,
-		discipline: "Golf, Vegan, Cats",
+		discipline: "Mom, Dad, Brian, Sarah",
 	},
 ];

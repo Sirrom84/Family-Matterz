@@ -18,15 +18,20 @@ export default function Sidebar({ id }) {
   };
 
   return (
-    <div style={{ width: "100px" }} className="d-flex flex-column">
+    <div
+      // sidebar styling
+      style={{ width: "100px", height: "79vh" }}
+      className="d-flex flex-column"
+      id="sidebar-list"
+    >
       <Tab.Container activeKey={activeKey} onSelect={setActiveKey}>
         <Nav
           variant="tabs"
           className="justify-content-start"
           style={{
             position: "fixed",
-            top: "16vh",
-            "font-size": "10px",
+            top: "8vh",
+            "font-size": "12px",
             "font-weight": "900",
           }}
         >
@@ -50,11 +55,12 @@ export default function Sidebar({ id }) {
         </div>
         <Button
           onClick={() => setModalOpen(true)}
-          className="btn btn-primary rounded-0"
+          className="btn btn-success rounded-0"
           style={{
             "font-size": "12px",
-            "font-weight": "900",
+            "font-weight": "700",
             padding: "5px",
+            "background-color": "#56ca85",
           }}
         >
           New {conversationsOpen ? "Conversation" : "Contact"}

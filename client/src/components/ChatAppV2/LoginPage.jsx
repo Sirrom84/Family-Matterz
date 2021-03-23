@@ -5,7 +5,7 @@ import backgroundVideo from "./video/family.mp4";
 import "./Loginpage.scss";
 
 export default function Login(props) {
-  console.log("this is props: ", props.onIdSubmit);
+  // console.log("this is props: ", props.onIdSubmit);
 
   const idRef = useRef();
 
@@ -14,7 +14,8 @@ export default function Login(props) {
     props.onIdSubmit(idRef.current.value.trim());
   };
 
-  const createNewId = () => {
+  const createNewId = (e) => {
+    e.preventDefault();
     window.localStorage.setItem("aaron-chat-app3433", uuidV4());
   };
 
@@ -24,14 +25,18 @@ export default function Login(props) {
         <div id="video_overlays">
           <Container
             className="align-items-center d-flex"
-            style={{ height: "70vh", "z-index": "5500" }}
+            style={{ height: "60vh", "z-index": "5500" }}
           >
             <Form onSubmit={handleSubmit} id="z" className="w-80">
               <Form.Group>
-                <Form.Label id="title">Family MatterZ</Form.Label>
+                <Form.Label id="title">Please login </Form.Label>
                 <Form.Control type="text" ref={idRef} id="Z" required />
               </Form.Group>
-              <Button type="submit" id="z" className="mr-2">
+              <Button
+                type="submit"
+                className="mr-2 btn btn-success"
+                style={{ "background-color": "#56ca85" }}
+              >
                 Login
               </Button>
               <Button id="z" onClick={createNewId} variant="secondary">

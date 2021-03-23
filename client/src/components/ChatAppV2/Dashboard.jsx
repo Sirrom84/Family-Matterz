@@ -6,10 +6,11 @@ import SideBar from "./SideBar";
 export default function Dashboard({ id }) {
   const selectedConversations = useConversations();
 
+  // style for the conversations box
   return (
     <div
       className="d-flex"
-      style={{ height: "70vh", "margin-top": "4vh", "margin-bottom": "1vh" }}
+      style={{ height: "79vh", "margin-top": "5vh", "margin-bottom": "5vh" }}
     >
       <SideBar id={id} />
       {selectedConversations && <OpenConversation />}
