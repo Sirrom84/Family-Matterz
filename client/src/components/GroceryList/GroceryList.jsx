@@ -10,19 +10,11 @@ export const GroceryList = () => {
   const [items, setItem] = useState([]);
 
   const formatCategories = (items) => {
-    const aisleArr = [];
-    for (const item of items) {
-      aisleArr.push({ name: item.category, items: [] });
-    }
-
-    for (const category of aisleArr) {
-      const filtered = items.filter((item) => {
-        return item.category === category.name;
-      });
-      category.items.push(filtered);
-    }
-    setItem(aisleArr);
-    console.log('Loaded');
+    let group = items.reduce((r, a) => {
+      r[a.category] = [...(r[a.category] || []), a];
+      return r;
+    }, {});
+    setItem(group);
   };
 
   useEffect(() => {
@@ -39,11 +31,13 @@ export const GroceryList = () => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     const API = process.env.REACT_APP_API_KEY;
+    console.log('in the first axios');
     axios
       .get(
-        `https://api.spoonacular.com/food/ingredients/search?query=${input}${API}s`
+        `https://api.spoonacular.com/food/ingredients/search?query=${input}${API}`
       )
       .then((res) => {
+        console.log('in the second axios');
         const ID = res.data.results[0].id;
         return axios.get(
           `https://api.spoonacular.com/food/ingredients/${ID}/information?${API}`
@@ -51,29 +45,50 @@ export const GroceryList = () => {
       })
       .then((res) => {
         const newItem = {
-          title: res.data.name,
+          title: input,
           checked: false,
           category: res.data.aisle,
         };
-        setItem([...items, newItem]);
+
+        const aisle = res.data.aisle;
+
+        if (items[aisle]) {
+          items[aisle] = [...items[aisle], newItem];
+          console.log(items);
+          setItem({ ...items });
+        } else {
+          const updatedItem = (items[res.data.aisle] = [newItem]);
+          console.log(updatedItem);
+          setItem({ ...items, updatedItem });
+        }
+
         setInput('');
-        return axios.post('http://localhost:9000/groceries', newItem);
-      })
-      .then((res) => {
-        console.log('Item Added', res);
+        console.log('in the third axios');
+        axios.post('http://localhost:9000/groceries', newItem);
       })
       .catch((err) => {
         console.log(err, 'Error in chain');
       });
   };
 
-  const onCheckHandler = (index) => {
-    const checked = [...items];
-    Object.assign(checked[index], {
-      checked: !checked[index].checked,
-    });
-    setItem(checked);
-    const item = items[index];
+  const onCheckHandler = (item, itemIndex) => {
+    //   // console.log(item);
+    //   // const checked = [...items];
+    //   // console.log(checked[index].items);
+    //   Object.assign(item, {
+    //     checked: !item.checked,
+    //   });
+
+    // const category = (element) => element.name === item.category;
+    // const findCategory = items.findIndex(category);
+
+    // const newList = [...items];
+    // const itemFind = newList[findCategory].items[0];
+    // const newItem = [...itemFind];
+    // const newCategory = [{ ...newList[findCategory], newItem }];
+    // const itemToAdd = [...newList, newCategory];
+    // setItem(itemToAdd);
+
     axios
       .put(`http://localhost:9000/groceries/${item._id}`, item)
       .catch((err) => {
@@ -89,23 +104,25 @@ export const GroceryList = () => {
     });
   };
 
-  const checkItemsLeft = (list) => {
-    let count = 0;
-    for (const item of list) {
-      if (!item.checked) {
-        count++;
-      }
-    }
-    return count;
-  };
+  // const checkItemsLeft = (list) => {
+  //   let count = 0;
+  //   for (const item of list) {
+  //     if (!item.checked) {
+  //       count++;
+  //     }
+  //   }
+  //   return count;
+  // };
 
-  const groceryItems = items.map((data, index) => {
+  const entries = Object.entries(items);
+  const groceryItems = entries.map((data, index) => {
     return (
       <Category
-        data={data}
+        title={data[0]}
+        body={data[1]}
         index={index}
         onToggle={onCheckHandler}
-        onDelete={onDeleteHandler}
+        onDelete={() => onDeleteHandler(data)}
       />
     );
   });
@@ -113,7 +130,7 @@ export const GroceryList = () => {
   return (
     <div className='groceryList'>
       <h1>Grocery List</h1>
-      <span>Items left: {checkItemsLeft(items)}</span>
+      {/* <span>Items left: {checkItemsLeft(items)}</span> */}
       <div className='list'>{groceryItems}</div>
       <form className='input' onSubmit={onSubmitHandler}>
         <input

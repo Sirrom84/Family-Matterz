@@ -1,12 +1,8 @@
-import { ContactSupportOutlined } from '@material-ui/icons';
-import { CommonSeriesSettingsHoverStyle } from 'devextreme-react/range-selector';
 import React from 'react';
 import { GroceryListItem } from './GroceryListItem';
-
+import './Category.scss';
 export const Category = (props) => {
-  const items = props.data.items;
-  console.log(items, 'items added');
-  const listItems = items.map((item, index) => {
+  const listItems = props.body.map((item, index) => {
     return (
       <GroceryListItem
         item={item}
@@ -18,8 +14,8 @@ export const Category = (props) => {
   });
 
   return (
-    <div>
-      <h4>{props.data.name}</h4>
+    <div className='category'>
+      <h4>{props.title}</h4>
       <div>{listItems}</div>
     </div>
   );
