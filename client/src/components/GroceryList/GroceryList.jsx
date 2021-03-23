@@ -44,6 +44,7 @@ export const GroceryList = () => {
         );
       })
       .then((res) => {
+        console.log(res.data.aisle);
         const newItem = {
           title: input,
           checked: false,
@@ -86,17 +87,20 @@ export const GroceryList = () => {
     const filteredItems = items[item.category].filter(
       (element) => element._id !== item._id
     );
-    if (items[item.category] > 1) {
-      items[item.category] = [filteredItems];
+    // console.log(filteredItems);
+    // console.log(items[item.category].length);
+
+    if (items[item.category].length > 1) {
+      items[item.category] = filteredItems;
     } else {
       items[item.category] = [];
     }
-    console.log(items[item.category]);
 
     setItem({ ...items });
-    axios.delete(`http://localhost:9000/groceries/${item._id}`).catch((err) => {
-      console.log('Error deleting Item', err);
-    });
+    // console.log(item._id);
+    // axios.delete(`http://localhost:9000/groceries/${item._id}`).catch((err) => {
+    //   console.log('Error deleting Item', err);
+    // });
   };
 
   const checkItemsLeft = (list) => {
