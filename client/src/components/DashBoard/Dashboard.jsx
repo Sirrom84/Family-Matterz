@@ -4,7 +4,7 @@ import {Todo} from "../Todo/Todo";
 
 import {Link} from "react-router-dom";
 import {Avatar} from "primereact/avatar";
-import TopNav from "../TopNav/TopNav";
+
 import Scheduler from "../Calendar/Calendar";
 
 import "./DashBoard.scss";

@@ -27,7 +27,12 @@ export default function Login(props) {
 						style={{height: "60vh", "z-index": "5500"}}>
 						<Form onSubmit={handleSubmit} id="z" className="w-80">
 							<Form.Group>
-								<Form.Label id="title">Please login </Form.Label>
+								<img
+									className="login-logo"
+									src="./images/FamilyMatterz.svg"
+									alt="Logo"
+								/>
+								<Form.Label id="title"></Form.Label>
 								<Form.Control type="text" ref={idRef} id="Z" required />
 							</Form.Group>
 							<Button
@@ -37,7 +42,7 @@ export default function Login(props) {
 								Login
 							</Button>
 							<Button id="z" onClick={createNewId} variant="secondary">
-								Get a New Id
+								Sign-Up
 							</Button>
 						</Form>
 					</Container>
