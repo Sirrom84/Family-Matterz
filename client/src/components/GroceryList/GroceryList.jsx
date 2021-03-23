@@ -86,11 +86,17 @@ export const GroceryList = () => {
     const filteredItems = items[item.category].filter(
       (element) => element._id !== item._id
     );
-    items[item.category] = [filteredItems];
+    if (items[item.category] > 1) {
+      items[item.category] = [filteredItems];
+    } else {
+      items[item.category] = [];
+    }
+    console.log(items[item.category]);
+
     setItem({ ...items });
-    // axios.delete(`http://localhost:9000/groceries/${item._id}`).catch((err) => {
-    //   console.log('Error deleting Item', err);
-    // });
+    axios.delete(`http://localhost:9000/groceries/${item._id}`).catch((err) => {
+      console.log('Error deleting Item', err);
+    });
   };
 
   // const checkItemsLeft = (list) => {
