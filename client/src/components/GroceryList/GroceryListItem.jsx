@@ -13,7 +13,7 @@ export const GroceryListItem = (props) => {
 
   return (
     <div className='list-container'>
-      <div onClick={props.onToggle} className='list-item'>
+      <div onClick={() => props.onToggle(item)} className='list-item'>
         {item.checked ? (
           <BsCheckCircle className='button buttonCheck' />
         ) : (
@@ -21,7 +21,7 @@ export const GroceryListItem = (props) => {
         )}
         <p className={CheckedClass}>{item.title}</p>
       </div>
-      <BsTrash className='delete' onClick={props.onDelete} />
+      <BsTrash className='delete' onClick={() => props.onDelete(item)} />
     </div>
   );
 };

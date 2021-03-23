@@ -54,12 +54,10 @@ export const GroceryList = () => {
 
         if (items[aisle]) {
           items[aisle] = [...items[aisle], newItem];
-          console.log(items);
           setItem({ ...items });
         } else {
-          const updatedItem = (items[res.data.aisle] = [newItem]);
-          console.log(updatedItem);
-          setItem({ ...items, updatedItem });
+          items[res.data.aisle] = [newItem];
+          setItem({ ...items });
         }
 
         setInput('');
@@ -71,23 +69,11 @@ export const GroceryList = () => {
       });
   };
 
-  const onCheckHandler = (item, itemIndex) => {
-    //   // console.log(item);
-    //   // const checked = [...items];
-    //   // console.log(checked[index].items);
-    //   Object.assign(item, {
-    //     checked: !item.checked,
-    //   });
-
-    // const category = (element) => element.name === item.category;
-    // const findCategory = items.findIndex(category);
-
-    // const newList = [...items];
-    // const itemFind = newList[findCategory].items[0];
-    // const newItem = [...itemFind];
-    // const newCategory = [{ ...newList[findCategory], newItem }];
-    // const itemToAdd = [...newList, newCategory];
-    // setItem(itemToAdd);
+  const onCheckHandler = (item) => {
+    Object.assign(item, {
+      checked: !item.checked,
+    });
+    setItem({ ...items });
 
     axios
       .put(`http://localhost:9000/groceries/${item._id}`, item)
@@ -97,11 +83,14 @@ export const GroceryList = () => {
   };
 
   const onDeleteHandler = (item) => {
-    const filteredItems = items.filter((element) => element._id !== item._id);
-    setItem(filteredItems);
-    axios.delete(`http://localhost:9000/groceries/${item._id}`).catch((err) => {
-      console.log('Error deleting Item', err);
-    });
+    const filteredItems = items[item.category].filter(
+      (element) => element._id !== item._id
+    );
+    items[item.category] = [filteredItems];
+    setItem({ ...items });
+    // axios.delete(`http://localhost:9000/groceries/${item._id}`).catch((err) => {
+    //   console.log('Error deleting Item', err);
+    // });
   };
 
   // const checkItemsLeft = (list) => {
@@ -122,7 +111,7 @@ export const GroceryList = () => {
         body={data[1]}
         index={index}
         onToggle={onCheckHandler}
-        onDelete={() => onDeleteHandler(data)}
+        onDelete={onDeleteHandler}
       />
     );
   });
