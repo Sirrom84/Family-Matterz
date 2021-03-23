@@ -99,20 +99,22 @@ export const GroceryList = () => {
     });
   };
 
-  // const checkItemsLeft = (list) => {
-  //   let count = 0;
-  //   for (const item of list) {
-  //     if (!item.checked) {
-  //       count++;
-  //     }
-  //   }
-  //   return count;
-  // };
+  const checkItemsLeft = (list) => {
+    let count = 0;
+    const itemLeft = Object.values(items);
+    for (const item of itemLeft) {
+      if (!item.checked) {
+        count++;
+      }
+    }
+    return count;
+  };
 
   const entries = Object.entries(items);
   const groceryItems = entries.map((data, index) => {
     return (
       <Category
+        key={index}
         title={data[0]}
         body={data[1]}
         index={index}
@@ -125,7 +127,7 @@ export const GroceryList = () => {
   return (
     <div className='groceryList'>
       <h1>Grocery List</h1>
-      {/* <span>Items left: {checkItemsLeft(items)}</span> */}
+      <span>Items left: {checkItemsLeft(items)}</span>
       <div className='list'>{groceryItems}</div>
       <form className='input' onSubmit={onSubmitHandler}>
         <input
