@@ -2,7 +2,7 @@ import './App.scss';
 import TopNav from './components/TopNav/TopNav';
 import { DashBoard } from './components/DashBoard/Dashboard';
 import { GroceryList } from './components/GroceryList/GroceryList';
-import { Todo } from './components/Todo/Todo';
+import Todo from './components/Todo/Todo';
 import { Survey } from './components/Survey/Survey';
 import { Recipes } from './components/Recipies/Recipes';
 import { Ingredients } from './components/Recipies/Ingredients';
@@ -28,7 +28,7 @@ function App() {
               <Route path='/survey' component={Survey} />
               <Route path='/todolist' component={Todo} />
               <Route path='/recipes/:id/ingredients' component={Ingredients} />
-              <Route path='/recipes' exact component={Recipes} />
+              <Route path='/recipes' component={Recipes} />
               <Route path='/chatApp'>
                 {' '}
                 <ChatAppV2 id={id} />
