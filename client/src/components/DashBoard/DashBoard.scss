@@ -50,6 +50,7 @@
 	height: 200px;
 	border-radius: 15px;
 	display: flex;
+	width: 190px;
 	justify-content: center;
 	background-color: #183aa9;
 	color: white;
@@ -61,7 +62,7 @@
 .three {
 	border-radius: 15px;
 	height: 200px;
-	width: 200px;
+	width: 190px;
 	display: flex;
 	justify-content: center;
 	background-repeat: no-repeat;
@@ -75,6 +76,7 @@
 	justify-content: center;
 	background-color: #5b39b0;
 	height: 200px;
+	width: 190px;
 	background-repeat: no-repeat;
 	background-image: url("./images/Grocery.png");
 	box-shadow: rgba(0, 0, 0, 0.438) 0px 3px 8px;
@@ -86,7 +88,8 @@
 	justify-content: center;
 	background-color: yellow;
 	height: 200px;
+	width: 190px;
 	background-repeat: no-repeat;
 	box-shadow: rgba(0, 0, 0, 0.438) 0px 3px 8px;
-	background-image: url("./images/Cookbook2.png");
+	background-image: url("./images/Chat.png");
 }

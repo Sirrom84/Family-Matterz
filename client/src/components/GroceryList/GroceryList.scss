@@ -12,6 +12,7 @@
 	border-top-left-radius: 40px;
 	display: flex;
 	flex-direction: column;
+
 	justify-content: space-evenly;
 	overflow-y: auto;
 
@@ -19,7 +20,8 @@
 		align-self: center;
 		margin-bottom: 10px;
 	}
-
+	.h3 {
+	}
 	span {
 		text-align: center;
 		margin-bottom: 20px;

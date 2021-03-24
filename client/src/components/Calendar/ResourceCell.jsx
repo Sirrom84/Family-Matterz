@@ -1,6 +1,7 @@
 import React from 'react';
 
 class ResourceCell extends React.PureComponent {
+<<<<<<< HEAD
   render() {
     const {
       data: {
@@ -25,6 +26,27 @@ class ResourceCell extends React.PureComponent {
       </div>
     );
   }
+=======
+	render() {
+		const {
+			data: {
+				color,
+				text,
+				data: {avatar},
+			},
+		} = this.props;
+		return (
+			<div className="dx-template-wrapper">
+				<div className="name" style={{background: color}}>
+					<h2>{text}</h2>
+				</div>
+				<div className="avatar">
+					<img src={avatar} alt="" />
+				</div>
+			</div>
+		);
+	}
+>>>>>>> styling/rob
 }
 
 export default ResourceCell;

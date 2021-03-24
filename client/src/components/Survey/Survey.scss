@@ -11,12 +11,14 @@
 	border-top-left-radius: 40px;
 	display: flex;
 	flex-direction: column;
+
 	justify-content: space-evenly;
 	overflow-y: auto;
 
 	h3 {
 		text-align: center;
 		font-size: 1.3em;
+		font-family: "Oswald", sans-serif;
 	}
 	.survey-items {
 		display: flex;
@@ -59,7 +61,7 @@
 
 	li {
 		margin: 15px;
-		font-size: 20px;
+		font-size: 15px;
 	}
 
 	.item {
