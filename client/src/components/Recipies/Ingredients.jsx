@@ -126,7 +126,7 @@ export const Ingredients = (props) => {
 
   return (
     <>
-      <div className='grid-container'>
+      <div className='ingredient-container'>
         <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
           <Alert onClose={handleClose} severity='success'>
             The ingredients have sucessfully been added to you list!

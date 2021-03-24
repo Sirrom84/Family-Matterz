@@ -27,7 +27,11 @@ function App() {
               <Route path='/calendar' component={Calendar} />
               <Route path='/survey' component={Survey} />
               <Route path='/todolist' component={Todo} />
-              <Route path='/recipes/:id/ingredients' component={Ingredients} />
+              <Route
+                strict
+                path='/recipes/:id/ingredients'
+                component={Ingredients}
+              />
               <Route path='/recipes' component={Recipes} />
               <Route path='/chatApp'>
                 {' '}
