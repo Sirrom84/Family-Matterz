@@ -1,6 +1,7 @@
 .recipes {
   overflow: auto;
-  margin-bottom: 60px;
+  max-height: 84vh;
+  overflow-y: scroll;
 
   h3 {
     text-align: center;
