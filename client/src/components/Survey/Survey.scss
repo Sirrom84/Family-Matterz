@@ -1,23 +1,22 @@
 .survey-container {
-	width: 95%;
-	height: 600px;
-	top: 10px;
-	bottom: 10px;
-	background-color: rgba(255, 255, 255, 0.534);
-	box-shadow: rgba(0, 0, 0, 0.438) 0px 3px 8px;
-	margin: auto auto;
-	position: relative;
-	// border-radius: 1em;
-	border-top-left-radius: 40px;
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 95%;
+  height: 600px;
+  top: 10px;
+  bottom: 10px;
+  background-color: rgba(255, 255, 255, 0.534);
+  box-shadow: rgba(0, 0, 0, 0.438) 0px 3px 8px;
+  margin: auto auto;
+  border-top-left-radius: 40px;
+  overflow-y: auto;
+  // border-radius: 1em;
 
-	justify-content: space-evenly;
-	overflow-y: auto;
-
-	h3 {
-		text-align: center;
-		font-size: 1.3em;
+  h3 {
+    text-align: center;
+    font-size: 1.3em;
 		font-family: "Oswald", sans-serif;
 	}
 	.survey-items {
@@ -36,36 +35,57 @@
 		font-size: 1em;
 		margin-top: 30px;
 
-		form {
-			width: 80%;
-		}
+  .reset {
+    margin: 0;
+    align-self: center;
+  }
+  .survey-items {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    width: 100%;
+  }
+  .feild-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-radius: 40px;
+    padding: 5px;
+    font-size: 1em;
+    margin-top: 30px;
 
-		input {
-			height: 30px;
-			width: 100%;
-			border: 1px solid gainsboro;
-			border-radius: 40px;
-			padding: 5px;
-		}
+    form {
+      width: 80%;
+    }
 
-		input:focus {
-			outline: none;
-		}
-	}
+    input {
+      height: 30px;
+      width: 100%;
+      border: 1px solid gainsboro;
+      border-radius: 40px;
+      padding: 5px;
+    }
 
-	.submit {
-		margin-left: 20px;
-		font-size: 1.8em;
-		color: rgb(101, 170, 101);
-	}
+    input:focus {
+      outline: none;
+    }
+  }
 
-	li {
-		margin: 15px;
-		font-size: 15px;
-	}
+  .submit {
+    margin-left: 20px;
+    font-size: 1.8em;
+    color: rgb(101, 170, 101);
+  }
 
-	.item {
-		display: flex;
-		justify-content: space-between;
-	}
+
+  li {
+    margin: 15px;
+    font-size: 20px;
+  }
+
+  .item {
+    display: flex;
+    justify-content: space-between;
+  }
 }

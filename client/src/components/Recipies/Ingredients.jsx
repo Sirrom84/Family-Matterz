@@ -125,33 +125,35 @@ export const Ingredients = (props) => {
   };
 
   return (
-    <div className='grid-container'>
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity='success'>
-          The ingredients have sucessfully been added to you list!
-        </Alert>
-      </Snackbar>
-      <section className='title'>
-        <img src={item.image} alt={item.title} />
-        <h1>{item.title}</h1>
-        <hr />
-      </section>
-      <section className='ingredients'>
-        <h3>Ingredients</h3>
-        <ul>{ingredientList}</ul>
-        <Button
-          variant='contained'
-          className={classes.button}
-          onClick={onAddHandler}
-        >
-          Add To Grocery Cart
-        </Button>
-      </section>
-      <section className='instructions'>
-        <h3>Instructions</h3>
-        <ol>{instructions}</ol>
-      </section>
+    <>
+      <div className='grid-container'>
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity='success'>
+            The ingredients have sucessfully been added to you list!
+          </Alert>
+        </Snackbar>
+        <section className='title'>
+          <img src={item.image} alt={item.title} />
+          <h1>{item.title}</h1>
+          <hr />
+        </section>
+        <section className='ingredients'>
+          <h3>Ingredients</h3>
+          <ul>{ingredientList}</ul>
+          <Button
+            variant='contained'
+            className={classes.button}
+            onClick={onAddHandler}
+          >
+            Add To Grocery Cart
+          </Button>
+        </section>
+        <section className='instructions'>
+          <h3>Instructions</h3>
+          <ol>{instructions}</ol>
+        </section>
+      </div>
       <BottomNav />
-    </div>
+    </>
   );
 };
