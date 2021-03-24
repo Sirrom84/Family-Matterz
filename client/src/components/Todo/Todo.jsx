@@ -3,7 +3,6 @@ import CreateTask from "./CreateTask";
 import {Avatar} from "primereact/avatar";
 import uuid from "react-uuid";
 import axios from "axios";
-import TopNav from "../TopNav/TopNav";
 import BottomNav from "../BottomNav/BottomNav";
 import {BsTrash} from "react-icons/bs";
 

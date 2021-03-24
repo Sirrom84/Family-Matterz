@@ -6,7 +6,7 @@ class ResourceCell extends React.PureComponent {
 			data: {
 				color,
 				text,
-				data: {avatar, age, discipline},
+				data: {avatar},
 			},
 		} = this.props;
 		return (
@@ -15,7 +15,7 @@ class ResourceCell extends React.PureComponent {
 					<h2>{text}</h2>
 				</div>
 				<div className="avatar">
-					<img src={avatar} />
+					<img src={avatar} alt="" />
 				</div>
 			</div>
 		);

@@ -1,5 +1,4 @@
 import React from "react";
-import {Link} from "react-router-dom";
 
 import "./TopNav.scss";
 
@@ -10,7 +9,7 @@ export default function TopNav() {
 				<img className="Logo" src="./images/FamilyMatterz.svg" alt="Logo" />
 
 				<div className="icon-container">
-					<img className="top-avatar" src="./images/daughter.png"></img>
+					<img className="top-avatar" src="./images/daughter.png" alt=""></img>
 				</div>
 			</div>
 		</div>
