@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { FaRegArrowAltCircleUp } from 'react-icons/fa';
+import { FiRefreshCw } from 'react-icons/fi';
 import { ChosenRecipee } from './ChosenRecipee';
 import { SurveyItem } from './SurveyItem';
 import BottomNav from '../BottomNav/BottomNav';
@@ -50,8 +51,8 @@ export const Survey = () => {
     const updateItem = liked[index];
     Object.assign(updateItem, {
       isLiked: true,
-      likes: updateItem.winner ? updateItem.likes : updateItem.likes + 1,
-      winner: updateItem.likes >= 2 ? true : false,
+      likes: updateItem.winner ? updateItem.likes : (updateItem.likes += 1),
+      winner: updateItem.likes > 2 ? true : false,
     });
     setList(liked);
     const item = liked[index];
@@ -73,6 +74,13 @@ export const Survey = () => {
     for (const item of list) {
       if (item.winner) return true;
     }
+  };
+
+  const onResetHandler = () => {
+    axios.delete('http://localhost:9000/survey').catch((err) => {
+      console.log('Error in Survey Delete', err);
+    });
+    setList([]);
   };
 
   const winningItem = list.map((item, index) => {
@@ -104,6 +112,7 @@ export const Survey = () => {
   return (
     <div className='survey-container'>
       <h3>Whats On the Menu For Today?</h3>
+      <FiRefreshCw className='reset' onClick={onResetHandler} />
       {winChecker() ? <div className='survey-items'>{winningItem}</div> : null}
       <div className='survey-items'>{surveyItems}</div>
       <div className='feild-input'>

@@ -1,37 +1,37 @@
 .list-container {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
 
-	.list-item {
-		display: flex;
-		align-items: center;
-		width: 80%;
+  .list-item {
+    display: flex;
+    align-items: center;
+    width: 80%;
 
-		.button {
-			margin-right: 10px;
-		}
+    .button {
+      margin-right: 10px;
+    }
 
-		.buttonCheck {
-			color: #3dd338;
-		}
+    .buttonCheck {
+      color: #3dd338;
+    }
 
-		.item {
-			justify-self: center;
-			width: 80%;
-			margin: 0;
-		}
-		.checked {
-			font-size: 0.9em;
-			color: rgb(124, 124, 114);
-			text-decoration: line-through;
-		}
-	}
-	.delete {
-		color: red;
-		justify-self: end;
-		margin: 30px;
-		font-size: 15px;
-	}
+    .item {
+      justify-self: center;
+      width: 80%;
+      margin: 0;
+    }
+    .checked {
+      font-size: 0.9em;
+      color: rgb(124, 124, 114);
+      text-decoration: line-through;
+    }
+  }
+  .delete {
+    color: red;
+    justify-self: end;
+    margin: 30px;
+    font-size: 15px;
+  }
 }

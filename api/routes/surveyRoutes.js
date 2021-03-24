@@ -38,4 +38,15 @@ router.put('/:id', (req, res) => {
     });
 });
 
+router.delete('/', (req, res) => {
+  console.log('in the delete');
+  Survey.deleteMany({})
+    .then((res) => {
+      console.log('Survey Collection Reset');
+    })
+    .catch((err) => {
+      console.log('Error Resetting Survey', err);
+    });
+});
+
 module.exports = router;
