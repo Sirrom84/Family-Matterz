@@ -1,15 +1,18 @@
 .nav {
 	display: flex;
-	justify-content: center;
+	justify-content: space-around;
+	align-items: center;
 	position: fixed;
 	bottom: 0;
-	justify-content: space-around;
-	height: 74px;
+	left: 0;
 	width: 100%;
-	font-size: 1.5em;
+	height: 8vh;
+	font-size: 1.1em;
 	border-radius: 5px;
-	z-index: 1;
-	background-color: rgba(255, 255, 255, 0.548);
+
+	background-color: rgba(255, 255, 255, 0.651);
+
+	opacity: 0.9;
 
 	span {
 		font-size: 0.5em;

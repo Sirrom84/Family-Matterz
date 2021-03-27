@@ -1,0 +1,70 @@
+.App {
+	display: fixed !important;
+	z-index: -100 !important;
+	height: 0 !important;
+}
+
+// Containter {
+
+// }
+
+// Form.Group {
+//   position: fixed;
+//   z-index: 500;
+// }
+// .form {
+//   position: fixed;
+//   z-index: 5000;
+// }
+
+// Form.control {
+//   position: fixed;
+// }
+.Logo {
+	height: 50px;
+}
+#form-control {
+	height: 300px;
+}
+#wrap_video {
+	position: fixed;
+	width: 100%;
+	height: 500px;
+	z-index: -500;
+	margin: 0 px;
+	padding: 0px;
+}
+
+#video {
+	position: fixed;
+	z-index: -500;
+	width: 100%;
+	margin: 0;
+	opacity: 90%;
+}
+
+.top-nav {
+	margin-bottom: 0;
+}
+#title {
+	// position: fixed;
+	color: white;
+	font-size: 22px;
+	font-weight: 900;
+}
+#video_box {
+	position: fixed;
+	z-index: -10;
+	width: 100%;
+	margin: 0;
+	z-index: -100;
+}
+
+#video_overlays {
+	position: fixed;
+	top: 125px;
+	left: 80px;
+	width: 800px;
+	min-height: 500px;
+	z-index: 5000;
+}

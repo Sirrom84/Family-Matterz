@@ -1,16 +1,10 @@
-const { formatters } = require('debug');
 const mongoose = require('mongoose');
 
 const grocerySchema = new mongoose.Schema({
-  item: String,
+  title: String,
   category: String,
   price: Number,
-  family: {
-    id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Family',
-    },
-  },
+  checked: { type: Boolean, default: false },
   created: { type: Date, default: Date.now },
 });
 

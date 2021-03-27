@@ -1,0 +1,64 @@
+.groceryList {
+  width: 400px;
+  height: 600px;
+  top: 10px;
+  bottom: 10px;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.534);
+  box-shadow: rgba(0, 0, 0, 0.438) 0px 3px 8px;
+  position: relative;
+  margin: auto auto;
+  // border-radius: 1em;
+  border-top-left-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  h1 {
+    align-self: center;
+    margin-bottom: 10px;
+  }
+
+  span {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .list {
+    overflow: auto;
+  }
+  .list-item {
+    margin-left: 15px;
+  }
+
+  .input {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+    input {
+      height: 40px;
+      width: 85%;
+      border: 1px solid gainsboro;
+      border-radius: 40px;
+      padding: 5px;
+    }
+
+    input:focus {
+      outline: none;
+    }
+
+    .submit {
+      margin-left: 5px;
+      font-size: 1.8em;
+      color: #10d645bd;
+    }
+  }
+}

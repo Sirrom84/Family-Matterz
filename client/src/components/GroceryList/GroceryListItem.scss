@@ -1,26 +1,37 @@
-.list-item {
+.list-container {
   display: flex;
-  text-align: center;
+  justify-content: space-between;
   align-items: center;
-}
+  height: 50px;
 
-.list-item button {
-  justify-self: flex-start;
-  border-radius: 50%;
-  height: 15px;
-  width: auto;
-}
+  .list-item {
+    display: flex;
+    align-items: center;
+    width: 80%;
 
-.list-item p {
-  justify-self: center;
-  display: block;
-}
+    .button {
+      margin-right: 10px;
+    }
 
-.selected {
-  justify-self: flex-start;
-  border-radius: 50%;
-  height: 15px;
-  width: auto;
-  text-decoration: line-through;
-  font-size: 0.5em;
+    .buttonCheck {
+      color: #3dd338;
+    }
+
+    .item {
+      justify-self: center;
+      width: 80%;
+      margin: 0;
+    }
+    .checked {
+      font-size: 0.9em;
+      color: rgb(124, 124, 114);
+      text-decoration: line-through;
+    }
+  }
+  .delete {
+    color: red;
+    justify-self: end;
+    margin: 30px;
+    font-size: 15px;
+  }
 }
