@@ -5,13 +5,14 @@ import uuid from "react-uuid";
 import axios from "axios";
 import BottomNav from "../BottomNav/BottomNav";
 import {BsTrash} from "react-icons/bs";
-
 import "./Todo.scss";
 
+/// WILL RENDER A STRIKE-THROUGH ON TITLE AND AVATAR TO REPLACE CHECK IF ITEM IS CLICKED COMPLETED ///
 function Task({task, index, completeTask, removeTask}) {
 	const taskIsCompleted = task.completed;
 
 	let CheckedClass = "";
+
 	if (taskIsCompleted) {
 		CheckedClass += "checked";
 	}
@@ -102,7 +103,7 @@ export default function Todo() {
 			});
 	};
 
-	//Task is deleting from db via key assigned at creation
+	/// DELETE TASK FROM DB WITH FIND VIA KEY ///
 	const removeTask = (key) => {
 		const CleanTasks = (key) => {
 			const arr = tasks.filter((item) => item.key !== key);

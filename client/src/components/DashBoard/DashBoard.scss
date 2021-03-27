@@ -7,12 +7,7 @@
 	max-height: 750px;
 	margin: auto;
 }
-// .family-name {
-// 	display: flex;
-// 	justify-content: flex-end;
-// 	align-items: center;
-// 	border: solid 1px black;
-// }
+
 .one {
 	border-radius: 15px;
 	display: flex;
@@ -23,11 +18,8 @@
 	margin-top: 5px;
 	flex-direction: row;
 	background-repeat: no-repeat;
-	// background-color: rgba(238, 177, 155, 0.308);
 	background-image: url("./images/ScenicBack.png");
 	box-shadow: rgba(0, 0, 0, 0.438) 0px 3px 8px;
-
-	// background-color: #faaf08;
 
 	.dash-log {
 		border-radius: 50%;
