@@ -1,0 +1,53 @@
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	width: 100%;
+	gap: px 5px;
+}
+
+.one {
+	border-radius: 15px;
+	display: flex;
+	justify-content: center;
+	grid-column-start: 1;
+	grid-column-end: 3;
+	background-color: blue;
+	color: white;
+	background-image: url("./images/background.png");
+}
+
+.two {
+	height: 60%;
+	border-radius: 15px;
+	display: flex;
+	justify-content: center;
+	background-color: rgb(49, 182, 49);
+	color: white;
+}
+
+.three {
+	border-radius: 15px;
+
+	display: flex;
+	justify-content: center;
+	background-color: rgb(253, 65, 96);
+	color: white;
+}
+
+.four {
+	border-radius: 15px;
+
+	display: flex;
+	justify-content: center;
+	background-color: rgb(153, 57, 172);
+	color: white;
+}
+.five {
+	border-radius: 15px;
+
+	display: flex;
+	justify-content: center;
+	background-color: yellow;
+	color: black;
+}

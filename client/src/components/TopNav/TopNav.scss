@@ -2,39 +2,32 @@
 	display: flex;
 	align-items: center;
 	width: 100vw;
-	height: 10vh;
+	height: auto;
 	justify-content: space-between;
-	width: 100vw;
-	height: 8vh;
 	margin-top: 20px;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	margin-top: 0;
-	// background-color: rgba(255, 255, 255, 0.719);
-	opacity: 0.9;
-	// margin-bottom: 20px;
-	background-color: #56ca85;
-	color: black;
-	font-family: "Oswald", sans-serif;
-	position: sticky;
-	border-bottom-left-radius: 5px;
-	border-bottom-right-radius: 5px;
+	margin-bottom: 20px;
+	background-color: #f2a154;
+	color: #fff;
+
+	h1 {
+		margin-block-start: 0;
+		font-size: 1.5em;
+		margin: 0;
+		color: #000;
+	}
+	.message {
+		font-size: 1em;
+		margin-right: 20px;
+	}
+
 	h2 {
 		font-size: 15px;
 		font-weight: 400;
 	}
-
 	a {
 		text-decoration: none;
 		color: inherit;
-	}
-
-	.Logo {
-		padding-left: 10px;
-		height: 90px;
-		width: 200px;
-	}
-	.icon-container {
-		display: flex;
-		flex-direction: row-reverse;
 	}
 }

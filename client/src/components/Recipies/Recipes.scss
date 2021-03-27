@@ -1,18 +1,5 @@
-.recipes {
-  overflow: auto;
-  max-height: 84vh;
-  overflow-y: scroll;
-
-  h3 {
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 20px;
-  }
-  .recipe-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 5px;
-    margin: auto auto;
-    width: 90vw;
-  }
+h3 {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
