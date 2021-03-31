@@ -4,7 +4,7 @@ Family Matterz is a full stack family organizer application built with Node, Exp
 
 ## Final Product
 
-![Home](https://github.com/Sirrom84/family_materz_web/blob/627f499b8e6669f1e2c12eab99fcc776260f2bb4/client/docs/FamilyMattersHome.png)
+![Home](https://github.com/Sirrom84/family_materz_web/blob/master/client/docs/Dashboard_Cal.png?raw=true)
 ![Todo](https://github.com/Sirrom84/family_materz_web/blob/627f499b8e6669f1e2c12eab99fcc776260f2bb4/client/docs/FamilyMatterzTodo.png)
 ![recipes](https://github.com/Sirrom84/family_materz_web/blob/627f499b8e6669f1e2c12eab99fcc776260f2bb4/client/docs/FamilyMattersRecipes.png)
 ![ingredients](https://github.com/Sirrom84/family_materz_web/blob/627f499b8e6669f1e2c12eab99fcc776260f2bb4/client/docs/FamilyMatterzDirections.png)
