@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Survey = require('../DB/models/Survey');
 
+// Sends Items from DB to Client
 router.get('/', (req, res) => {
   Survey.find({})
     .then((items) => {
@@ -12,9 +13,9 @@ router.get('/', (req, res) => {
     });
 });
 
+// Creates New Survey Item in Database
 router.post('/', (req, res) => {
   const item = new Survey(req.body);
-  console.log(item);
   Survey.create(item)
     .then(() => {
       console.log('Item Added to DB');
@@ -24,8 +25,8 @@ router.post('/', (req, res) => {
     });
 });
 
+// Updates Survey Items like count and Winner boolean
 router.put('/:id', (req, res) => {
-  console.log(req.body);
   Survey.findByIdAndUpdate(req.params.id, {
     likes: req.body.likes,
     winner: req.body.winner,
@@ -38,8 +39,8 @@ router.put('/:id', (req, res) => {
     });
 });
 
+// Survey Reset
 router.delete('/', (req, res) => {
-  console.log('in the delete');
   Survey.deleteMany({})
     .then((res) => {
       console.log('Survey Collection Reset');

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Grocery = require('../DB/models/Grocery');
 
+// Sends Grocery Items to Client
 router.get('/', (req, res) => {
   Grocery.find({})
     .then((groceries) => {
@@ -12,9 +13,9 @@ router.get('/', (req, res) => {
     });
 });
 
+// Adds Grocery Item to DB
 router.post('/', (req, res) => {
   const newItem = new Grocery(req.body);
-  console.log(newItem);
   Grocery.create(newItem)
     .then((res) => {
       console.log('Item Added To DB');
@@ -24,8 +25,8 @@ router.post('/', (req, res) => {
     });
 });
 
+//Adds Ingredients to Grocery List DB
 router.post('/ingredients', (req, res) => {
-  console.log(req.body);
   req.body.map((item) => {
     let newItem = new Grocery({ title: item.name, category: item.aisle });
     Grocery.create(newItem)
@@ -38,6 +39,7 @@ router.post('/ingredients', (req, res) => {
   });
 });
 
+// Updates State of Grocery Item to Checked
 router.put('/:id', (req, res) => {
   Grocery.findByIdAndUpdate(req.params.id, { checked: req.body.checked })
     .then(() => {
@@ -48,9 +50,8 @@ router.put('/:id', (req, res) => {
     });
 });
 
+// Deletes Grocery Item
 router.delete('/:id', (req, res) => {
-  console.log(req.params.id);
-
   Grocery.findByIdAndDelete(req.params.id)
     .then(() => {
       console.log('Item Deleted');

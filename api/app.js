@@ -73,15 +73,6 @@ const groceryRouter = require('./routes/groceryRoutes');
 const surveyRouter = require('./routes/surveyRoutes');
 //App Initializer
 const app = express();
-// connect to atlas
-
-//Model Routes
-const Task = require('./DB/models/Task');
-const Grocery = require('./DB/models/Grocery');
-const Family = require('./DB/models/Family');
-const Calender = require('./DB/models/Calender');
-const Survey = require('./DB/models/Survey');
-const { query } = require('express');
 
 //Database Config
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@familymatterz.ixxbf.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
