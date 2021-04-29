@@ -5,9 +5,9 @@ import Button from '@material-ui/core/Button';
 import { BsCircle } from 'react-icons/bs';
 import { BsCheckCircle } from 'react-icons/bs';
 import { makeStyles } from '@material-ui/core/styles';
+import { Loading } from '../Loading/Loading';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
-import { Loading } from '../Loading/Loading';
 import BottomNav from '../BottomNav/BottomNav';
 
 const useStyles = makeStyles((theme) => ({
@@ -37,6 +37,7 @@ export const Ingredients = (props) => {
     item = props.location.state.item,
     url = `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false${API}`;
 
+  // Fetches Data from DB
   useEffect(() => {
     axios
       .get(url)
@@ -51,10 +52,12 @@ export const Ingredients = (props) => {
       });
   }, []);
 
+  // Checks if State has been Set Before rendering
   if (isloading) {
     return <Loading />;
   }
 
+  // Checks ingredients to be added to grocery list
   const onCheckHandler = (item, index) => {
     const updateIngredients = [...ingredientData];
     const SelectedItem = updateIngredients[index];
@@ -64,6 +67,7 @@ export const Ingredients = (props) => {
     setIngredients(updateIngredients);
   };
 
+  // Adds selected Ingredients to grocery list
   const onAddHandler = () => {
     const checkedIngredients = ingredientData.filter(
       (item) => item.isChecked === true
@@ -81,6 +85,7 @@ export const Ingredients = (props) => {
     }
   };
 
+  // Displays ingredients
   const ingredientList = ingredientData.map((item, index) => {
     return (
       <li
@@ -100,6 +105,7 @@ export const Ingredients = (props) => {
     );
   });
 
+  // Displays instructions
   const instructions = instructionData.map((item, index) => {
     return (
       <li className='item' key={index}>
@@ -108,6 +114,7 @@ export const Ingredients = (props) => {
     );
   });
 
+  // Handles alerts when ingredients are added
   function Alert(props) {
     return <MuiAlert elevation={6} variant='filled' {...props} />;
   }
@@ -120,7 +127,6 @@ export const Ingredients = (props) => {
     if (reason === 'clickaway') {
       return;
     }
-
     setOpen(false);
   };
 
@@ -129,7 +135,7 @@ export const Ingredients = (props) => {
       <div className='ingredient-container'>
         <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
           <Alert onClose={handleClose} severity='success'>
-            The ingredients have sucessfully been added to you list!
+            The ingredients have successfully been added to you list!
           </Alert>
         </Snackbar>
         <section className='title'>

@@ -9,11 +9,11 @@ import './Survey.scss';
 import axios from 'axios';
 
 export const Survey = () => {
-  // const [showWinner, setShowWinner] = useState(false);
   let [currentItem, setCurrentItem] = useState('');
   const [open, setOpen] = useState(false);
   const [list, setList] = useState([]);
 
+  // Brings in survey items from DB
   useEffect(() => {
     axios
       .get('http://localhost:9000/survey')
@@ -25,10 +25,12 @@ export const Survey = () => {
       });
   }, []);
 
+  // Handles user input
   const onChangeHandler = (e) => {
     setCurrentItem(e.target.value);
   };
 
+  // adds user input to list
   const onSubmitHandler = (e) => {
     e.preventDefault();
     const surveyItem = {
@@ -45,7 +47,7 @@ export const Survey = () => {
         console.log('Item Not Added', err);
       });
   };
-
+  // updates liked state and winner state of survey item
   const onClickHandler = (index) => {
     const liked = [...list];
     const updateItem = liked[index];
@@ -70,12 +72,14 @@ export const Survey = () => {
     setOpen(false);
   };
 
+  // Checks if there is a winner
   const winChecker = () => {
     for (const item of list) {
       if (item.winner) return true;
     }
   };
 
+  // resets survey items to empty
   const onResetHandler = () => {
     axios.delete('http://localhost:9000/survey').catch((err) => {
       console.log('Error in Survey Delete', err);

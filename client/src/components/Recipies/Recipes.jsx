@@ -5,9 +5,11 @@ import { Loading } from '../Loading/Loading';
 
 import './Recipes.scss';
 
+// Creates the Recipe Page
 export const Recipes = (props) => {
   const [recipe, setRecipe] = useState([]);
   const [isloading, setLoading] = useState(true);
+
   const API = process.env.REACT_APP_API_KEY,
     dish = props.location.state.title,
     apiUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${dish}${API}`;

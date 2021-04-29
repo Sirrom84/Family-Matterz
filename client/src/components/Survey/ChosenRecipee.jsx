@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// Handles modal and actions after a recipe has been chosen
 export const ChosenRecipee = (props) => {
   const classes = useStyles();
 

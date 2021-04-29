@@ -34,7 +34,6 @@ function App() {
               />
               <Route path='/recipes' component={Recipes} />
               <Route path='/chatApp'>
-                {' '}
                 <ChatAppV2 id={id} />
               </Route>
             </>
