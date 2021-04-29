@@ -9,6 +9,7 @@ export const GroceryList = () => {
   const [input, setInput] = useState('');
   const [items, setItem] = useState([]);
 
+  // Re formats DB data to organize items by category
   const formatCategories = (items) => {
     let group = items.reduce((r, a) => {
       r[a.category] = [...(r[a.category] || []), a];
@@ -17,6 +18,7 @@ export const GroceryList = () => {
     setItem(group);
   };
 
+  // Fetches Grocery List items from DB
   useEffect(() => {
     axios
       .get('http://localhost:9000/groceries')
@@ -28,25 +30,22 @@ export const GroceryList = () => {
       });
   }, []);
 
+  // Takes in item input and assigns it a food category based on Spoontacular API
   const onSubmitHandler = (e) => {
     e.preventDefault();
     const API = process.env.REACT_APP_API_KEY;
-    console.log('in the first axios');
     axios
       .get(
         `https://api.spoonacular.com/food/ingredients/search?query=${input}${API}`
       )
       .then((res) => {
-        console.log('in the second axios');
         const ID = res.data.results[0].id;
         return axios.get(
           `https://api.spoonacular.com/food/ingredients/${ID}/information?${API}`
         );
       })
       .then((res) => {
-        console.log(res.data.aisle);
         const split = res.data.aisle.split(';');
-        console.log(split[0]);
         const newItem = {
           title: input,
           checked: false,
@@ -64,7 +63,6 @@ export const GroceryList = () => {
         }
 
         setInput('');
-        console.log('in the third axios');
         axios.post('http://localhost:9000/groceries', newItem);
       })
       .catch((err) => {
@@ -72,6 +70,7 @@ export const GroceryList = () => {
       });
   };
 
+  // Handles checked off items
   const onCheckHandler = (item) => {
     Object.assign(item, {
       checked: !item.checked,
@@ -85,11 +84,11 @@ export const GroceryList = () => {
       });
   };
 
+  // handles items being deleted
   const onDeleteHandler = (item) => {
     const filteredItems = items[item.category].filter(
       (element) => element._id !== item._id
     );
-
     if (items[item.category].length > 1) {
       items[item.category] = filteredItems;
     } else {
@@ -97,12 +96,12 @@ export const GroceryList = () => {
     }
 
     setItem({ ...items });
-    console.log(item._id);
     axios.delete(`http://localhost:9000/groceries/${item._id}`).catch((err) => {
       console.log('Error deleting Item', err);
     });
   };
 
+  // Handles display of items left in cart
   const checkItemsLeft = (list) => {
     let count = 0;
     const itemLeft = Object.values(items);
@@ -117,6 +116,7 @@ export const GroceryList = () => {
     return count;
   };
 
+  // Creates list of Categories based on items in DB
   const entries = Object.entries(items);
   const groceryItems = entries.map((data, index) => {
     return (
